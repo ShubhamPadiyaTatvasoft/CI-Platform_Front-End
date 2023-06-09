@@ -7,37 +7,38 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class LoginServiceService {
-  // private baseUrl: string = 'https://localhost:44335/api/User/';
-
-  private baseUrlUser: string = environment.baseURLUser;
-  private baseUrlLandingPage: string = environment.baseURLLandingPage;
   constructor(private http: HttpClient, private router: Router) {}
 
   //api for login service
   login(loginObj: any) {
-    return this.http.post<any>(`${this.baseUrlUser}login`, loginObj);
+    return this.http.post<any>(`${environment.baseURL}User/login`, loginObj);
   }
 
-  //api for get detail of all the users
-  getUsers() {
-    return this.http.get<any>(`${this.baseUrlUser}getUser`);
+  //api for forget password
+  forgetPassword(email: string) {
+    return this.http.post<any>(
+      `${environment.baseURL}User/ForgetPassword/${email}`,
+      {}
+    );
   }
 
-  //api for get detail of all the Missions
-  getMissions() {
-    return this.http.get<any>(`${this.baseUrlLandingPage}LandingPage`);
-  }
-
-  //api for testing purpose only(not from pur backend side)
-  getFakeUsers() {
-    const url = 'https://randomuser.me/api/?results=100';
-    return this.http.get<any>(url);
+  //api for reset password
+  resetPassword(email: string, token: string, newPassword: string) {
+    return this.http.post<any>(
+      `${environment.baseURL}User/ResetPassword/${email}/${token}/${newPassword}`,
+      {}
+    );
   }
 
   //service for sign-out user
   signOut() {
     localStorage.removeItem('token');
     this.router.navigate(['/']);
+  }
+
+  //service for sign-out user
+  register(userObj: any) {
+    return this.http.post<any>(`${environment.baseURL}User/register`, userObj);
   }
 
   //service for store token in local storage

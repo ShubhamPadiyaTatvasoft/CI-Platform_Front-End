@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ErrorMessages } from 'src/app/common/errorMsg.static';
 import { ValidatorsPattern } from 'src/app/common/validator.static';
@@ -17,11 +13,10 @@ import { NotificationService } from 'src/app/services/notification.service';
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent implements OnInit {
-  type: string = 'password';
-  isText: boolean = false;
   loginForm: FormGroup;
   isPasswordBlur: boolean = false;
   errorMessage = ErrorMessages;
+  type: string = 'password';
   RED_EYE = 'remove_red_eye';
   EYE_ICON = 'visibility_off';
   iconName: string = this.EYE_ICON;

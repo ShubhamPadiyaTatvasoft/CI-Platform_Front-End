@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ErrorMessages } from 'src/app/common/errorMsg.static';
 import { ValidatorsPattern } from 'src/app/common/validator.static';
 import { FormValidationService } from 'src/app/services/form-validation.service';
+import { LoginServiceService } from 'src/app/services/login-service.service';
 import { NotificationService } from 'src/app/services/notification.service';
-import { RegistrationService } from 'src/app/services/registration.service';
 
 @Component({
   selector: 'app-register-form',
@@ -17,21 +13,20 @@ import { RegistrationService } from 'src/app/services/registration.service';
   styleUrls: ['./register-form.component.scss'],
 })
 export class RegisterFormComponent implements OnInit {
-  
+  RegisterForm: FormGroup;
+  isPasswordBlur: boolean = false;
+  isPasswordMatch: boolean = false;
+  errorMessage = ErrorMessages;
   typeOfPassword: string = 'password';
   typeOfConfirmPassword: string = 'password';
   iconName: string = 'visibility_off';
   iconNameForConfirmPassword: string = 'visibility_off';
   EYE_ICON: string = 'visibility_off';
   RED_EYE: string = 'remove_red_eye';
-  RegisterForm: FormGroup;
-  isPasswordBlur: boolean = false;
-  isPasswordMatch: boolean = false;
-  errorMessage = ErrorMessages;
 
   constructor(
     private fb: FormBuilder,
-    private register: RegistrationService,
+    private loginService: LoginServiceService,
     private notifyService: NotificationService,
     private router: Router,
     public formValidationService: FormValidationService
@@ -46,42 +41,45 @@ export class RegisterFormComponent implements OnInit {
     this.RegisterForm = this.fb.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
-      phoneNumber: ['', [
-        Validators.required,
-        Validators.pattern(ValidatorsPattern.mobileNumber),
-      ]],
-      email: ['', [
-        Validators.required,
-        Validators.email,
-        Validators.pattern(ValidatorsPattern.email),
-      ]],
+      phoneNumber: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(ValidatorsPattern.mobileNumber),
+        ],
+      ],
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.email,
+          Validators.pattern(ValidatorsPattern.email),
+        ],
+      ],
 
-      password: ['', [
-        Validators.required,
-        Validators.pattern(ValidatorsPattern.password),
-      ]],
+      password: [
+        '',
+        [Validators.required, Validators.pattern(ValidatorsPattern.password)],
+      ],
       confirmPassword: ['', Validators.required],
     });
   }
 
   //function for hide show password
   hideShowPassword(event: any) {
-    if(event.name==='password'){
-      if(event.type==='text'){
+    if (event.name === 'password') {
+      if (event.type === 'text') {
         this.typeOfPassword = 'password';
         this.iconName = this.EYE_ICON;
-      }
-      else{
+      } else {
         this.typeOfPassword = 'text';
         this.iconName = this.RED_EYE;
       }
-    }
-    else{
-      if(event.type==='text'){
+    } else {
+      if (event.type === 'text') {
         this.typeOfConfirmPassword = 'password';
         this.iconNameForConfirmPassword = this.EYE_ICON;
-      }
-      else{
+      } else {
         this.typeOfConfirmPassword = 'text';
         this.iconNameForConfirmPassword = this.RED_EYE;
       }
@@ -91,13 +89,13 @@ export class RegisterFormComponent implements OnInit {
   // method calls when user press register button
   onRegister() {
     if (this.RegisterForm.valid && !this.isPasswordMatch) {
-      this.register.register(this.RegisterForm.value).subscribe({
+      this.loginService.register(this.RegisterForm.value).subscribe({
         next: (res) => {
           if (res.statuscode == 200) {
             this.router.navigate(['/']);
             this.notifyService.showSuccess(res.message);
           } else {
-            this.notifyService.showError( res.message);
+            this.notifyService.showError(res.message);
           }
         },
         error: (err) => {
@@ -105,7 +103,9 @@ export class RegisterFormComponent implements OnInit {
         },
       });
     } else {
-      this.notifyService.showError(this.errorMessage.FormErrorMessage.InvalidForm);
+      this.notifyService.showError(
+        this.errorMessage.FormErrorMessage.InvalidForm
+      );
     }
   }
 

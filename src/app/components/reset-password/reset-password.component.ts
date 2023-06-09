@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorMessages } from 'src/app/common/errorMsg.static';
 import { ValidatorsPattern } from 'src/app/common/validator.static';
-import { ForgetResetPasswordService } from 'src/app/services/forget-reset-password.service';
 import { FormValidationService } from 'src/app/services/form-validation.service';
+import { LoginServiceService } from 'src/app/services/login-service.service';
 import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
@@ -13,26 +13,24 @@ import { NotificationService } from 'src/app/services/notification.service';
   styleUrls: ['./reset-password.component.scss'],
 })
 export class ResetPasswordComponent implements OnInit {
-  
   email: string = '';
   tokenForPasswordReset: string = '';
   resetPasswordForm: FormGroup;
- 
+  isPasswordBlur: boolean = false;
+  isPasswordMatch: boolean = false;
+  errorMessage = ErrorMessages;
   iconName: string = 'visibility_off';
   iconNameForConfirmPassword: string = 'visibility_off';
   EYE_ICON: string = 'visibility_off';
   RED_EYE: string = 'remove_red_eye';
   typeOfPassword: string = 'password';
   typeOfConfirmPassword: string = 'password';
-  isPasswordBlur: boolean = false;
-  isPasswordMatch: boolean = false;
-  errorMessage = ErrorMessages;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private resetPassService: ForgetResetPasswordService,
+    private loginService: LoginServiceService,
     private notifyService: NotificationService,
     public formValidationService: FormValidationService
   ) {}
@@ -51,12 +49,7 @@ export class ResetPasswordComponent implements OnInit {
     this.resetPasswordForm = this.fb.group({
       password: [
         '',
-        [
-          Validators.required,
-          Validators.pattern(
-            ValidatorsPattern.password
-          ),
-        ],
+        [Validators.required, Validators.pattern(ValidatorsPattern.password)],
       ],
       confirmPassword: ['', [Validators.required]],
     });
@@ -65,7 +58,7 @@ export class ResetPasswordComponent implements OnInit {
   //method calls when user press change password button
   onReset() {
     if (this.resetPasswordForm.valid && !this.isPasswordMatch) {
-      this.resetPassService
+      this.loginService
         .resetPassword(
           this.email,
           this.tokenForPasswordReset,
@@ -75,48 +68,41 @@ export class ResetPasswordComponent implements OnInit {
           next: (res) => {
             if (res.statusCode === 200) {
               this.router.navigate(['/']);
-              
+
               this.notifyService.showSuccess(res.message);
             } else {
-      
               this.notifyService.showError(res.message);
             }
           },
           error: (err) => {
-            this.notifyService.showError(
-              err.message
-            );
+            this.notifyService.showError(err.message);
           },
         });
     }
   }
 
   //function for hide show New password and Confirm Password
- 
+
   hideShowPassword(event: any) {
-    if(event.name==='password'){
-      if(event.type==='text'){
+    if (event.name === 'password') {
+      if (event.type === 'text') {
         this.typeOfPassword = 'password';
         this.iconName = this.EYE_ICON;
-      }
-      else{
+      } else {
         this.typeOfPassword = 'text';
         this.iconName = this.RED_EYE;
       }
-    }
-    
-    else{
-      if(event.type==='text'){
+    } else {
+      if (event.type === 'text') {
         this.typeOfConfirmPassword = 'password';
         this.iconNameForConfirmPassword = this.EYE_ICON;
-      }
-      else{
+      } else {
         this.typeOfConfirmPassword = 'text';
         this.iconNameForConfirmPassword = this.RED_EYE;
       }
     }
   }
-  
+
   // method for check if confirm password and new password is matched or not
   checkPassword() {
     var Password = this.resetPasswordForm.value.password;

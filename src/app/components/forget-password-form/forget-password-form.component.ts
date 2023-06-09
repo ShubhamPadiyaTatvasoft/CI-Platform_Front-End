@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ErrorMessages } from 'src/app/common/errorMsg.static';
 import { ValidatorsPattern } from 'src/app/common/validator.static';
-import { ForgetResetPasswordService } from 'src/app/services/forget-reset-password.service';
 import { FormValidationService } from 'src/app/services/form-validation.service';
+import { LoginServiceService } from 'src/app/services/login-service.service';
 import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
@@ -25,7 +25,7 @@ export class ForgetPasswordFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private forgetPassService: ForgetResetPasswordService,
+    private loginService: LoginServiceService,
     private notifyService: NotificationService,
     public formValidationService: FormValidationService
   ) {}
@@ -45,7 +45,7 @@ export class ForgetPasswordFormComponent implements OnInit {
     if (this.forgetPassForm.valid) {
       this.buttonDisabled = true;
       this.email = this.forgetPassForm.value['email'];
-      this.forgetPassService.forgetPassword(this.email).subscribe({
+      this.loginService.forgetPassword(this.email).subscribe({
         next: (res) => {
           if (res.statusCode == 200) {
             this.notifyService.showSuccess(res.message);
@@ -60,7 +60,9 @@ export class ForgetPasswordFormComponent implements OnInit {
         },
       });
     } else {
-      this.notifyService.showError(this.errorMessage.FormErrorMessage.InvalidForm);
+      this.notifyService.showError(
+        this.errorMessage.FormErrorMessage.InvalidForm
+      );
     }
   }
 }
