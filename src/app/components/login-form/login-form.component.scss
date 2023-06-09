@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.w-btn-80 {
+  width: 80%;
+}
+
+@layer components {
+  .login-main {
+    @apply grid xl:grid-cols-12;
+  }
+
+  .login-left {
+    @apply col-span-8;
+  }
+
+  .login-right {
+    @apply col-span-4 flex justify-center text-center xl:items-center h-100;
+  }
+
+  .margin-top6 {
+    @apply mt-6;
+  }
+
+  .display-flex {
+    @apply flex space-x-1 text-center justify-center xl:flex-row md:flex-col sm:flex-col;
+  }
+  
+  .only-flex {
+    @apply flex;
+  }
+
+  .form-input {
+    @apply border-black;
+  }
+
+  .span-error {
+    @apply flex justify-self-start ms-4;
+  }
+}
+
+.mat-mdc-form-field-infix {
+  padding: 0px !important;
+}
+
+.error {
+  border: 2px solid red;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.h-100 {
+  height: 100vh;
+}
+
+.w-100 {
+  width: 100%;
+}
+.display-none{
+  display: inline;
+}
+@media only screen and (max-width: 1279px) {
+  .login-right {
+    @apply col-span-4 flex justify-center text-center xl:items-center h-100 w-100 mt-24;
+  }
+
+  .w-100 {
+    width: 100vw;
+  }
+
+  .h-100 {
+    height: 100%;
+    width: 100vw;
+  }
+}
+@media only screen and (max-width: 650px) {
+ .login-left{
+  display: none;
+ }
+ .login-right{
+  align-items: center;
+  padding: 8px;
+ }
+}
+
+
+.example-full-width {
+  width: 100%;
+}
