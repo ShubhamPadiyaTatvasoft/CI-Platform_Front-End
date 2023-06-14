@@ -16,6 +16,7 @@ export class ForgetPasswordFormComponent implements OnInit {
   forgetPassForm: FormGroup;
   email: string = '';
   buttonDisabled: boolean = false;
+  showLoader: boolean = false;
   errorMessage = ErrorMessages;
 
   ngOnInit(): void {
@@ -44,9 +45,11 @@ export class ForgetPasswordFormComponent implements OnInit {
   forgetPass() {
     if (this.forgetPassForm.valid) {
       this.buttonDisabled = true;
+      this.showLoader = true;
       this.email = this.forgetPassForm.value['email'];
       this.loginService.forgetPassword(this.email).subscribe({
         next: (res) => {
+          this.showLoader = false;
           if (res.statusCode == 200) {
             this.notifyService.showSuccess(res.message);
           } else {
@@ -55,6 +58,7 @@ export class ForgetPasswordFormComponent implements OnInit {
           this.buttonDisabled = false;
         },
         error: (err) => {
+          this.showLoader = false;
           this.buttonDisabled = false;
           this.notifyService.showError(err.message);
         },

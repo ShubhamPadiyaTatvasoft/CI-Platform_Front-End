@@ -16,6 +16,7 @@ export class RegisterFormComponent implements OnInit {
   RegisterForm: FormGroup;
   isPasswordBlur: boolean = false;
   isPasswordMatch: boolean = false;
+  showLoader: boolean = false;
   errorMessage = ErrorMessages;
   typeOfPassword: string = 'password';
   typeOfConfirmPassword: string = 'password';
@@ -89,9 +90,11 @@ export class RegisterFormComponent implements OnInit {
   // method calls when user press register button
   onRegister() {
     if (this.RegisterForm.valid && !this.isPasswordMatch) {
+      this.showLoader = true;
       this.loginService.register(this.RegisterForm.value).subscribe({
         next: (res) => {
-          if (res.statuscode == 200) {
+          this.showLoader = false;
+          if (res.statusCode === 200) {
             this.router.navigate(['/']);
             this.notifyService.showSuccess(res.message);
           } else {
@@ -99,6 +102,7 @@ export class RegisterFormComponent implements OnInit {
           }
         },
         error: (err) => {
+          this.showLoader = false;
           this.notifyService.showError(err.message);
         },
       });

@@ -18,6 +18,7 @@ export class ResetPasswordComponent implements OnInit {
   resetPasswordForm: FormGroup;
   isPasswordBlur: boolean = false;
   isPasswordMatch: boolean = false;
+  showLoader: boolean = false;
   errorMessage = ErrorMessages;
   iconName: string = 'visibility_off';
   iconNameForConfirmPassword: string = 'visibility_off';
@@ -58,6 +59,7 @@ export class ResetPasswordComponent implements OnInit {
   //method calls when user press change password button
   onReset() {
     if (this.resetPasswordForm.valid && !this.isPasswordMatch) {
+      this.showLoader = true;
       this.loginService
         .resetPassword(
           this.email,
@@ -66,6 +68,8 @@ export class ResetPasswordComponent implements OnInit {
         )
         .subscribe({
           next: (res) => {
+            this.showLoader = false;
+
             if (res.statusCode === 200) {
               this.router.navigate(['/']);
 
@@ -75,6 +79,8 @@ export class ResetPasswordComponent implements OnInit {
             }
           },
           error: (err) => {
+            this.showLoader = false;
+
             this.notifyService.showError(err.message);
           },
         });

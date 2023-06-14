@@ -69,7 +69,14 @@
           [disabled]="!loginForm.valid"
           style="width: 80%"
         >
-          <span class="font-medium">LOGIN</span>
+          <span *ngIf="showLoader"
+            ><div class="lds-ring h-full">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div></div
+          ></span>
+          <span *ngIf="!showLoader" class="font-medium">LOGIN</span>
         </button>
       </div>
       <div class="margin-top6">

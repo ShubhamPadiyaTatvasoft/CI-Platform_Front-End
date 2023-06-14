@@ -19,7 +19,7 @@ export class LoginAuthGuard implements CanActivate {
     if (this.login.isLoggedIn()) {
       return true;
     } else {
-      this.router.navigate(['/']);
+      this.router.navigate(['']);
       this.notifyService.showError('Please Login First!!');
       return false;
     }

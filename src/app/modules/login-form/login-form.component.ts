@@ -1,3 +1,4 @@
+import { HtmlParser } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,10 +16,12 @@ import { NotificationService } from 'src/app/services/notification.service';
 export class LoginFormComponent implements OnInit {
   loginForm: FormGroup;
   isPasswordBlur: boolean = false;
+  showLoader: boolean = false;
   errorMessage = ErrorMessages;
   type: string = 'password';
   RED_EYE = 'remove_red_eye';
   EYE_ICON = 'visibility_off';
+
   iconName: string = this.EYE_ICON;
 
   constructor(
@@ -31,7 +34,7 @@ export class LoginFormComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.login.getToken()) {
-      // this.router.navigate(['/landingPage']);
+      this.router.navigate(['/AdminPanel/user']);
     }
     this.createForm();
   }
@@ -54,17 +57,23 @@ export class LoginFormComponent implements OnInit {
   // method calls when user press login button
   onLogin() {
     if (this.loginForm.valid) {
+      this.showLoader = true;
       this.login.login(this.loginForm.value).subscribe({
         next: (res) => {
+          this.showLoader = false;
           if (res.statusCode === 200) {
             this.login.storeToken(res.data);
-            // this.router.navigate(['/landingPage']);
+            this.router.navigate(['/AdminPanel/user']);
             this.notifyService.showSuccess(res.message);
+            // setTimeout(() => {
+            //   this.login.signOut();
+            // }, 5000);
           } else {
             this.notifyService.showError(res.message);
           }
         },
         error: (err) => {
+          this.showLoader = false;
           this.notifyService.showError(err.message);
         },
       });
@@ -75,6 +84,7 @@ export class LoginFormComponent implements OnInit {
     }
   }
 
+  deleteToken() {}
   //function for hide show password
   hideShowPassword(event: any) {
     if (event.type === 'text') {
