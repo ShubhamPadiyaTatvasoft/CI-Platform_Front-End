@@ -25,6 +25,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { PaginationComponent } from './common/components/pagination/pagination.component';
+import { MatFormField } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ForgetPasswordFormComponent,
     BannerComponent,
     ResetPasswordComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -54,6 +58,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatCheckboxModule,
     MatMenuModule,
     MatPaginatorModule,
+    PaginationComponent
   ],
 
   //provide interceptors using provider
@@ -66,4 +71,4 @@ import { MatPaginatorModule } from '@angular/material/paginator';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
