@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginFormComponent } from './components/login-form/login-form.component';
-import { RegisterFormComponent } from './components/register-form/register-form.component';
-import { ForgetPasswordFormComponent } from './components/forget-password-form/forget-password-form.component';
-import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { LoginFormComponent } from './modules/login-form/login-form.component';
+import { RegisterFormComponent } from './modules/register-form/register-form.component';
+import { ForgetPasswordFormComponent } from './modules/forget-password-form/forget-password-form.component';
+import { ResetPasswordComponent } from './modules/reset-password/reset-password.component';
 const routes: Routes = [
   {
     path: '',
@@ -24,7 +24,7 @@ const routes: Routes = [
   {
     path: 'AdminPanel',
     loadChildren: () =>
-      import('./components/admin/admin.module').then((m) => m.AdminPanelModule),
+      import('./modules/admin/admin.module').then((m) => m.AdminPanelModule),
   },
 ];
 
