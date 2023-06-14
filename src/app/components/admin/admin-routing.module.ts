@@ -14,6 +14,7 @@ const routes: Routes = [
   {
     path: 'Mission',
     component: MissionComponent,
+    canActivate: [LoginAuthGuard],
   },
 ];
 
