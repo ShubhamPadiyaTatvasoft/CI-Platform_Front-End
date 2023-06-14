@@ -4,7 +4,6 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { ForgetPasswordFormComponent } from './components/forget-password-form/forget-password-form.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
-import { PaginationComponent } from './common/components/pagination/pagination.component';
 const routes: Routes = [
   {
     path: '',
@@ -21,10 +20,6 @@ const routes: Routes = [
   {
     path: 'resetPassword',
     component: ResetPasswordComponent,
-  },
-  {
-    path: 'pagination',
-    component: PaginationComponent,
   },
   {
     path: 'user',
