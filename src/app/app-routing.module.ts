@@ -21,6 +21,11 @@ const routes: Routes = [
     path: 'resetPassword',
     component: ResetPasswordComponent,
   },
+  {
+    path: 'AdminPanel',
+    loadChildren: () =>
+      import('./components/admin/admin.module').then((m) => m.AdminPanelModule),
+  },
 ];
 
 @NgModule({
