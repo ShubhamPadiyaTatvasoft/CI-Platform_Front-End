@@ -21,6 +21,7 @@ const routes: Routes = [
     path: 'resetPassword',
     component: ResetPasswordComponent,
   },
+  { path: 'volunteer-mission', loadChildren: () => import('./components/volunteer-mission/volunteer-mission.module').then(m => m.VolunteerMissionModule) },
 ];
 
 @NgModule({

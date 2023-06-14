@@ -13,7 +13,7 @@ import { BannerComponent } from './components/banner/banner.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { ToastrModule } from 'ngx-toastr';
+import {ToastrModule} from'ngx-toastr';
 import { TokenInterceptorInterceptor } from './interceptors/token-interceptor.interceptor';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatTableModule } from '@angular/material/table';

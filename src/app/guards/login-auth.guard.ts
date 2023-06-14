@@ -17,9 +17,11 @@ export class LoginAuthGuard implements CanActivate {
   //function for checking the token valid and time not exceeded of token and redirect according to this
   canActivate() {
     if (this.login.isLoggedIn()) {
+      
       return true;
     } else {
-      this.router.navigate(['/']);
+      
+      this.router.navigate(['']);
       this.notifyService.showError('Please Login First!!');
       return false;
     }
