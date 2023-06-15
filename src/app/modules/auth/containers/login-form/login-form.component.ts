@@ -1,12 +1,11 @@
-import { HtmlParser } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ErrorMessages } from 'src/app/common/errorMsg.static';
 import { ValidatorsPattern } from 'src/app/common/validator.static';
-import { FormValidationService } from 'src/app/services/form-validation.service';
-import { LoginServiceService } from 'src/app/services/login-service.service';
-import { NotificationService } from 'src/app/services/notification.service';
+import { FormValidationService } from 'src/app/modules/auth/services/form-validation.service';
+import { LoginServiceService } from 'src/app/modules/auth/services/login-service.service';
+import { NotificationService } from 'src/app/modules/auth/services/notification.service';
 
 @Component({
   selector: 'app-login-form',
