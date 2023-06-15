@@ -16,6 +16,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/auth/auth.module').then((m) => m.AuthModule),
   },
+  { path: 'mission-volunteer', loadChildren: () => import('./modules/mission-volunteer/mission-volunteer.module').then(m => m.MissionVolunteerModule) },
 ];
 
 @NgModule({
