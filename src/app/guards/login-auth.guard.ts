@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 
-import { LoginServiceService } from '../services/login-service.service';
-import { NotificationService } from '../services/notification.service';
+import { LoginServiceService } from '../modules/auth/services/login-service.service';
+import { NotificationService } from '../modules/auth/services/notification.service';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +19,7 @@ export class LoginAuthGuard implements CanActivate {
     if (this.login.isLoggedIn()) {
       return true;
     } else {
-      this.router.navigate(['/']);
+      this.router.navigate(['']);
       this.notifyService.showError('Please Login First!!');
       return false;
     }
