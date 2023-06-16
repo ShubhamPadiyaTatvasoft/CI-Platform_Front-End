@@ -4,10 +4,10 @@ import { MissionVolunteerRoutingModule } from './mission-volunteer-routing.modul
 import { MissionImageCarouselComponent } from './components/mission-image-carousel/mission-image-carousel.component';
 import { MissionInformationComponent } from './components/mission-information/mission-information.component';
 import { MissionTabLayoutComponent } from './components/mission-tab-layout/mission-tab-layout.component';
-import { MissionSkillratingComponent } from './components/mission-skillrating/mission-skillrating.component';
 import { MissionRecentVolunteerComponent } from './components/mission-recent-volunteer/mission-recent-volunteer.component';
-import { MissionRelatedmissionComponent } from './components/mission-relatedmission/mission-relatedmission.component';
 import { MissionDetailComponent } from './container/mission-detail/mission-detail.component';
+import { MissionRelatedMissionComponent } from './components/mission-related-mission/mission-related-mission.component';
+import { MissionSkillRatingComponent } from './components/mission-skill-rating/mission-skill-rating.component';
 
 
 @NgModule({
@@ -15,10 +15,10 @@ import { MissionDetailComponent } from './container/mission-detail/mission-detai
     MissionImageCarouselComponent,
     MissionInformationComponent,
     MissionTabLayoutComponent,
-    MissionSkillratingComponent,
     MissionRecentVolunteerComponent,
-    MissionRelatedmissionComponent,
-    MissionDetailComponent
+    MissionDetailComponent,
+    MissionRelatedMissionComponent,
+    MissionSkillRatingComponent
   ],
   imports: [
     CommonModule,
