@@ -24,7 +24,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MissionRelatedMissionComponent } from './mission-related-mission/mission-related-mission.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +33,7 @@ import { MissionRelatedMissionComponent } from './mission-related-mission/missio
     ForgetPasswordFormComponent,
     BannerComponent,
     ResetPasswordComponent,
-    MissionRelatedMissionComponent,
+    
   ],
   imports: [
     BrowserModule,
