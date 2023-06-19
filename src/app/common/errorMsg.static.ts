@@ -59,5 +59,43 @@ export const ErrorMessages = {
   FormErrorMessage: {
     InvalidForm: 'Invalid data',
   },
-  
+
+  UserProfile: {
+    name: {
+      required: "Name is required"
+    },
+    surname: {
+      required: "Surname is required"
+    },
+    profileText: {
+      required: "Profile text is required"
+    },
+    whyVolunteer: {
+      required: "Why I volunteer is required"
+    },
+    country: {
+      required: "Country is required"
+    },
+    city: {
+      required: "City is required"
+    },
+  },
+
+  ChangePassword: {
+    oldPassword: {
+      required: "Old Password is required",
+      pattern: "Password must contain UpperCase,LowerCase,Digit and Special character and must be 8 to 15 character"
+    },
+    newPassword: {
+      required: "New Password is required",
+      pattern: "Password must contain UpperCase,LowerCase,Digit and Special character and must be 8 to 15 character"
+
+    },
+    confirmPassword: {
+      required: "Confirm Password is required",
+      pattern: "Password must contain UpperCase,LowerCase,Digit and Special character and must be 8 to 15 character"
+
+    }
+  }
+
 };
