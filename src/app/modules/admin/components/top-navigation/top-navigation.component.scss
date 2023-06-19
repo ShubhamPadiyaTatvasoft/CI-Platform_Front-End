@@ -1,0 +1,11 @@
+@media (max-width: 767px) {
+    .topHeader {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .topHeader {
+        @apply bg-white text-gray-100 flex justify-between border border-b-gray-800;
+    }
+}

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 
 import { LoginServiceService } from '../modules/auth/services/login-service.service';
-import { NotificationService } from '../modules/auth/services/notification.service';
+import { NotificationService } from 'src/shared/services/notification.service';
 
 @Injectable({
   providedIn: 'root',
