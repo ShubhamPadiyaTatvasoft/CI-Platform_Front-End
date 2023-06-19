@@ -1,0 +1,206 @@
+<div class="height-sidebar sm:w-full bg-orange-700" data-dev-hint="container">
+  <input type="checkbox" id="menu-open" class="hidden" />
+
+  <header
+    class="bg-white text-gray-100 flex text-center justify-between md:hidden"
+    data-dev-hint="mobile menu bar"
+  >
+    <div
+      href="#"
+      class="block p-4 text-black font-medium whitespace-nowrap truncate"
+    >
+      <div class="flex gap-4 items-center">
+        <div class="flex gap-2 items-center display-none-profile">
+          <img
+            src="../../../assets/Images/volunteer1.png"
+            class="rounded-full w-10 h-auto"
+            alt=""
+          />
+          <p class="text-gray-700">Evan Johndoe</p>
+        </div>
+        <div>{{ currentDatetime | date : "MMM d, y, h:mm:ss a" }}</div>
+      </div>
+    </div>
+    <label
+      for="menu-open"
+      id="mobile-menu-button"
+      class="m-2 p-3 focus:outline-none rounded-3xl"
+    >
+      <button (click)="toggleSidebar(menuicon)">
+        <mat-icon
+          #menuicon
+          [innerHTML]="MENUICON"
+          class="font-bold text-black"
+        ></mat-icon>
+      </button>
+    </label>
+  </header>
+
+  <aside
+    [ngClass]="{ 'hide-sidebar': hideSidebar }"
+    id="sidebar"
+    class="sidebar-menu"
+    data-dev-hint="sidebar; px-0 for frameless; px-2 for visually inset the navigation"
+  >
+    <div
+      class="flex flex-col space-y-6"
+      data-dev-hint="optional div for having an extra footer navigation"
+    >
+      <div class="">
+        <h1
+          href="#"
+          class="text-white flex items-center -space-x-2 px-4"
+          style="margin-bottom: 1px; margin-top: 24px"
+        >
+          <span class="text-xl font-extrabold whitespace-nowrap truncate"
+            >CI-Plateform
+          </span>
+        </h1>
+        <button
+          class="absolute top-5 right-2 display-none"
+          (click)="toggleSidebar(clearicon)"
+        >
+          <mat-icon #clearicon [innerHTML]="CLEARICON"></mat-icon>
+        </button>
+      </div>
+
+      <nav data-dev-hint="main navigation" class="border-top">
+        <div class="flex-col">
+          <div
+            [ngClass]="{
+              'bg-white m-4 text-black rounded-2xl':
+                currentUrl == '/AdminPanel/user'
+            }"
+          >
+            <a routerLink="/AdminPanel/user" class="sidebar-links"
+              ><mat-icon>person</mat-icon>
+              <span> Users</span>
+            </a>
+          </div>
+          <div
+            [ngClass]="{
+              'bg-white m-4 text-black rounded-2xl':
+                currentUrl == '/AdminPanel/CMS'
+            }"
+          >
+            <a href="#" class="sidebar-links"
+              ><mat-icon>library_books</mat-icon>
+              <span>CMS Pages</span>
+            </a>
+          </div>
+          <div
+            [ngClass]="{
+              'bg-white m-4 text-black rounded-2xl':
+                currentUrl == '/AdminPanel/Mission'
+            }"
+          >
+            <a routerLink="/AdminPanel/Mission" class="sidebar-links"
+              ><mat-icon>account_balance</mat-icon>
+              <span>Mission</span>
+            </a>
+          </div>
+          <div>
+            <a href="#" class="sidebar-links"
+              ><mat-icon>dashboard</mat-icon>
+              <span>Mission Theme</span>
+            </a>
+          </div>
+          <div>
+            <a href="#" class="sidebar-links"
+              ><mat-icon>stars</mat-icon>
+              <span>Mission Skills</span>
+            </a>
+          </div>
+          <div>
+            <a href="#" class="sidebar-links"
+              ><mat-icon>insert_drive_file</mat-icon>
+              <span>Mission Application</span>
+            </a>
+          </div>
+          <div>
+            <a href="#" class="sidebar-links"
+              ><mat-icon>assistant</mat-icon>
+              <span>Story</span>
+            </a>
+          </div>
+          <div>
+            <a href="#" class="sidebar-links"
+              ><mat-icon>camera_roll</mat-icon>
+              <span>Banner Management </span>
+            </a>
+          </div>
+          <div
+            style="width: 100%"
+            class="flex flex-col text-center items-center gap-3 w-full display-none-navbtn"
+          >
+            <div style="width: 100%">
+              <button mat-raised-button class="rounded-2xl p-3">
+                <span class="font-medium">LANDINGPAGE</span>
+              </button>
+            </div>
+            <div style="width: 100%">
+              <button
+                mat-raised-button
+                class="rounded-2xl p-3"
+                (click)="logout()"
+              >
+                <span class="font-medium">LOGOUT</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <nav
+      class="absolute bottom-1 left-1"
+      data-dev-hint="second-main-navigation or footer navigation"
+    >
+      <div
+        class="block py-2 px-4 transition duration-200 hover:bg-gray-700 hover:text-white"
+      >
+        <div class="flex gap-2 items-center display-none-btn">
+          <img
+            src="../../../assets/Images/volunteer1.png"
+            class="rounded-full w-10 h-auto"
+            alt=""
+          />
+          <p class="text-black">Evan Johndoe</p>
+        </div>
+
+        <div
+          for="menu-open"
+          id="mobile-menu-button"
+          class="p-2 rounded-3xl display-none-dropdown"
+        >
+          <button mat-button [matMenuTriggerFor]="belowMenu1">
+            <div class="flex gap-2 items-center">
+              <img
+                src="../../../assets/Images/volunteer1.png"
+                class="rounded-full w-10 h-auto"
+                alt=""
+              />
+              <p class="text-black">Evan Johndoe</p>
+              <mat-icon class="text-black">keyboard_arrow_down</mat-icon>
+            </div>
+          </button>
+
+          <mat-menu #belowMenu1="matMenu" yPosition="below" class="w-60 mt-3">
+            <div class="ps-3">
+              <button mat-menu-item>LANDINGPAGE</button>
+              <button mat-menu-item (click)="logout()">LOGOUT</button>
+            </div>
+          </mat-menu>
+        </div>
+      </div>
+
+      <div class="display-none-btn">
+        <div
+          class="block py-2 px-4 transition duration-200 hover:bg-gray-700 hover:text-white"
+        >
+          {{ currentDatetime | date : "MMM d, y, h:mm:ss a" }}
+        </div>
+      </div>
+    </nav>
+  </aside>
+</div>

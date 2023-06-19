@@ -3,9 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorMessages } from 'src/app/common/errorMsg.static';
 import { ValidatorsPattern } from 'src/app/common/validator.static';
-import { FormValidationService } from 'src/app/modules/auth/services/form-validation.service';
+import { FormValidationService } from 'src/shared/services/form-validation.service';
 import { LoginServiceService } from 'src/app/modules/auth/services/login-service.service';
-import { NotificationService } from 'src/app/modules/auth/services/notification.service';
+import { NotificationService } from 'src/shared/services/notification.service';
 
 @Component({
   selector: 'app-reset-password',

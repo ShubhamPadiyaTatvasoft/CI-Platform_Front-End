@@ -1,3 +1,98 @@
-<p>asdasddddddddddddddddddddddddddddddddddddd</p>
-<app-top-navigation></app-top-navigation>
-<app-side-navigation></app-side-navigation>
+<div class="mission-main">
+  <div class="mission-left">
+    <app-side-navigation></app-side-navigation>
+  </div>
+  <div class="mission-right">
+    <div>
+      <app-top-navigation></app-top-navigation>
+    </div>
+    <div class="h-5/6 p-5 scroll-bar" style="width: 100%; overflow-y: scroll">
+      <div class="font-bold mb-3 ms-1 text-2xl">Mission</div>
+      <div class="mb-3 ms-1 flex justify-between">
+        <div class="flex items-center">
+          <mat-label>Search: &nbsp;</mat-label>
+          <input
+            matInput
+            #search
+            name="search"
+            type="text"
+            id="searchbar"
+            class="search-bar"
+            placeholder="search"
+            (keyup)="keyupSearch(search)"
+          />
+        </div>
+
+        <button
+          mat-raised-button
+          class="rounded-3xl orange-border p-3"
+          style="width: max-content"
+          [routerLink]="['/AdminPanel/missioncrud']"
+        >
+          <span class="font-medium flex items-center"
+            ><span>ADD</span> <mat-icon>add</mat-icon>
+          </span>
+        </button>
+      </div>
+      <div>
+        <table mat-table matSort [dataSource]="dataSource">
+          <ng-container matColumnDef="MissionTitle">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>
+              Mission Title
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.title }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="MissionType">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>
+              Mission Type
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.theme.title }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="startDate">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>
+              Start Date
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.startDate | date }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="endDate">
+            <th mat-header-cell *matHeaderCellDef>End Date</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.startDate | date }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element">
+              <div class="flex">
+                <button
+                  (click)="getMissionDataForEditOrDelete($event.target, 'edit')"
+                >
+                  <mat-icon class="text-orange-600" id="{{ element }}"
+                    >edit</mat-icon
+                  >
+                </button>
+                <button
+                  (click)="
+                    getMissionDataForEditOrDelete($event.target, 'delete')
+                  "
+                >
+                  <mat-icon id="{{ element }}">delete_forever</mat-icon>
+                </button>
+              </div>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumn"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumn"></tr>
+        </table>
+      </div>
+    </div>
+    <mat-paginator [pageSizeOptions]="[10, 5, 8, 2]" showFirstLastButtons>
+    </mat-paginator>
+  </div>
+</div>
