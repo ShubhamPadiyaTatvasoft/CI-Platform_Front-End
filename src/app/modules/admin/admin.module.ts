@@ -5,9 +5,9 @@ import { SideNavigationComponent } from './components/side-navigation/side-navig
 import { UserComponent } from './containers/user/user.component';
 import { MissionComponent } from './containers/mission/mission.component';
 import { TopNavigationComponent } from './components/top-navigation/top-navigation.component';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { FormsModule } from '@angular/forms';
+import { SharedMaterialModule } from 'src/shared/modules/material.module';
 
-MatPaginatorModule;
 @NgModule({
   declarations: [
     SideNavigationComponent,
@@ -15,6 +15,11 @@ MatPaginatorModule;
     MissionComponent,
     TopNavigationComponent,
   ],
-  imports: [CommonModule, AdminPanelRoutingModule],
+  imports: [
+    CommonModule,
+    SharedMaterialModule,
+    AdminPanelRoutingModule,
+    FormsModule,
+  ],
 })
 export class AdminPanelModule {}

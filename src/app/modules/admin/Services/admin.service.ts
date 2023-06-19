@@ -8,7 +8,23 @@ import { HttpClient } from '@angular/common/http';
 export class AdminService {
   constructor(private http: HttpClient) {}
 
-  getAllUser() {
-    return this.http.get<any>(`${environment.baseURL}admin/GetUser`);
+  getAllUser(search: any) {
+    const payload = {
+      search: search,
+    };
+    return this.http.post<any>(
+      `${environment.baseURL}Admin/GetAllUser`,
+      payload
+    );
+  }
+
+  getAllMission(search: any) {
+    const payload = {
+      search: search,
+    };
+    return this.http.post<any>(
+      `${environment.baseURL}Admin/GetAllMission`,
+      payload
+    );
   }
 }
