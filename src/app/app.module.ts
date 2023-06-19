@@ -33,6 +33,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ForgetPasswordFormComponent,
     BannerComponent,
     ResetPasswordComponent,
+    
   ],
   imports: [
     BrowserModule,
