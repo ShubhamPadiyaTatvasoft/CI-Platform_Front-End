@@ -21,6 +21,11 @@ const routes: Routes = [
         (m) => m.MissionVolunteerModule
       ),
   },
+  {
+    path:'Mission',
+    loadChildren: () =>
+      import('./modules/mission-landing/mission-landing.module').then((m) => m.MissionLandingModule)
+  }
 ];
 
 @NgModule({
