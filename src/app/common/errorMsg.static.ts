@@ -96,6 +96,15 @@ export const ErrorMessages = {
       pattern: "Password must contain UpperCase,LowerCase,Digit and Special character and must be 8 to 15 character"
 
     }
+  },
+
+  ContactUs: {
+    subject: {
+      required: "Subject is required"
+    },
+    message: {
+      required: "Message is required"
+    }
   }
 
 };

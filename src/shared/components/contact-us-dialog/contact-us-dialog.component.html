@@ -1,1 +1,49 @@
-<p>contact-us-dialog works!</p>
+<h1 mat-dialog-title>Contact Us</h1>
+<div mat-dialog-content>
+  <form [formGroup]="contactForm">
+    <div class="mt-4">
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" readonly />
+        <mat-error>Error</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="mt-2">
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Email Address</mat-label>
+        <input matInput formControlName="email" readonly />
+        <mat-error>Error</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="mt-2">
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Subject</mat-label>
+        <input matInput formControlName="subject" />
+        <mat-error>{{
+          formValidator.formValidations(
+            contactForm,
+            "subject",
+            errorMessage.ContactUs
+          )
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="mt-2">
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Message</mat-label>
+        <textarea matInput formControlName="message"></textarea>
+        <mat-error>{{
+          formValidator.formValidations(
+            contactForm,
+            "message",
+            errorMessage.ContactUs
+          )
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button (click)="save()" class="save-mat-button">Save</button>
+</div>
