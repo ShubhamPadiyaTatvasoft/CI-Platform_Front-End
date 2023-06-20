@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .footer-div {
+    @apply flex items-center justify-around mt-6 mb-6;
+  }
+}
