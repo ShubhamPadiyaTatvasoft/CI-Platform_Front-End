@@ -8,6 +8,7 @@ import { MissionRecentVolunteerComponent } from './components/mission-recent-vol
 import { MissionDetailComponent } from './container/mission-detail/mission-detail.component';
 import { MissionRelatedMissionComponent } from './components/mission-related-mission/mission-related-mission.component';
 import { MissionSkillRatingComponent } from './components/mission-skill-rating/mission-skill-rating.component';
+import { MissionRecommandedDialogBoxComponent } from './components/mission-recommanded-dialog-box/mission-recommanded-dialog-box.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { MissionSkillRatingComponent } from './components/mission-skill-rating/m
     MissionRecentVolunteerComponent,
     MissionDetailComponent,
     MissionRelatedMissionComponent,
-    MissionSkillRatingComponent
+    MissionSkillRatingComponent,
+    MissionRecommandedDialogBoxComponent
   ],
   imports: [
     CommonModule,
