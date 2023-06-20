@@ -5,17 +5,27 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedMaterialModule } from './modules/material.module';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FilterComponent } from './components/filter/filter.component';
 @NgModule({
-    imports:
-        [
-            MatDialogModule,
-            FormsModule,
-            ReactiveFormsModule,
-            SharedMaterialModule
-        ],
-    exports: [
-        FooterComponent, ContactUsDialogComponent
-    ],
-    declarations: [FooterComponent, ContactUsDialogComponent, PaginationComponent]
+  imports: [
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SharedMaterialModule,
+  ],
+  exports: [
+    FooterComponent,
+    ContactUsDialogComponent,
+    HeaderComponent,
+    FilterComponent,
+  ],
+  declarations: [
+    FooterComponent,
+    ContactUsDialogComponent,
+    PaginationComponent,
+    HeaderComponent,
+    FilterComponent,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}
