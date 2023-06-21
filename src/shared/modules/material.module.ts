@@ -13,6 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSortModule } from '@angular/material/sort';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatListModule } from '@angular/material/list';
+import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   exports: [
     MatToolbarModule,
@@ -29,6 +31,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatSortModule,
     MatGridListModule,
     MatFormFieldModule,
+    MatListModule,
+    FlexLayoutModule,
   ],
 })
 export class SharedMaterialModule {}

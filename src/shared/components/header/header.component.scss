@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+  .menu-spacer {
+    @apply flex-auto;
+  }
+  .volunteerImg {
+    @apply rounded-full w-12;
+  }
+  .volunteerName {
+    @apply flex mx-2 items-center;
+  }
+  .volunteerBtn {
+    @apply w-60 mt-3;
+  }
+  .selectPolicy {
+    @apply w-32;
+  }
+}
+mat-toolbar {
+  background-color: white !important;
+}
+.mdc-text-field--filled {
+  background-color: white !important;
+}
+.volunteerBtn:hover {
+  background-color: white !important;
+}
+.mdc-line-ripple {
+  display: none !important;
+}
+.mat-mdc-form-field-subscript-wrapper {
+  display: none !important;
+}
+// .selectPolicy .mat-mdc-form-field-infix {
+//   width: 82px !important;
+// }
+@media screen and (max-width: 400px) {
+  .volunteerName {
+    display: none;
+  }
+}

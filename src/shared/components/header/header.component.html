@@ -1,1 +1,109 @@
-<p>header works!</p>
+<div style="height: max-content" class="container mx-auto">
+  <mat-toolbar>
+    <button
+      mat-icon-button
+      (click)="sidenav.toggle()"
+      fxShow="true"
+      fxHide.gt-sm="true"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <img src="../../../assets/Images/logo.png" />
+    <span class="menu-spacer"></span>
+    <div class="flex items-center" fxShow="true" fxHide.lt-md>
+      <a href="#" class="mx-2">Explore</a>
+      <mat-form-field class="selectPolicy">
+        <mat-label class="text-black">Policy</mat-label>
+        <mat-select>
+          <mat-option value="option1">Option 1</mat-option>
+          <mat-option value="option2">Option 2</mat-option>
+          <mat-option value="option3">Option 3</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <span class="menu-spacer"></span>
+    <div>
+      <button mat-button [matMenuTriggerFor]="belowMenu">
+        <div class="flex items-center">
+          <img
+            src="../../assets/Images/volunteer3.png"
+            class="volunteerImg"
+            alt=""
+          />
+          <p class="volunteerName">
+            John Doe <mat-icon>keyboard_arrow_down</mat-icon>
+          </p>
+        </div>
+      </button>
+      <mat-menu #belowMenu="matMenu" class="volunteerBtn">
+        <button mat-menu-item>My Profile</button>
+        <button mat-menu-item>Volunteer Timesheet</button>
+        <button (click)="logout()" mat-menu-item>Logout</button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+  <mat-sidenav-container
+    fxFlexFill
+    fxFlexFill
+    class="example-container w-20"
+    style="position: inherit !important"
+  >
+    <mat-sidenav
+      #sidenav
+      fxLayout="column"
+      mode="over"
+      opened="false"
+      fxHide.gt-sm="true"
+      class="p-2"
+    >
+      <mat-nav-list>
+        <a (click)="sidenav.toggle()" mat-list-item class="text-center"
+          ><mat-icon>close</mat-icon></a
+        >
+        <div fxLayout="column" class="w-60 gap-5">
+          <a href="#" mat-list-item>Explore</a>
+          <mat-form-field class="selectPolicy" mat-list-item>
+            <mat-label class="text-black">Policy</mat-label>
+            <mat-select>
+              <mat-option value="option1">Option 1</mat-option>
+              <mat-option value="option2">Option 2</mat-option>
+              <mat-option value="option3">Option 3</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="w-32">
+            <mat-label class="text-black">Country</mat-label>
+            <mat-select multiple>
+              <mat-option value="option1">Option 1</mat-option>
+              <mat-option value="option2">Option 2</mat-option>
+              <mat-option value="option3">Option 3</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="w-32">
+            <mat-label class="text-black">City</mat-label>
+            <mat-select multiple>
+              <mat-option value="option1">Option 1</mat-option>
+              <mat-option value="option2">Option 2</mat-option>
+              <mat-option value="option3">Option 3</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="w-32">
+            <mat-label class="text-black">Theme</mat-label>
+            <mat-select multiple>
+              <mat-option value="option1">Option 1</mat-option>
+              <mat-option value="option2">Option 2</mat-option>
+              <mat-option value="option3">Option 3</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="w-32">
+            <mat-label class="text-black">Skill</mat-label>
+            <mat-select multiple>
+              <mat-option value="option1">Option 1</mat-option>
+              <mat-option value="option2">Option 2</mat-option>
+              <mat-option value="option3">Option 3</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-nav-list>
+    </mat-sidenav>
+  </mat-sidenav-container>
+</div>
