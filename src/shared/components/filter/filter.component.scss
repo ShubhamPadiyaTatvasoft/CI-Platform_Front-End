@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+  .subheader {
+    @apply border-t-[1px] border-b-[1px] border-black px-4;
+  }
+  .filter-options {
+    @apply w-28 xl:w-44;
+  }
+  .menu-spacer {
+    @apply mx-auto;
+  }
+}
+mat-toolbar {
+  background-color: white !important;
+}
+.mdc-text-field--filled {
+  background-color: white !important;
+}
+.mdc-line-ripple {
+  display: none !important;
+}
+.mat-mdc-form-field-subscript-wrapper {
+  display: none;
+}
