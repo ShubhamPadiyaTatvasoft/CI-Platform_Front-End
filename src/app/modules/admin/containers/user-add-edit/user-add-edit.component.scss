@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .user-main {
+    @apply flex;
+    width: 100vw;
+  }
+
+  .user-left {
+    @apply md:w-1/6 sm:w-full;
+  }
+
+  .user-right {
+    @apply md:w-5/6 sm:w-full;
+  }
+
+  .top-nav {
+    @apply w-full;
+    height: max-content;
+  }
+
+  .display-flex {
+    @apply flex space-x-1 text-center justify-center xl:flex-row md:flex-col sm:flex-col;
+  }
+
+  .only-flex {
+    @apply flex;
+  }
+
+  .form-input {
+    @apply border-black;
+  }
+
+  .span-error {
+    @apply flex justify-self-start ms-4;
+  }
+  .form-input {
+    @apply w-2/5;
+  }
+
+  @media (max-width: 734px) {
+    .form-input {
+      @apply w-full;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .user-main {
+    @apply flex flex-col;
+  }
+}
+
+.margin-top6 {
+  margin-top: 0.8rem;
+}
+
+.cdk-overlay-pane {
+  width: 60% !important;
+}

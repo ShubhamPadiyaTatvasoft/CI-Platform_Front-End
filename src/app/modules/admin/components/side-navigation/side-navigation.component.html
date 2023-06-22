@@ -64,12 +64,12 @@
         </button>
       </div>
 
-      <nav data-dev-hint="main navigation" class="border-top">
+      <nav class="border-top">
         <div class="flex-col">
           <div
+            class="hover:sidebar-linkshover"
             [ngClass]="{
-              'bg-white m-4 text-black rounded-2xl':
-                currentUrl == '/AdminPanel/user'
+              'bg-white text-black': currentUrl == '/AdminPanel/user'
             }"
           >
             <a routerLink="/AdminPanel/user" class="sidebar-links"
@@ -78,9 +78,9 @@
             </a>
           </div>
           <div
+            class="hover:sidebar-linkshover"
             [ngClass]="{
-              'bg-white m-4 text-black rounded-2xl':
-                currentUrl == '/AdminPanel/CMS'
+              'bg-white text-black': currentUrl == '/AdminPanel/CMS'
             }"
           >
             <a href="#" class="sidebar-links"
@@ -89,9 +89,9 @@
             </a>
           </div>
           <div
+            class="hover:sidebar-linkshover"
             [ngClass]="{
-              'bg-white m-4 text-black rounded-2xl':
-                currentUrl == '/AdminPanel/Mission'
+              'bg-white text-black': currentUrl == '/AdminPanel/Mission'
             }"
           >
             <a routerLink="/AdminPanel/Mission" class="sidebar-links"
@@ -99,31 +99,31 @@
               <span>Mission</span>
             </a>
           </div>
-          <div>
+          <div class="hover:sidebar-linkshover">
             <a href="#" class="sidebar-links"
               ><mat-icon>dashboard</mat-icon>
               <span>Mission Theme</span>
             </a>
           </div>
-          <div>
+          <div class="hover:sidebar-linkshover">
             <a href="#" class="sidebar-links"
               ><mat-icon>stars</mat-icon>
               <span>Mission Skills</span>
             </a>
           </div>
-          <div>
+          <div class="hover:sidebar-linkshover">
             <a href="#" class="sidebar-links"
               ><mat-icon>insert_drive_file</mat-icon>
               <span>Mission Application</span>
             </a>
           </div>
-          <div>
+          <div class="hover:sidebar-linkshover">
             <a href="#" class="sidebar-links"
               ><mat-icon>assistant</mat-icon>
               <span>Story</span>
             </a>
           </div>
-          <div>
+          <div class="hover:sidebar-linkshover">
             <a href="#" class="sidebar-links"
               ><mat-icon>camera_roll</mat-icon>
               <span>Banner Management </span>
@@ -131,7 +131,7 @@
           </div>
           <div
             style="width: 100%"
-            class="flex flex-col text-center items-center gap-3 w-full display-none-navbtn"
+            class="flex flex-col text-center items-center gap-3 w-full display-none-navbtn mt-10"
           >
             <div style="width: 100%">
               <button mat-raised-button class="rounded-2xl p-3">

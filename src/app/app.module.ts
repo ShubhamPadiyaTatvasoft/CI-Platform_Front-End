@@ -17,7 +17,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     BrowserAnimationsModule,
     SharedMaterialModule,
     HttpClientModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({ timeOut: 2000, preventDuplicates: true }),
     FlexLayoutModule,
   ],
 

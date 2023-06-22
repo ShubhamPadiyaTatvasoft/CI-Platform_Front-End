@@ -27,4 +27,38 @@ export class AdminService {
       payload
     );
   }
+
+  GetAllCountryTheme() {
+    return this.http.get<any>(
+      `${environment.baseURL}Admin/GetListOfCityCountryThemeSkills`
+    );
+  }
+
+  GetAllCity(countryId: any) {
+    return this.http.post<any>(
+      `${environment.baseURL}Admin/GetListOfCityBasedOnCountry`,
+      countryId
+    );
+  }
+
+  GetUserData(userId: any) {
+    return this.http.post<any>(
+      `${environment.baseURL}Admin/GetUserDataFromID`,
+      userId
+    );
+  }
+
+  UpdateUserData(payload: any) {
+    return this.http.post<any>(
+      `${environment.baseURL}Admin/UpdateUserData`,
+      payload
+    );
+  }
+
+  DeleteUser(userId: any) {
+    return this.http.post<any>(
+      `${environment.baseURL}Admin/DeleteUserData`,
+      userId
+    );
+  }
 }

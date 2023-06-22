@@ -6,8 +6,8 @@ import { RegisterFormComponent } from './containers/register-form/register-form.
 import { ForgetPasswordFormComponent } from './containers/forget-password-form/forget-password-form.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { ResetPasswordComponent } from './containers/reset-password/reset-password.component';
-import { MobileNumberDirective } from 'src/shared/directives/mobile-number.directive';
 import { SharedMaterialModule } from 'src/shared/modules/material.module';
+
 @NgModule({
   declarations: [
     LoginFormComponent,
@@ -15,7 +15,6 @@ import { SharedMaterialModule } from 'src/shared/modules/material.module';
     ForgetPasswordFormComponent,
     BannerComponent,
     ResetPasswordComponent,
-    MobileNumberDirective,
   ],
   imports: [CommonModule, AuthRoutingModule, SharedMaterialModule],
 })

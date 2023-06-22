@@ -13,9 +13,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSortModule } from '@angular/material/sort';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MobileNumberDirective } from '../directives/mobile-number.directive';
 import { MatListModule } from '@angular/material/list';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
+  declarations: [MobileNumberDirective],
   exports: [
     MatToolbarModule,
     MatSidenavModule,
@@ -31,8 +35,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatSortModule,
     MatGridListModule,
     MatFormFieldModule,
+    MobileNumberDirective,
     MatListModule,
     FlexLayoutModule,
+    MatStepperModule,
+    MatDialogModule,
   ],
 })
 export class SharedMaterialModule {}

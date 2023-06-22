@@ -3,11 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserProfileComponent } from './containers/user-profile/user-profile.component';
 import { LoginAuthGuard } from 'src/app/guards/login-auth.guard';
 
-
-const routes: Routes = [{ path: '', component: UserProfileComponent, canActivate: [LoginAuthGuard], }];
+const routes: Routes = [
+  { path: '', component: UserProfileComponent, canActivate: [LoginAuthGuard] },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class UserDetailsRoutingModule { }
+export class UserDetailsRoutingModule {}

@@ -5,7 +5,6 @@ import { ErrorMessages } from 'src/app/common/errorMsg.static';
 import { ValidatorsPattern } from 'src/app/common/validator.static';
 import { FormValidationService } from 'src/shared/services/form-validation.service';
 import { LoginServiceService } from 'src/app/modules/auth/services/login-service.service';
-
 import { NotificationService } from 'src/shared/services/notification.service';
 @Component({
   selector: 'app-register-form',

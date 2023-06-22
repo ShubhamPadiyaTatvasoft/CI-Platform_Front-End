@@ -47,17 +47,29 @@
     @apply flex flex-col;
   }
 }
+
 .mat-mdc-header-cell {
   background: gray !important;
   border: 2px solid black !important;
 }
+
 td {
   border: 2px solid black !important;
 }
+
 .search-bar {
   border: 2px solid black;
   border-radius: 3px;
 }
+
 .orange-border {
   border: 2px solid rgb(234 88 12);
+}
+
+th {
+  font-size: 20px;
+}
+
+.red-background {
+  background: rgb(184, 46, 46) !important;
 }

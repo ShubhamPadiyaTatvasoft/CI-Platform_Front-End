@@ -19,7 +19,7 @@ export class SideNavigationComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.currentUrl = this.router.url;
-    console.log(this.router.url);
+    //console.log(this.router.url);
 
     setInterval(() => {
       this.currentDatetime = Date();
