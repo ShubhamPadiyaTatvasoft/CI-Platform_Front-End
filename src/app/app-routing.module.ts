@@ -13,7 +13,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/auth/auth.module').then((m) => m.AuthModule),
   },
-  { path: 'UserDetails', loadChildren: () => import('./modules/user-details/user-details.module').then(m => m.UserDetailsModule) },
+  {
+    path: 'UserDetails',
+    loadChildren: () =>
+      import('./modules/user-details/user-details.module').then(
+        (m) => m.UserDetailsModule
+      ),
+  },
   {
     path: 'MissionVolunteer',
     loadChildren: () =>
@@ -22,14 +28,16 @@ const routes: Routes = [
       ),
   },
   {
-    path:'Mission',
+    path: 'Mission',
     loadChildren: () =>
-      import('./modules/mission-landing/mission-landing.module').then((m) => m.MissionLandingModule)
-  }
+      import('./modules/mission-landing/mission-landing.module').then(
+        (m) => m.MissionLandingModule
+      ),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

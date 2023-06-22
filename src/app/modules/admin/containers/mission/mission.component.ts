@@ -38,27 +38,13 @@ export class MissionComponent implements OnInit {
   keyupSearch(search: any) {
     clearTimeout(this.timer);
     this.timer = setTimeout(() => {
-      // this.getUserData(search.value);
+      this.getMissionData(search.value);
     }, 1000);
   }
-
-  // getUserData(search: any) {
-  //   this.adminService.getAllUser(search).subscribe({
-  //     next: (res) => {
-  //       this.dataSource = new MatTableDataSource(res);
-  //       this.dataSource.paginator = this.paginator;
-  //       this.dataSource.sort = this.sort;
-  //     },
-  //     error: (err) => {
-  //       this.loginService.signOut();
-  //     },
-  //   });
-  // }
 
   getMissionData(search: any) {
     this.adminService.getAllMission(search).subscribe({
       next: (res) => {
-        console.log(res.data);
         this.dataSource = new MatTableDataSource(res.data['missions']);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
@@ -70,6 +56,6 @@ export class MissionComponent implements OnInit {
   }
 
   getMissionDataForEditOrDelete(event: any, action: string) {
-    this.router.navigate(['/AdminPanel/usercrud', event.id, action]);
+    //this.router.navigate(['/AdminPanel/usercrud', event.id, action]);
   }
 }

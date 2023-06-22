@@ -131,6 +131,13 @@ HTML CSS Result Skip Results Iframe #sidebar {
   }
 
   .sidebar-links {
-    @apply flex md:flex-col lg:flex-row lg:text-start md:text-center items-center space-x-2 lg:py-2 lg:px-4 transition duration-200 hover:bg-gray-700 hover:text-white mt-6;
+    @apply flex md:flex-col lg:flex-row lg:text-start md:text-center items-center space-x-2 lg:py-2 lg:px-4 transition duration-200  mt-6;
   }
+  .sidebar-linkshover {
+    @apply bg-white text-black;
+  }
+}
+
+.link-hover {
+  background: white !important;
 }

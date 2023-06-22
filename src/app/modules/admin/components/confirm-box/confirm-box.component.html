@@ -1,0 +1,16 @@
+<div class="gap-7 flex flex-col p-6 relative w-full">
+  <div>{{ data.message }}</div>
+  <button class="absolute top-3 right-3" (click)="closeDialog()">
+    <mat-icon>cancel</mat-icon>
+  </button>
+  <div class="flex justify-end">
+    <div class="flex gap-4 justify-end">
+      <button mat-raised-button color="primary" [mat-dialog-close]="false">
+        no
+      </button>
+      <button mat-raised-button color="warn" [mat-dialog-close]="true">
+        yes
+      </button>
+    </div>
+  </div>
+</div>

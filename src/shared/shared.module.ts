@@ -15,6 +15,7 @@ import { HeaderComponent } from './components/header/header.component';
     FilterComponent,
     HeaderComponent,
   ],
+
   declarations: [
     FooterComponent,
     ContactUsDialogComponent,

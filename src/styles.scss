@@ -62,12 +62,13 @@ body {
   border-bottom-width: 0px !important;
 }
 
-.cdk-overlay-pane {
-  width: 173px !important;
-}
 
 .mat-mdc-menu-panel.mat-mdc-menu-panel {
   margin-top: 10px;
+}
+
+.mat-sort-header-arrow {
+  color: black;
 }
 
 input::-webkit-outer-spin-button,
@@ -79,4 +80,17 @@ input::-webkit-inner-spin-button {
 /* Works for Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+@media (max-width: 734px) {
+  .mat-horizontal-stepper-header-container {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+}
+
+@media (max-width: 713px) {
+  .mat-mdc-dialog-container .mdc-dialog__surface {
+    width: 100vw !important;
+  }
 }

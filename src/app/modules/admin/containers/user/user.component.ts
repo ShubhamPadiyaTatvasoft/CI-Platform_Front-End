@@ -5,29 +5,39 @@ import { AdminService } from 'src/app/modules/admin/services/admin.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
+import { ConfirmBoxService } from '../../services/confirm-box.service';
+import { NotificationService } from 'src/shared/services/notification.service';
+import { ErrorMessages } from 'src/app/common/errorMsg.static';
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss'],
 })
 export class UserComponent implements OnInit {
-  constructor(
-    private adminService: AdminService,
-    private loginService: LoginServiceService,
-    private router: Router
-  ) {}
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   data: any;
   timer: any;
   dataSource = new MatTableDataSource<any>();
+
   displayedColumn: string[] = [
     'firstName',
     'lastName',
+    'employeeId',
     'department',
     'status',
     'action',
   ];
+
+  constructor(
+    private adminService: AdminService,
+    private loginService: LoginServiceService,
+    private router: Router,
+    private dialogService: ConfirmBoxService,
+    private notifyService: NotificationService
+  ) {}
+
   ngOnInit(): void {
     this.getUserData('');
   }
@@ -45,11 +55,11 @@ export class UserComponent implements OnInit {
     }, 1000);
   }
 
-  //api call for getting the data of all user and set data into mattable
+  //api call for getting the data of all user and set data into mat-table
   getUserData(search: any) {
     this.adminService.getAllUser(search).subscribe({
       next: (res) => {
-        this.dataSource = new MatTableDataSource(res);
+        this.dataSource = new MatTableDataSource(res.data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
@@ -59,7 +69,33 @@ export class UserComponent implements OnInit {
     });
   }
 
+  //function for opening confirmation box for edit or delete user
   getUserDataForEditOrDelete(event: any, action: string) {
-    alert('getUserDataForEditOrDelete');
+    if (action == 'edit') {
+      this.router.navigate(['AdminPanel/userForm', action, event.id]);
+    } else {
+      this.dialogService
+        .openConfirmDialogue('Are you sure want to delete!!?')
+        .afterClosed()
+        .subscribe((res) => {
+          if (res == true) {
+            this.deleteUser(event.id);
+          }
+        });
+    }
+  }
+
+  //api call for deleting the data of user
+  deleteUser(userIdForDelete: any) {
+    this.adminService.DeleteUser(Number(userIdForDelete)).subscribe({
+      next: (res) => {
+        this.notifyService.showSuccess(res.message);
+        this.getUserData('');
+      },
+      error: (err) => {
+        this.notifyService.showSuccess(ErrorMessages.ApiErrorMessage.ApiFailed);
+        this.loginService.signOut();
+      },
+    });
   }
 }

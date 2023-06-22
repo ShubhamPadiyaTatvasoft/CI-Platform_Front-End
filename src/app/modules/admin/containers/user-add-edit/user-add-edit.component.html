@@ -1,0 +1,373 @@
+<div class="user-main">
+  <div class="user-left">
+    <app-side-navigation></app-side-navigation>
+  </div>
+  <div class="user-right">
+    <div>
+      <app-top-navigation></app-top-navigation>
+    </div>
+    <div class="h-5/6 p-5 scroll-bar" style="width: 100%; overflow-y: scroll">
+      <div class="font-bold mb-3 ms-1 text-2xl">Users</div>
+
+      <mat-stepper [linear]="!isLinear" #stepper>
+        <mat-step [stepControl]="basicDetails">
+          <form [formGroup]="basicDetails" class="margin-top6">
+            <ng-template matStepLabel>Fill out your name</ng-template>
+
+            <div>
+              <mat-form-field
+                appearance="outline"
+                class="example-full-width form-input"
+              >
+                <mat-label>First Name</mat-label>
+                <div class="only-flex">
+                  <input formControlName="firstName" matInput type="text" />
+                  <span class="ms-2 flex items-center"
+                    ><mat-icon>person</mat-icon>
+                  </span>
+                </div>
+
+                <mat-error>
+                  {{
+                    formValidationService.formValidations(
+                      basicDetails,
+                      "firstName",
+                      errorMessage.basicDetails
+                    )
+                  }}</mat-error
+                >
+              </mat-form-field>
+            </div>
+            <div class="margin-top6">
+              <mat-form-field
+                appearance="outline"
+                class="example-full-width form-input"
+              >
+                <mat-label>Last Name</mat-label>
+                <div class="only-flex">
+                  <input formControlName="lastName" matInput type="text" />
+                  <span class="ms-2 flex items-center"
+                    ><mat-icon>person</mat-icon>
+                  </span>
+                </div>
+                <mat-error>
+                  {{
+                    formValidationService.formValidations(
+                      basicDetails,
+                      "lastName",
+                      errorMessage.basicDetails
+                    )
+                  }}</mat-error
+                >
+              </mat-form-field>
+            </div>
+
+            <div
+              class="margin-top6"
+              [ngClass]="{
+                'mb-7 ':
+                  basicDetails.controls['password'].invalid &&
+                  basicDetails.hasError('pattern', 'password') &&
+                  isPasswordBlur
+              }"
+            >
+              <mat-form-field
+                appearance="outline"
+                class="example-full-width form-input"
+              >
+                <mat-label>Password</mat-label>
+                <div class="only-flex">
+                  <input
+                    formControlName="password"
+                    matInput
+                    name="password"
+                    [type]="typeOfPassword"
+                    #password
+                    (blur)="validatePassword()"
+                  />
+                  <span
+                    class="ms-2 flex items-center"
+                    (click)="hideShowPassword(password)"
+                  >
+                    <mat-icon class="cursor-pointer hover:text-orange-600">{{
+                      iconName
+                    }}</mat-icon></span
+                  >
+                </div>
+                <mat-error>
+                  {{
+                    formValidationService.formValidations(
+                      basicDetails,
+                      "password",
+                      errorMessage.basicDetails
+                    )
+                  }}</mat-error
+                >
+              </mat-form-field>
+            </div>
+            <div class="margin-top6">
+              <mat-form-field
+                appearance="outline"
+                class="example-full-width form-input"
+              >
+                <mat-label>Confirm Password</mat-label>
+                <div class="only-flex">
+                  <input
+                    formControlName="confirmPassword"
+                    [type]="typeOfConfirmPassword"
+                    matInput
+                    #confirmPassword
+                  />
+                  <span (click)="hideShowPassword(confirmPassword)">
+                    <mat-icon
+                      class="cursor-pointer ms-2 flex items-center hover:text-orange-600"
+                      >{{ iconNameForConfirmPassword }}</mat-icon
+                    ></span
+                  >
+                </div>
+                <mat-error>
+                  {{
+                    formValidationService.formValidations(
+                      basicDetails,
+                      "confirmPassword",
+                      errorMessage.basicDetails
+                    )
+                  }}</mat-error
+                >
+              </mat-form-field>
+            </div>
+          </form>
+          <div>
+            <button
+              mat-raised-button
+              color="warn"
+              [disabled]="basicDetails.invalid"
+              matStepperNext
+            >
+              Next
+            </button>
+          </div>
+        </mat-step>
+        <mat-step [stepControl]="personalDetails">
+          <form [formGroup]="personalDetails">
+            <ng-template matStepLabel>Fill out your Address</ng-template>
+            <div class="margin-top6">
+              <mat-form-field
+                appearance="outline"
+                class="example-full-width form-input"
+              >
+                <mat-label>Phone Number</mat-label>
+                <div class="only-flex">
+                  <input
+                    formControlName="phoneNumber"
+                    matInput
+                    type="text"
+                    appMobileNumber
+                  />
+                  <span class="ms-2 flex items-center"
+                    ><mat-icon>call</mat-icon>
+                  </span>
+                </div>
+                <mat-error>
+                  {{
+                    formValidationService.formValidations(
+                      personalDetails,
+                      "phoneNumber",
+                      errorMessage.personalDetails
+                    )
+                  }}
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="margin-top6">
+              <mat-form-field
+                appearance="outline"
+                class="example-full-width form-input"
+              >
+                <mat-label>Email</mat-label>
+                <div class="only-flex">
+                  <input formControlName="email" matInput type="email" />
+                  <span class="ms-2 flex items-center"
+                    ><mat-icon>mail</mat-icon>
+                  </span>
+                </div>
+                <mat-error>
+                  {{
+                    formValidationService.formValidations(
+                      personalDetails,
+                      "email",
+                      errorMessage.personalDetails
+                    )
+                  }}
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="margin-top6">
+              <mat-form-field
+                appearance="outline"
+                class="example-full-width form-input"
+              >
+                <mat-label>Country</mat-label>
+                <mat-select
+                  formControlName="country"
+                  (selectionChange)="getCity($event)"
+                >
+                  <mat-option
+                    *ngFor="let item of countries"
+                    [value]="item['countryId']"
+                  >
+                    {{ item["name"] }}
+                  </mat-option>
+                </mat-select>
+                <mat-error>
+                  {{
+                    formValidationService.formValidations(
+                      personalDetails,
+                      "country",
+                      errorMessage.personalDetails
+                    )
+                  }}
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="margin-top6">
+              <mat-form-field
+                appearance="outline"
+                class="example-full-width form-input"
+              >
+                <mat-label>{{ cityInitialOption }}</mat-label>
+                <mat-select formControlName="city" id="cityName">
+                  <mat-option class="font-bold" disabled>
+                    {{ cityInitialOption }}
+                  </mat-option>
+                  <mat-option
+                    *ngFor="let item of cities"
+                    [value]="item['cityId']"
+                    >{{ item["name"] }}
+                  </mat-option>
+                </mat-select>
+                <mat-error>
+                  {{
+                    formValidationService.formValidations(
+                      personalDetails,
+                      "city",
+                      errorMessage.personalDetails
+                    )
+                  }}
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="flex gap-4">
+              <button mat-raised-button color="warn" matStepperPrevious>
+                Back
+              </button>
+
+              <button mat-raised-button color="warn" matStepperNext>
+                Next
+              </button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="configurationDetails">
+          <form [formGroup]="configurationDetails">
+            <ng-template matStepLabel>Fill out your Configuration</ng-template>
+            <div class="margin-top6">
+              <mat-form-field
+                appearance="outline"
+                class="example-full-width form-input"
+              >
+                <mat-label>Manager</mat-label>
+                <div class="only-flex">
+                  <input formControlName="manager" matInput type="text" />
+                  <span class="ms-2 flex items-center"
+                    ><mat-icon>person</mat-icon>
+                  </span>
+                </div>
+                <mat-error>
+                  {{
+                    formValidationService.formValidations(
+                      configurationDetails,
+                      "manager",
+                      errorMessage.configurationDetails
+                    )
+                  }}</mat-error
+                >
+              </mat-form-field>
+            </div>
+            <div class="margin-top6">
+              <mat-form-field
+                appearance="outline"
+                class="example-full-width form-input"
+              >
+                <mat-label>Role</mat-label>
+                <mat-select formControlName="role">
+                  <mat-option value="user"> User </mat-option>
+                  <mat-option value="Admin"> Admin </mat-option>
+                </mat-select>
+                <mat-error>
+                  {{
+                    formValidationService.formValidations(
+                      configurationDetails,
+                      "role",
+                      errorMessage.configurationDetails
+                    )
+                  }}</mat-error
+                >
+              </mat-form-field>
+            </div>
+            <div class="margin-top6">
+              <mat-form-field
+                appearance="outline"
+                class="example-full-width form-input"
+              >
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="status">
+                  <mat-option value="1"> Active </mat-option>
+                  <mat-option value="0"> In-Active </mat-option>
+                </mat-select>
+
+                <mat-error>
+                  {{
+                    formValidationService.formValidations(
+                      configurationDetails,
+                      "status",
+                      errorMessage.configurationDetails
+                    )
+                  }}
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <h1 class="mt-4">Are you sure want to submit?</h1>
+            <div class="flex gap-4">
+              <button
+                mat-raised-button
+                color="primary"
+                [disabled]="
+                  configurationDetails.invalid ||
+                  basicDetails.invalid ||
+                  personalDetails.invalid
+                "
+                (click)="submitUser()"
+              >
+                Submit
+              </button>
+              <button mat-raised-button color="warn" matStepperPrevious>
+                Back
+              </button>
+              <button
+                mat-raised-button
+                color="warn"
+                class="p-3"
+                (click)="stepper.reset()"
+              >
+                Reset Form
+              </button>
+            </div>
+          </form>
+        </mat-step>
+      </mat-stepper>
+    </div>
+  </div>
+</div>
