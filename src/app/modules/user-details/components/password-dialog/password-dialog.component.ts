@@ -65,11 +65,9 @@ export class PasswordDialogComponent implements OnInit {
         newPassword: this.changePasswordForm.get('newPassword')?.value,
         confirmPassword: this.changePasswordForm.get('confirmPassword')?.value,
       }
-      console.log(this.changePass);
 
       this.userProfileService.changePassword(this.changePass).subscribe({
         next: (res) => {
-          console.log(res);
           if (res.result) {
             this.notify.showSuccess(res.message);
           }

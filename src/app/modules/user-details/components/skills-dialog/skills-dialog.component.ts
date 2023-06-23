@@ -46,7 +46,6 @@ export class SkillsDialogComponent implements OnInit {
         this.selectedSkills.splice(index, 1);
       }
     }
-    console.log(this.selectedSkills);
 
   }
 
@@ -61,7 +60,6 @@ export class SkillsDialogComponent implements OnInit {
         this.removeSelectedSkills.splice(index, 1);
       }
     }
-    console.log(this.removeSelectedSkills);
   }
   save() {
     this.dialogRef.close({ data: { save: true, skills: this.skills, addedSkills: this.addedSkills } })
