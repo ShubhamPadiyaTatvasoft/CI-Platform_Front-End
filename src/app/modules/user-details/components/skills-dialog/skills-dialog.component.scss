@@ -1,0 +1,24 @@
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  width: auto !important;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .skills-div {
+    @apply w-96 mt-2 flex justify-center;
+  }
+  .skills-list {
+    height: 30px;
+    font-size: 20px;
+  }
+  .skill-buttons-div {
+    @apply flex flex-col justify-center ms-2 me-2;
+  }
+  .save-mat-button {
+    background: #f88634 !important;
+    color: white !important;
+  }
+}
