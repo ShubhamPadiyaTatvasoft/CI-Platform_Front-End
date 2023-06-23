@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ContactUsDialogComponent } from '../contact-us-dialog/contact-us-dialog.component';
 @Component({
@@ -7,12 +7,12 @@ import { ContactUsDialogComponent } from '../contact-us-dialog/contact-us-dialog
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
-  userName: string = 'user';
-  userEmail: string = 'email';
+  @Input() userId: number;
+  @Input() userName: string;
+  @Input() userEmail: string;
   constructor(public dialog: MatDialog) {
-
   }
   openDialog() {
-    this.dialog.open(ContactUsDialogComponent, { data: { name: this.userName, email: this.userEmail } });
+    this.dialog.open(ContactUsDialogComponent, { data: { name: this.userName, email: this.userEmail, userId: this.userId } });
   }
 }

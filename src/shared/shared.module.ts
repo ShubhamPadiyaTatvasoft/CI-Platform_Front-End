@@ -14,6 +14,7 @@ import { HeaderComponent } from './components/header/header.component';
     ContactUsDialogComponent,
     FilterComponent,
     HeaderComponent,
+    PaginationComponent
   ],
 
   declarations: [
@@ -30,4 +31,4 @@ import { HeaderComponent } from './components/header/header.component';
     SharedMaterialModule,
   ],
 })
-export class SharedModule {}
+export class SharedModule { }
