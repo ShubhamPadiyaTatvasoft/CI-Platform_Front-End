@@ -47,8 +47,8 @@ export class UserAddEditComponent implements OnInit {
     this.getCountry();
     this.route.params.subscribe((params) => {
       if (params['id'] != null) {
-        this.userId = Number(params['id']);
-        this.getUserData(Number(params['id']));
+        this.userId = +params['id'];
+        this.getUserData(+params['id']);
       } else {
         this.action = 'add';
       }
@@ -135,8 +135,6 @@ export class UserAddEditComponent implements OnInit {
   getUserData(userId: number) {
     this.adminService.GetUserData(userId).subscribe({
       next: (res) => {
-        console.log(res);
-
         let encodedPassword: string = atob(res.data['password']);
 
         this.getCityApi(res.data.countryId);
