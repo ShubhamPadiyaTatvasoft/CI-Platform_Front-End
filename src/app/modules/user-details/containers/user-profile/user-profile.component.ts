@@ -170,10 +170,10 @@ export class UserProfileComponent implements OnInit {
                     avatar: res.data.avatar
                 }
                 if (res.data.avatar === null) {
-                    this.imageSrc = "../../../../../assets/Images/user-img-large.png"
+                    this.imageSrc = "/assets/Images/user-img-large.png"
                 }
                 else {
-                    this.imageSrc = "../../../../../assets/Images/Avatar/" + res.data.avatar.substring(92);
+                    this.imageSrc = "/assets/Images/Avatar/" + res.data.avatar.substring(92);
                 }
                 this.userEmail = res.data.email;
                 this.userName = res.data.firstName;
