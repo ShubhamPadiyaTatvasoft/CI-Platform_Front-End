@@ -1,1 +1,123 @@
-<p>share-story works!</p>
+<body>
+  <form class="share-story-form" [formGroup]="shareStoryForm">
+    <p class="title">Share your Story</p>
+
+    <div class="inputs">
+      <div>
+        <mat-label class="fieldTitle">Select Mission</mat-label>
+        <div>
+          <select
+            matNativeControl
+            class="userAppliedMission"
+            id="storyMissions"
+          >
+            <option selected>Select your Mission</option>
+          </select>
+          <mat-error></mat-error>
+        </div>
+      </div>
+
+      <div>
+        <mat-label class="fieldTitle">My Story Title</mat-label>
+        <div>
+          <input
+            matInput
+            type="text"
+            class="storyTitle"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder=" Enter Story Title"
+            formControlName="storyTitle"
+          />
+          <br />
+
+          <mat-error>{{
+            formValidationService.formValidations(
+              shareStoryForm,
+              "storyTitle",
+              errorMessage.ShareStory
+            )
+          }}</mat-error>
+        </div>
+      </div>
+
+      <div>
+        <mat-label class="fieldTitle">Date</mat-label>
+        <div class="dateField">
+          <input
+            matInput
+            formControlName="date"
+            [matDatepicker]="releasedAtPicker"
+            placeholder=" Select date"
+            id="date"
+            class="textbox-n dateInput"
+          />
+
+          <mat-datepicker-toggle matSuffix [for]="releasedAtPicker">
+          </mat-datepicker-toggle>
+
+          <mat-datepicker #releasedAtPicker startView="year"> </mat-datepicker>
+          <mat-error></mat-error>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <mat-label class="storyLable">My Story</mat-label>
+
+      <ckeditor [editor]="Editor" (ready)="onEditorReady($event)"> </ckeditor>
+
+      <mat-error></mat-error>
+    </div>
+
+    <div class="videoUrl">
+      <mat-label for="Video URL" class="urlLable">Enter Video URL</mat-label>
+      <div>
+        <input
+          matInput
+          type="url"
+          id="storyURL"
+          class="form-control urlInput"
+          placeholder=" Enter your URL"
+          aria-describedby="emailHelp"
+        />
+        <mat-error></mat-error>
+      </div>
+    </div>
+
+    <div>
+      <mat-label style="font-size: 1.25rem">Upload Your Photos</mat-label>
+      <div class="upload__box">
+        <div class="upload__btn-box">
+          <label class="upload__btn">
+            <p class="uploadButton">+</p>
+            <p>Drag & Drop your Pictures & Photos</p>
+            <input
+              type="file"
+              multiple=""
+              data-max_length="19"
+              class="upload__inputfile"
+            />
+          </label>
+        </div>
+        <div class="upload__img-wrap"></div>
+      </div>
+    </div>
+
+    <input type="hidden" id="storyId" />
+    <div class="buttons">
+      <div>
+        <button type="reset" class="btn2">Cancel</button>
+      </div>
+      <div>
+        <a id="preview" href=""
+          ><button id="previewBtn" class="btn1">Preview</button></a
+        >
+        <button id="saveBtn" value="0" class="btn1">Save</button>
+        <button type="button" id="submitBtn" value="1" class="btn1">
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
+</body>

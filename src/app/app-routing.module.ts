@@ -27,6 +27,14 @@ const routes: Routes = [
         (m) => m.MissionVolunteerModule
       ),
   },
+
+  {
+    path: 'StoryListing',
+    loadChildren: () =>
+      import('./modules/stories/stories.module').then(
+        (m) => m.StoriesModule
+      ),
+  },
   {
     path: 'Mission',
     loadChildren: () =>
