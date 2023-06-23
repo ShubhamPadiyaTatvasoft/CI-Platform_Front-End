@@ -1,1 +1,47 @@
-<p>skills-dialog works!</p>
+<h2 mat-dialog-title>Add Skills</h2>
+<mat-dialog-content class="mat-typography">
+  <div class="flex">
+    <div class="skills-div">
+      <ul class="flex flex-col">
+        <li *ngFor="let item of skills" class="skills-list">
+          <label>
+            <input
+              type="checkbox"
+              [value]="item.skillId"
+              (change)="skillChanged($event.target)"
+            />
+            {{ item.skillName }}
+          </label>
+        </li>
+      </ul>
+    </div>
+    <div class="skill-buttons-div">
+      <div>
+        <mat-icon (click)="addSkills()">chevron_right</mat-icon>
+      </div>
+      <div>
+        <mat-icon (click)="removeSkills()">chevron_left</mat-icon>
+      </div>
+    </div>
+    <div class="skills-div">
+      <ul>
+        <ul>
+          <li *ngFor="let item of addedSkills" class="skills-list">
+            <label>
+              <input
+                type="checkbox"
+                [value]="item.skillId"
+                (change)="removeSkillChanged($event.target)"
+              />
+              {{ item.skillName }}
+            </label>
+          </li>
+        </ul>
+      </ul>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-button (click)="save()" class="save-mat-button">Save</button>
+</mat-dialog-actions>
