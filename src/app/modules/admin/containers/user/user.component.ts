@@ -29,6 +29,7 @@ export class UserComponent implements OnInit {
     'status',
     'action',
   ];
+  showNoDataFound: string;
 
   constructor(
     private adminService: AdminService,
@@ -62,8 +63,14 @@ export class UserComponent implements OnInit {
         this.dataSource = new MatTableDataSource(res.data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+        if (res.data.length == 0) {
+          this.showNoDataFound = 'No data found';
+        } else {
+          this.showNoDataFound = '';
+        }
       },
       error: (err) => {
+        this.notifyService.showError('please login again!');
         this.loginService.signOut();
       },
     });
@@ -89,11 +96,11 @@ export class UserComponent implements OnInit {
   deleteUser(userIdForDelete: any) {
     this.adminService.DeleteUser(Number(userIdForDelete)).subscribe({
       next: (res) => {
-        this.notifyService.showSuccess(res.message);
+        this.notifyService.showWarning(res.message);
         this.getUserData('');
       },
       error: (err) => {
-        this.notifyService.showSuccess(ErrorMessages.ApiErrorMessage.ApiFailed);
+        this.notifyService.showError(ErrorMessages.ApiErrorMessage.ApiFailed);
         this.loginService.signOut();
       },
     });

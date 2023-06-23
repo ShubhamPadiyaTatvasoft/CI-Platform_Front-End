@@ -21,6 +21,10 @@
     height: max-content;
   }
 
+  .flex-add-search {
+    @apply flex justify-between;
+  }
+
   .scroll-bar::-webkit-scrollbar {
     width: 12px;
     /* width of the entire scrollbar */
@@ -40,10 +44,19 @@
     border: 3px solid rgb(255, 255, 255);
     /* creates padding around scroll thumb */
   }
+  .flex-search {
+    @apply flex items-center;
+  }
 }
 
 @media (max-width: 767px) {
   .user-main {
+    @apply flex flex-col;
+  }
+}
+
+@media (max-width: 395px) {
+  .flex-add-search {
     @apply flex flex-col;
   }
 }
@@ -72,4 +85,12 @@ th {
 
 .red-background {
   background: rgb(184, 46, 46) !important;
+}
+
+@media (max-width: 303px) {
+  .flex-search {
+    flex-direction: column;
+    margin-bottom: 20px;
+    align-items: start;
+  }
 }
