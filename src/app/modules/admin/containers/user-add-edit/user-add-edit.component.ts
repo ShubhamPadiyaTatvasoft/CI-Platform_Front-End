@@ -193,7 +193,6 @@ export class UserAddEditComponent implements OnInit {
 
   //api call for update or add new user
   submitUser() {
-    console.log(this.configurationDetails.value['status']);
     if (this.configurationDetails.value['status'] == 'true') {
       this.userStatus = true;
     } else {
