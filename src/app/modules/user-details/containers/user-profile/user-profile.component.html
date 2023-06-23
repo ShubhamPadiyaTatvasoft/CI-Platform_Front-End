@@ -1,1 +1,222 @@
-<p>user-profile works!</p>
+<div class="user-main-div">
+  <div class="user-img-div">
+    <div class="left-user-image-div">
+      <img
+        [src]="imageSrc"
+        alt=""
+        class="large-profile-image"
+        (click)="imageInput.click()"
+      />
+
+      <span class="user-name-span">{{ userName }}&nbsp;{{ surname }}</span>
+      <span (click)="openPasswordDialog()" class="change-pswd-span"
+        >Change Password</span
+      >
+    </div>
+  </div>
+  <div class="forms-div">
+    <form [formGroup]="userForm" enctype="multipart/form-data">
+      <app-form-title>Basic Information</app-form-title>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-3 mt-4"
+      >
+        <div>
+          <mat-form-field class="w-full" appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="" type="text" formControlName="name" />
+            <mat-error>{{
+              formValidationService.formValidations(
+                userForm,
+                "name",
+                errorMessage.UserProfile
+              )
+            }}</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="w-full" appearance="outline">
+            <mat-label>Surname</mat-label>
+            <input
+              matInput
+              placeholder=""
+              type="text"
+              formControlName="surname"
+            />
+            <mat-error>{{
+              formValidationService.formValidations(
+                userForm,
+                "surname",
+                errorMessage.UserProfile
+              )
+            }}</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="w-full" appearance="outline">
+            <mat-label>EmployeeId</mat-label>
+            <input
+              matInput
+              placeholder=""
+              type="text"
+              formControlName="employeeId"
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="w-full" appearance="outline">
+            <mat-label>Manager</mat-label>
+            <input
+              matInput
+              placeholder=""
+              type="text"
+              formControlName="manager"
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="w-full" appearance="outline">
+            <mat-label>Title</mat-label>
+            <input
+              matInput
+              placeholder=""
+              type="text"
+              formControlName="title"
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="w-full" appearance="outline">
+            <mat-label>Department</mat-label>
+            <input
+              matInput
+              placeholder=""
+              type="text"
+              formControlName="department"
+            />
+          </mat-form-field>
+        </div>
+        <div class="md:col-span-2">
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Profile Text</mat-label>
+            <textarea matInput formControlName="profileText"></textarea>
+            <mat-error>{{
+              formValidationService.formValidations(
+                userForm,
+                "profileText",
+                errorMessage.UserProfile
+              )
+            }}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="md:col-span-2">
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Why I Volunteer</mat-label>
+            <textarea matInput formControlName="whyVolunteer"></textarea>
+            <mat-error>{{
+              formValidationService.formValidations(
+                userForm,
+                "whyVolunteer",
+                errorMessage.UserProfile
+              )
+            }}</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <app-form-title>Address Information</app-form-title>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-3 mt-4"
+      >
+        <div>
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Country</mat-label>
+            <mat-select
+              formControlName="country"
+              (selectionChange)="countryChanged($event.value)"
+            >
+              <mat-option
+                [value]="country.countryId"
+                *ngFor="let country of countries"
+                >{{ country.name }}</mat-option
+              >
+            </mat-select>
+            <mat-error>{{
+              formValidationService.formValidations(
+                userForm,
+                "country",
+                errorMessage.UserProfile
+              )
+            }}</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>City</mat-label>
+            <mat-select formControlName="city">
+              <mat-option [value]="city.cityId" *ngFor="let city of cities">{{
+                city.name
+              }}</mat-option>
+            </mat-select>
+            <mat-error>{{
+              formValidationService.formValidations(
+                userForm,
+                "city",
+                errorMessage.UserProfile
+              )
+            }}</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <app-form-title>Professional Information</app-form-title>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-3 mt-4"
+      >
+        <div>
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Availability</mat-label>
+            <mat-select formControlName="availability">
+              <mat-option
+                *ngFor="let availability of availabilities"
+                [value]="availability"
+                >{{ availability }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="w-full" appearance="outline">
+            <mat-label>Linked In</mat-label>
+            <input
+              matInput
+              placeholder=""
+              type="text"
+              formControlName="linkedIn"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <app-form-title>My Skills</app-form-title>
+      <app-skills-list [skillsList]="userSkills"></app-skills-list>
+      <button class="dark-button" (click)="openSkillDialog()">
+        Add Skills
+      </button>
+      <div class="save-button-div">
+        <button class="save-btn" (click)="saveUserDetails()">Save</button>
+      </div>
+      <input hidden type="text" formControlName="skills" />
+      <input
+        #imageInput
+        type="file"
+        id="selectedImage"
+        accept="image/png, image/jpeg"
+        hidden
+        (change)="onImageChanged($event)"
+      />
+    </form>
+  </div>
+</div>
+<app-footer
+  [userId]="userId"
+  [userName]="userName"
+  [userEmail]="userEmail"
+></app-footer>

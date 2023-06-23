@@ -4,11 +4,11 @@ import { UserProfileComponent } from './containers/user-profile/user-profile.com
 import { LoginAuthGuard } from 'src/app/guards/login-auth.guard';
 
 const routes: Routes = [
-  { path: '', component: UserProfileComponent, canActivate: [LoginAuthGuard] },
+  { path: '', component: UserProfileComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class UserDetailsRoutingModule {}
+export class UserDetailsRoutingModule { }

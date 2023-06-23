@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .dark-button {
+    @apply ps-2 pe-2 mt-2;
+    border: 1px solid #757575;
+    border-radius: 25px;
+  }
+  .save-btn {
+    @apply ps-2 pe-2;
+    border: 1px solid #f88634;
+    color: #f88634;
+    border-radius: 25px;
+  }
+  .save-button-div {
+    @apply pt-4;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .user-main-div {
+    @apply grid grid-cols-1 sm:grid-cols-1 md:grid-cols-12 lg:grid-cols-12 pt-4 lg:ps-36 lg:pe-36 md:ps-16 md:pe-16 sm:ps-10 sm:pe-10 ps-9 pe-9 gap-10;
+  }
+  .user-img-div {
+    @apply md:col-span-3 lg:col-span-3 flex justify-center md:block;
+  }
+  .forms-div {
+    @apply md:col-span-9 lg:col-span-9;
+  }
+  .left-user-image-div {
+    @apply bg-white p-2 flex flex-col justify-center items-center;
+    border: 1px solid #757575;
+    height: 260px;
+  }
+  .large-profile-image {
+    @apply object-cover cursor-pointer;
+    height: 170px;
+    width: 170px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .user-name-span {
+    @apply text-lg;
+  }
+  .change-pswd-span {
+    @apply text-sm font-color cursor-pointer;
+  }
+
+  .font-color {
+    color: #414141;
+  }
+  .border-color {
+    color: #757575;
+  }
+}
+@media screen and (max-width: 900px) {
+  .user-main-div {
+    display: flex;
+    flex-direction: column;
+  }
+  .user-img-div {
+    display: flex;
+    justify-content: center;
+  }
+}
