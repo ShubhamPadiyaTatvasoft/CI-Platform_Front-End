@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Skills } from 'src/app/interfaces/skills';
 
 @Component({
   selector: 'app-skills-list',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./skills-list.component.scss']
 })
 export class SkillsListComponent {
+  constructor() { }
+  @Input() skillsList: Skills[];
+
 
 }
