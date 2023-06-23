@@ -1,0 +1,17 @@
+export interface UserDetails {
+    userId: number,
+    name: string,
+    surname: string,
+    employeeId?: number,
+    manager?: string,
+    title?: string,
+    department?: string,
+    profileText: string,
+    whyVolunteer: string,
+    countryId: number,
+    cityId: number,
+    availability: string,
+    linkedIn?: string,
+    avatar?: string,
+    skills?: string,
+}
