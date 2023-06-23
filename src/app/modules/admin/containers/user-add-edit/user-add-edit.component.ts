@@ -32,7 +32,7 @@ export class UserAddEditComponent implements OnInit {
   iconNameForConfirmPassword: string = 'visibility_off';
   EYE_ICON: string = 'visibility_off';
   RED_EYE: string = 'remove_red_eye';
-
+  userStatus: boolean;
   constructor(
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
@@ -43,16 +43,16 @@ export class UserAddEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.createForm();
+    this.getCountry();
     this.route.params.subscribe((params) => {
       if (params['id'] != null) {
-        this.userId = Number(params['id']);
-        this.getUserData(Number(params['id']));
+        this.userId = +params['id'];
+        this.getUserData(+params['id']);
       } else {
         this.action = 'add';
       }
     });
-    this.getCountry();
-    this.createForm();
   }
 
   //create form for edit and add user
@@ -155,7 +155,7 @@ export class UserAddEditComponent implements OnInit {
 
         this.configurationDetails.setValue({
           role: res.data['role'],
-          status: res.data['status'],
+          status: res.data['status'].toString(),
           manager: res.data['manager'],
         });
       },
@@ -193,6 +193,12 @@ export class UserAddEditComponent implements OnInit {
 
   //api call for update or add new user
   submitUser() {
+    if (this.configurationDetails.value['status'] == 'true') {
+      this.userStatus = true;
+    } else {
+      this.userStatus = false;
+    }
+
     const payload = {
       userId: this.userId,
       firstName: this.basicDetails.value['firstName'],
@@ -203,7 +209,7 @@ export class UserAddEditComponent implements OnInit {
       cityId: this.personalDetails.value['city'],
       phoneNumber: this.personalDetails.value['phoneNumber'],
       role: this.configurationDetails.value['role'],
-      status: this.configurationDetails.value['status'],
+      status: this.userStatus,
       manager: this.configurationDetails.value['manager'],
     };
 
