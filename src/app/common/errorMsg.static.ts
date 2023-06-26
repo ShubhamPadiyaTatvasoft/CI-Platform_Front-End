@@ -154,4 +154,13 @@ export const ErrorMessages = {
   ApiErrorMessage: {
     ApiFailed: 'Please check detail properly or try after sometime',
   },
+  
+  ShareStory: {
+    storyTitle: {
+      required: 'Story Title is required',
+    },
+    date: {
+      required: 'Date is required',
+    },
+  },
 };

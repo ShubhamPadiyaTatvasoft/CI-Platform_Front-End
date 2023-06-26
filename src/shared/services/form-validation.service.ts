@@ -19,6 +19,6 @@ export class FormValidationService {
         }
       }
     }
-    return message[key].required;
+    //return message[key].required;
   }
 }
