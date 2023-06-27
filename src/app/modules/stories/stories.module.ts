@@ -23,7 +23,6 @@ import { SharedMaterialModule } from 'src/shared/modules/material.module';
     StoryCardsComponent,
     ShareStoryComponent,
     StoryDetailComponent,
-    
   ],
   imports: [
     CommonModule,
@@ -32,8 +31,7 @@ import { SharedMaterialModule } from 'src/shared/modules/material.module';
     NgxPaginationModule,
     CKEditorModule,
     ReactiveFormsModule,
-    SharedMaterialModule
-    
-  ]
+    SharedMaterialModule,
+  ],
 })
-export class StoriesModule { }
+export class StoriesModule {}

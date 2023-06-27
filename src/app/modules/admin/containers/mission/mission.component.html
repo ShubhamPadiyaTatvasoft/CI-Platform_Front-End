@@ -8,8 +8,8 @@
     </div>
     <div class="h-5/6 p-5 scroll-bar" style="width: 100%; overflow-y: scroll">
       <div class="font-bold mb-3 ms-1 text-2xl">Mission</div>
-      <div class="mb-3 ms-1 flex justify-between">
-        <div class="flex items-center">
+      <div class="mb-3 ms-1 flex-add-search">
+        <div class="flex-search">
           <mat-label>Search: &nbsp;</mat-label>
           <input
             matInput
@@ -27,7 +27,7 @@
           mat-raised-button
           class="rounded-3xl orange-border p-3"
           style="width: max-content"
-          [routerLink]="['/AdminPanel/missioncrud']"
+          [routerLink]="['/AdminPanel/missionForm', 'add']"
         >
           <span class="font-medium flex items-center"
             ><span>ADD</span> <mat-icon>add</mat-icon>
@@ -73,7 +73,7 @@
                 <button
                   (click)="getMissionDataForEditOrDelete($event.target, 'edit')"
                 >
-                  <mat-icon class="text-orange-600" id="{{ element }}"
+                  <mat-icon class="text-orange-600" id="{{ element.missionId }}"
                     >edit</mat-icon
                   >
                 </button>
@@ -82,7 +82,9 @@
                     getMissionDataForEditOrDelete($event.target, 'delete')
                   "
                 >
-                  <mat-icon id="{{ element }}">delete_forever</mat-icon>
+                  <mat-icon id="{{ element.missionId }}"
+                    >delete_forever</mat-icon
+                  >
                 </button>
               </div>
             </td>
@@ -90,6 +92,9 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumn"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumn"></tr>
         </table>
+        <div class="flex justify-center mt-5 font-bold text-2xl">
+          {{ showNoDataFound }}
+        </div>
       </div>
     </div>
     <mat-paginator [pageSizeOptions]="[10, 5, 8, 2]" showFirstLastButtons>
