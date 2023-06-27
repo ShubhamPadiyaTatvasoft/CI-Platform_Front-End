@@ -9,7 +9,6 @@ export class CardsButtonComponent implements OnInit {
   @Input() buttonType!:string;
   @Input() storyButton !:boolean;
   hoverBackGround = '';
-  color = '';
   hoverClass = '';
   UniversalButtonStyle = '';
 
@@ -34,7 +33,6 @@ export class CardsButtonComponent implements OnInit {
     }
   }
 
-
   changeBackGroundColor(str :string){
     if(str = ''){
       this.hoverBackGround = '';
@@ -53,14 +51,5 @@ export class CardsButtonComponent implements OnInit {
         return;
       }
     }
-
   }
-
-  hoverChanges(){
-    return {
-      background : this.hoverBackGround,
-      border: this.color,
-    };
-  }
-
 }
