@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ConfirmBoxService } from '../../services/confirm-box.service';
 
 @Component({
   selector: 'app-mission',
@@ -12,12 +13,6 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./mission.component.scss'],
 })
 export class MissionComponent implements OnInit {
-  constructor(
-    private adminService: AdminService,
-    private loginService: LoginServiceService,
-    private router: Router
-  ) {}
-
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   dataSource = new MatTableDataSource<any>();
@@ -29,9 +24,15 @@ export class MissionComponent implements OnInit {
     'endDate',
     'action',
   ];
+  showNoDataFound: string;
+  constructor(
+    private adminService: AdminService,
+    private loginService: LoginServiceService,
+    private router: Router,
+    private dialogService: ConfirmBoxService
+  ) {}
 
   ngOnInit(): void {
-    // this.getUserData('');
     this.getMissionData('');
   }
 
@@ -48,6 +49,11 @@ export class MissionComponent implements OnInit {
         this.dataSource = new MatTableDataSource(res.data['missions']);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+        if (res.data['missions'].length == 0) {
+          this.showNoDataFound = 'No data found';
+        } else {
+          this.showNoDataFound = '';
+        }
       },
       error: (err) => {
         this.loginService.signOut();
@@ -55,7 +61,19 @@ export class MissionComponent implements OnInit {
     });
   }
 
+  showNoDataFound1(abc: any) {}
+
   getMissionDataForEditOrDelete(event: any, action: string) {
-    //this.router.navigate(['/AdminPanel/usercrud', event.id, action]);
+    if (action == 'edit') {
+      this.router.navigate(['AdminPanel/missionForm', action, event.id]);
+    } else {
+      this.dialogService
+        .openConfirmDialogue('Are you sure want to delete!!?')
+        .afterClosed()
+        .subscribe((res) => {
+          if (res == true) {
+          }
+        });
+    }
   }
 }

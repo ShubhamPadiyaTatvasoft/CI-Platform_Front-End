@@ -127,12 +127,13 @@ HTML CSS Result Skip Results Iframe #sidebar {
 
 @layer components {
   .sidebar-menu {
-    @apply z-10 bg-orange-700 text-black md:w-64 w-3/4 space-y-6 pt-6 px-0 absolute inset-y-0 left-0 transform md:relative md:translate-x-0 transition duration-200 ease-in-out md:flex md:flex-col md:justify-between overflow-y-auto;
+    @apply z-10 bg-gray-700 text-black md:w-64 w-3/4 space-y-6 pt-6 px-0 absolute inset-y-0 left-0 transform md:relative md:translate-x-0 transition duration-200 ease-in-out md:flex md:flex-col md:justify-between overflow-y-auto;
   }
 
   .sidebar-links {
-    @apply flex md:flex-col lg:flex-row lg:text-start md:text-center items-center space-x-2 lg:py-2 lg:px-4 transition duration-200  mt-6;
+    @apply flex md:flex-col lg:flex-row lg:text-start md:text-center items-center space-x-2 lg:py-2 lg:px-4 transition duration-200 mt-6;
   }
+
   .sidebar-linkshover {
     @apply bg-white text-black;
   }
