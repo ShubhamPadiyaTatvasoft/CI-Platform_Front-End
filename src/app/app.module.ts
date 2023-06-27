@@ -8,6 +8,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { TokenInterceptorInterceptor } from './interceptors/token-interceptor.interceptor';
 import { SharedMaterialModule } from 'src/shared/modules/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +29,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
       useClass: TokenInterceptorInterceptor,
       multi: true,
     },
+    DatePipe,
   ],
   bootstrap: [AppComponent],
 })
