@@ -9,12 +9,12 @@ import { PlatformLandingService } from '../../services/platform-landing.service'
 })
 export class MissionComponent implements OnInit {
 
-  MissionDataObj: any;
+  missionDataObj: any;
   landingPage !: LandingPageApiCall;
-  public IsGridView = true;
-  public IsMissionCard =true;
+  public isGridView = true;
+  public isMissionCard =true;
 
-  constructor(private LandingPageService : PlatformLandingService){
+  constructor(private landingPageService : PlatformLandingService){
     this.landingPage = {} as LandingPageApiCall;
   }
 
@@ -24,8 +24,8 @@ export class MissionComponent implements OnInit {
 
   LandingPageData(){
   this.landingPage.loginUserId = 1;
-   this.LandingPageService.LandingPageDataGetAndPost(this.landingPage).subscribe((res :any) =>{
-      this.MissionDataObj = res.data;
+   this.landingPageService.LandingPageDataGetAndPost(this.landingPage).subscribe((res :any) =>{
+      this.missionDataObj = res.data;
       console.log(res);
     },
     (e:any) => {

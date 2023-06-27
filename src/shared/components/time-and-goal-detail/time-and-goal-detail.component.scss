@@ -1,18 +1,18 @@
-.TimelineStyle{
+.timelineStyle{
   @apply flex;
   @apply justify-center ;
   @apply items-center ;
   @apply mb-3 ;
 }
 
-.TimelineInnerStyle{
+.timelineInnerStyle{
   @apply border ;
   @apply rounded-full ;
   @apply border-neutral-500 ;
   @apply bg-white	;
 }
 
-.TimeLineText{
+.timeLineText{
   @apply flex ;
   @apply justify-between ;
   @apply px-2 ;
@@ -40,20 +40,10 @@
   @apply flex-col ;
 }
 
-.CommonTextStyle{
+.commonTextStyle{
   @apply text-neutral-500	 ;
 }
 
 .achieveLogoImageSet{
   height: 25px;
-}
-
-.mat-mdc-progress-bar {
-  --mdc-linear-progress-active-indicator-height: 10px;
-  --mdc-linear-progress-track-height: 10px;
-  --mdc-linear-progress-track-shape : 60px;
-  --mdc-linear-progress-active-indicator-shape: 60px;
-  --mdc-linear-progress-active-indicator-color: #F88634 ;
-  --mdc-linear-progress-track-color: rgb(241, 241, 241);
-
 }

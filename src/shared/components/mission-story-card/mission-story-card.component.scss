@@ -16,11 +16,11 @@
   @apply mx-1 ;
 }
 
-.Image-Container{
+.image-Container{
   position: relative;
 }
 
-.LocationBlock{
+.locationBlock{
   position: absolute;
   top: 4%;
   right: 2%;
@@ -58,7 +58,7 @@
   color: white;
 }
 
-.RecommendedBlock{
+.recommendedBlock{
   @apply flex;
   @apply justify-center;
   @apply items-center;
@@ -73,11 +73,11 @@
   opacity: 0.7;
 }
 
-.RecommendedStyle{
+.recommendedStyle{
   color: white;
 }
 
-.ThemeBlock{
+.themeBlock{
   position: absolute;
   bottom: -18px;
   right: 0;
@@ -88,7 +88,7 @@
   width: auto;
 }
 
-.ThemeBlockForList{
+.themeBlockForList{
   position: absolute;
   bottom: -18px;
   right: 0;
@@ -98,7 +98,7 @@
   color: black;
 }
 
-.CardContent{
+.cardContent{
   @apply flex ;
   @apply flex-col ;
   @apply justify-between ;
@@ -113,7 +113,7 @@
   @apply mb-1 ;
 }
 
-.TimelineStyle{
+.timelineStyle{
   @apply flex;
   @apply justify-center ;
   @apply items-center ;
@@ -124,11 +124,11 @@
   @apply my-3 ;
 }
 
-.ShortDescClass{
+.shortDescClass{
   @apply my-3 ;
 }
 
-.TimelineInnerStyle{
+.timelineInnerStyle{
   @apply border ;
   @apply rounded-full ;
   @apply border-neutral-500 ;
@@ -145,53 +145,49 @@
   border-radius: 26px;
 }
 
-.ApplyButton{
+.applyButton{
   @apply flex;
   @apply justify-center ;
   @apply mb-2 ;
 }
 
-
-
-.ImageWithName{
+.imageWithName{
   @apply flex;
   @apply items-center ;
   @apply gap-4 ;
   @apply pt-2 ;
 }
 
-.MainImage{
+.mainImage{
   width: 650px;
   height: 100%;
 }
 
-.StoryProfilePic{
+.storyProfilePic{
   @apply rounded-full ;
   width: 50px;
   height: 50px;
 }
 
-.StoryDetailButton{
+.storyDetailButton{
   position: absolute;
   top: 40%;
   left: 30%;
   opacity: 0;
 }
 
-.StoryImage:hover{
+.storyImage:hover{
   color: black ;
   opacity: 0.3;
 }
 
-.Image-Container:hover .StoryDetailButton{
+.image-Container:hover .storyDetailButton{
   opacity: 0.7;
 }
 
-.ThemeDiv{
+.themeDiv{
   @apply flex;
   @apply justify-center;
-  //@apply items-center;
-  //@apply gap-2 ;
   @apply bg-white ;
   @apply px-3 ;
   @apply py-2 ;

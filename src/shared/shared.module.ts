@@ -8,7 +8,6 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { FilterComponent } from './components/filter/filter.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MissionAvgRatingComponent } from './components/mission-avg-rating/mission-avg-rating.component';
-import { MissionStoryCardsComponent } from './components/mission-story-cards/mission-story-cards.component';
 import { CardsButtonComponent } from './components/cards-button/cards-button.component';
 import { IconsComponent } from './components/icons/icons.component';
 import { TimeAndGoalDetailComponent } from './components/time-and-goal-detail/time-and-goal-detail.component';
@@ -20,6 +19,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CommonModule } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MissionStoryCardComponent } from './components/mission-story-card/mission-story-card.component';
 
 
 @NgModule({
@@ -29,7 +29,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     FilterComponent,
     HeaderComponent,
     PaginationComponent,
-    MissionStoryCardsComponent,
+    MissionStoryCardComponent,
     MissionAvgRatingComponent,
     CardsButtonComponent,
     IconsComponent,
@@ -43,7 +43,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     PaginationComponent,
     FilterComponent,
     HeaderComponent,
-    MissionStoryCardsComponent,
+    MissionStoryCardComponent,
     MissionAvgRatingComponent,
     CardsButtonComponent,
     IconsComponent,
