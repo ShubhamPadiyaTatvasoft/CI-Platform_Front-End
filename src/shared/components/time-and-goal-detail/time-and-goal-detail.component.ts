@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component , Input } from '@angular/core';
 
 @Component({
   selector: 'app-time-and-goal-detail',
@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./time-and-goal-detail.component.scss']
 })
 export class TimeAndGoalDetailComponent {
+  @Input() timeAndGoalDetail!:any;
+  timeLineDiv !: string;
+  progressCount = "";
 
+  constructor(){}
+
+  ngOnInit(){}
+
+  styleAdd(){
+    this.progressCount = this.timeAndGoalDetail.achieveGoalValue / this.timeAndGoalDetail.targetGoalValue + "%";
+    return {
+      width : this.progressCount,
+    }
+  }
 }
