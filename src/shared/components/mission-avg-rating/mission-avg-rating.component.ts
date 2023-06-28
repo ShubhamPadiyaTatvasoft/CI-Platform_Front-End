@@ -12,10 +12,10 @@ export class MissionAvgRatingComponent implements OnInit {
   constructor(){}
 
   ngOnInit(){
-    this.AvgRatingFill();
+    this.avgRatingFill();
   }
 
-  AvgRatingFill(){
+  avgRatingFill(){
     this.stars = Array(5).fill(false).map((_, index) => index < Math.floor(this.rating));
   }
 }

@@ -1,4 +1,4 @@
-<div [ngClass]="ifClassApply ? 'iconDiv':''">
-  <mat-icon>{{iconName}}</mat-icon>
-  <span *ngIf="ifClassApply" class="iconValueTag">{{iconValue}}</span>
+<div [ngClass]="iconValue != '' ? 'iconDiv':''">
+  <mat-icon>{{iconFont}}</mat-icon>
+  <span *ngIf="iconValue != ''" class="iconValueTag">{{iconValue}}</span>
 </div>
