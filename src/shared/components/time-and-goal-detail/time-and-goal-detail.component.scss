@@ -1,0 +1,49 @@
+.timelineStyle{
+  @apply flex;
+  @apply justify-center ;
+  @apply items-center ;
+  @apply mb-3 ;
+}
+
+.timelineInnerStyle{
+  @apply border ;
+  @apply rounded-full ;
+  @apply border-neutral-500 ;
+  @apply bg-white	;
+}
+
+.timeLineText{
+  @apply flex ;
+  @apply justify-between ;
+  @apply px-2 ;
+  }
+
+.sheetsAndDeadLine{
+  @apply flex;
+  @apply justify-between ;
+  @apply mb-5 ;
+  @apply pb-3 ;
+  @apply border-t ;
+  @apply border-b ;
+  @apply pt-5 ;
+  margin-top: -23px;
+}
+
+.sheetsLeftFullDiv{
+  @apply flex ;
+
+  @apply gap-2 ;
+}
+
+.sheetsLeftStyle{
+  @apply flex ;
+  @apply flex-col ;
+}
+
+.commonTextStyle{
+  @apply text-neutral-500	 ;
+}
+
+.achieveLogoImageSet{
+  height: 25px;
+}

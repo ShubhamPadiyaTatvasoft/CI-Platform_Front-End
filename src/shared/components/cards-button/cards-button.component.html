@@ -1,1 +1,5 @@
-<p>cards-button works!</p>
+<button mat-raised-button [ngClass]="storyButton ? 'storyButtonStyle':''" [class]="hoverClass" matTooltip="Go To Mission Page"
+  (mouseenter)="changeBackGroundColor('change')" (mouseleave)="changeBackGroundColor('')">
+  <span>{{buttonType}}</span>
+  <mat-icon>trending_flat</mat-icon>
+</button>

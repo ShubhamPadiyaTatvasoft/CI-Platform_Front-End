@@ -18,6 +18,8 @@ import { MatListModule } from '@angular/material/list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [MobileNumberDirective],
   exports: [
@@ -40,6 +42,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     FlexLayoutModule,
     MatStepperModule,
     MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
 })
 export class SharedMaterialModule {}

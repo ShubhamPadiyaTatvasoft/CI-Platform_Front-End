@@ -40,6 +40,13 @@
     border: 3px solid rgb(255, 255, 255);
     /* creates padding around scroll thumb */
   }
+
+  .flex-search {
+    @apply flex items-center;
+  }
+  .flex-add-search {
+    @apply flex justify-between;
+  }
 }
 
 @media (max-width: 767px) {
@@ -68,4 +75,18 @@ td {
 
 th {
   font-size: 20px;
+}
+
+@media (max-width: 303px) {
+  .flex-search {
+    flex-direction: column;
+    margin-bottom: 20px;
+    align-items: start;
+  }
+}
+
+@media (max-width: 395px) {
+  .flex-add-search {
+    @apply flex flex-col;
+  }
 }

@@ -1,0 +1,197 @@
+.gridMaterialCard{
+  max-width: 100%;
+  height: 100%;
+  box-shadow: none;
+  border:1px solid lightgrey !important;
+  margin-bottom: 10px;
+  @apply mx-1 ;
+}
+
+.listMaterialCard{
+  width: fit-content;
+  height: 100%;
+  box-shadow: none;
+  border:1px solid lightgrey !important;
+  margin-bottom: 10px;
+  @apply mx-1 ;
+}
+
+.image-Container{
+  position: relative;
+}
+
+.locationBlock{
+  position: absolute;
+  top: 4%;
+  right: 2%;
+  color: white;
+  opacity: 0.7;
+}
+
+.locationDiv{
+  @apply flex;
+  @apply justify-center;
+  @apply items-center;
+  @apply gap-2 ;
+  @apply bg-black ;
+  @apply bg-opacity-30 ;
+  @apply p-2 ;
+  border-radius: 26px;
+}
+
+
+.favPositionSet{
+  @apply flex;
+  @apply justify-center;
+  @apply items-center;
+  @apply bg-black ;
+  @apply bg-opacity-30 ;
+  @apply pt-2 ;
+  @apply px-2 ;
+  @apply rounded-full ;
+  position: absolute;
+  top: 30%;
+  right: 2%;
+}
+
+.favIcon{
+  color: white;
+}
+
+.recommendedBlock{
+  @apply flex;
+  @apply justify-center;
+  @apply items-center;
+  @apply bg-black ;
+  @apply bg-opacity-30 ;
+  @apply pt-2 ;
+  @apply px-2 ;
+  @apply rounded-full ;
+  position: absolute;
+  top: 55%;
+  right: 2%;
+  opacity: 0.7;
+}
+
+.recommendedStyle{
+  color: white;
+}
+
+.themeBlock{
+  position: absolute;
+  bottom: -18px;
+  right: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  color: black;
+  width: auto;
+}
+
+.themeBlockForList{
+  position: absolute;
+  bottom: -18px;
+  right: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  color: black;
+}
+
+.cardContent{
+  @apply flex ;
+  @apply flex-col ;
+  @apply justify-between ;
+  @apply my-auto;
+}
+
+.organizationAndRating{
+  @apply flex;
+  @apply justify-between ;
+  @apply pt-4 ;
+  @apply pb-3 ;
+  @apply mb-1 ;
+}
+
+.timelineStyle{
+  @apply flex;
+  @apply justify-center ;
+  @apply items-center ;
+  @apply mb-3 ;
+}
+
+.titleClass{
+  @apply my-3 ;
+}
+
+.shortDescClass{
+  @apply my-3 ;
+}
+
+.timelineInnerStyle{
+  @apply border ;
+  @apply rounded-full ;
+  @apply border-neutral-500 ;
+  @apply bg-white	;
+}
+
+.iconDiv{
+  @apply flex;
+  @apply justify-center;
+  @apply items-center;
+  @apply bg-black ;
+  @apply bg-opacity-30 ;
+  @apply p-2 ;
+  border-radius: 26px;
+}
+
+.applyButton{
+  @apply flex;
+  @apply justify-center ;
+  @apply mb-2 ;
+}
+
+.imageWithName{
+  @apply flex;
+  @apply items-center ;
+  @apply gap-4 ;
+  @apply pt-2 ;
+}
+
+.mainImage{
+  width: 650px;
+  height: 100%;
+}
+
+.storyProfilePic{
+  @apply rounded-full ;
+  width: 50px;
+  height: 50px;
+}
+
+.storyDetailButton{
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  opacity: 0;
+}
+
+.storyImage:hover{
+  color: black ;
+  opacity: 0.3;
+}
+
+.image-Container:hover .storyDetailButton{
+  opacity: 0.7;
+}
+
+.themeDiv{
+  @apply flex;
+  @apply justify-center;
+  @apply bg-white ;
+  @apply px-3 ;
+  @apply py-2 ;
+  @apply border ;
+  width: fit-content;
+  border-radius: 26px;
+}
