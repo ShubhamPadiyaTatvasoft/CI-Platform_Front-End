@@ -1,1 +1,3 @@
-<p>mission-avg-rating works!</p>
+<div class="star-rating">
+  <mat-icon *ngFor="let star of stars" [ngClass]="star ? 'star-filled' : 'star-empty'">star</mat-icon>
+</div>

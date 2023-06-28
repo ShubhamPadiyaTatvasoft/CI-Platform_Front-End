@@ -1,1 +1,46 @@
-<p>time-and-goal-detail works!</p>
+<div class="timelineStyle">
+  <div class="timelineInnerStyle">
+    <span class="timeLineText">From {{timeAndGoalDetail.startDate | date:'dd/MM/yyy'}} until {{timeAndGoalDetail.endDate | date:'dd/MM/yyy'}}</span>
+  </div>
+</div>
+
+<div *ngIf="timeAndGoalDetail.isTimeBase; then timeBlock else goalBlock"></div>
+<ng-template #timeBlock>
+  <div class="sheetsAndDeadLine">
+    <div class="sheetsLeftFullDiv">
+      <app-icons [iconName]="'person'" [iconValue]="''"></app-icons>
+      <div class="sheetsLeftStyle">
+        <span>{{timeAndGoalDetail.seatLeft}}</span>
+        <span class="commonTextStyle">Seats Left</span>
+      </div>
+    </div>
+    <div class="sheetsLeftFullDiv">
+      <app-icons [iconName]="'access_time'" [iconValue]="''"></app-icons>
+      <div class="sheetsLeftStyle">
+        <span>{{timeAndGoalDetail.deadLine | date:'dd/MM/yyy'}}</span>
+        <span class="commonTextStyle">DeadLine</span>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #goalBlock>
+  <div class="sheetsAndDeadLine">
+    <div class="sheetsLeftFullDiv">
+      <app-icons [iconName]="'person'" [iconValue]="''"></app-icons>
+      <div class="sheetsLeftStyle">
+        <span>{{ timeAndGoalDetail.alreadyVolunteer }}</span>
+        <span class="commonTextStyle">Already volunteered</span>
+      </div>
+    </div>
+    <div class="sheetsLeftFullDiv">
+      <img src="../assets/Images/achieved.png" class="achieveLogoImageSet">
+      <div class="sheetsLeftStyle">
+          <div class="w-full bg-gray-200 rounded-full h-2.5 mb-4 dark:bg-gray-700">
+            <div class="bg-orange-400 h-2.5 rounded-full dark:bg-orange-400" [style]="styleAdd()"></div>
+          </div>
+        <span class="commonTextStyle">{{ timeAndGoalDetail.achieveGoalValue }} achieved</span>
+      </div>
+    </div>
+  </div>
+</ng-template>
