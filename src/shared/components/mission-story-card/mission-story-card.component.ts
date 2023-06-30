@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { TimeLineModel } from 'src/app/interfaces/time-line-model';
 
 
@@ -14,6 +14,8 @@ export class MissionStoryCardComponent implements OnInit{
   isClosed = false;
   buttonType : string;
   timeLine : TimeLineModel;
+  @Output() favMissionId = new EventEmitter<any>();
+  @Output() recommendationMissionDialLog = new EventEmitter<any>();
 
   constructor() {}
 
@@ -39,7 +41,9 @@ export class MissionStoryCardComponent implements OnInit{
 
   // MissionData Fetch
   missionDetail() {
-    this.cardDataObj.missionImagePath = '../assets/Images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png';
+    if(this.cardDataObj.missionImagePath == null){
+      this.cardDataObj.missionImagePath = '../assets/Images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png';
+    }
     this.timeLine.startDate = this.cardDataObj.mission.startDate;
     this.timeLine.endDate = this.cardDataObj.mission.endDate;
 
@@ -83,7 +87,12 @@ export class MissionStoryCardComponent implements OnInit{
   storyDetail() {}
 
   //FavMission
-  favMissionChange(){
-    this.cardDataObj.isfavMission = !this.cardDataObj.isfavMission;
+  favMissionChange(missionId: number){
+    this.favMissionId.emit(missionId);
+  }
+
+  //Recommended
+  recommendedDialog(missionId : number){
+    this.recommendationMissionDialLog.emit(missionId);
   }
 }
