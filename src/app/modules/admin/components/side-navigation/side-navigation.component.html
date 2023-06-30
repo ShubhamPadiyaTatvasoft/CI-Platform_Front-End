@@ -67,95 +67,18 @@
       <nav class="border-top">
         <div class="flex-col">
           <div
+            *ngFor="let links of routerLinks"
             class="hover:sidebar-linkshover"
             [ngClass]="{
-              'bg-white text-black': currentUrl == '/AdminPanel/user'
+              'bg-white text-black': currentUrl == links.link
             }"
           >
-            <a routerLink="/AdminPanel/user" class="sidebar-links"
-              ><mat-icon>person</mat-icon>
-              <span> Users</span>
+            <a routerLink="{{ links.link }}" class="sidebar-links"
+              ><mat-icon>{{ links.icon }}</mat-icon>
+              <span>{{ links.pageName }}</span>
             </a>
           </div>
-          <div
-            class="hover:sidebar-linkshover"
-            [ngClass]="{
-              'bg-white text-black': currentUrl == '/AdminPanel/CMSPage'
-            }"
-          >
-            <a routerLink="/AdminPanel/CMSPage" class="sidebar-links"
-              ><mat-icon>library_books</mat-icon>
-              <span>CMS Pages</span>
-            </a>
-          </div>
-          <div
-            class="hover:sidebar-linkshover"
-            [ngClass]="{
-              'bg-white text-black': currentUrl == '/AdminPanel/Mission'
-            }"
-          >
-            <a routerLink="/AdminPanel/Mission" class="sidebar-links"
-              ><mat-icon>account_balance</mat-icon>
-              <span>Mission</span>
-            </a>
-          </div>
-          <div
-            class="hover:sidebar-linkshover"
-            [ngClass]="{
-              'bg-white text-black': currentUrl == '/AdminPanel/MissionTheme'
-            }"
-          >
-            <a routerLink="/AdminPanel/MissionTheme" class="sidebar-links"
-              ><mat-icon>dashboard</mat-icon>
-              <span>Mission Theme</span>
-            </a>
-          </div>
-          <div
-            class="hover:sidebar-linkshover"
-            [ngClass]="{
-              'bg-white text-black': currentUrl == '/AdminPanel/MissionSkills'
-            }"
-          >
-            <a routerLink="/AdminPanel/MissionSkills" class="sidebar-links"
-              ><mat-icon>stars</mat-icon>
-              <span>Mission Skills</span>
-            </a>
-          </div>
-          <div
-            class="hover:sidebar-linkshover"
-            [ngClass]="{
-              'bg-white text-black':
-                currentUrl == '/AdminPanel/MissionApplication'
-            }"
-          >
-            <a routerLink="/AdminPanel/MissionApplication" class="sidebar-links"
-              ><mat-icon>insert_drive_file</mat-icon>
-              <span>Mission Application</span>
-            </a>
-          </div>
-          <div
-            class="hover:sidebar-linkshover"
-            [ngClass]="{
-              'bg-white text-black': currentUrl == '/AdminPanel/Story'
-            }"
-          >
-            <a routerLink="/AdminPanel/Story" class="sidebar-links"
-              ><mat-icon>assistant</mat-icon>
-              <span>Story</span>
-            </a>
-          </div>
-          <div
-            class="hover:sidebar-linkshover"
-            [ngClass]="{
-              'bg-white text-black':
-                currentUrl == '/AdminPanel/BannerManagement'
-            }"
-          >
-            <a routerLink="/AdminPanel/BannerManagement" class="sidebar-links"
-              ><mat-icon>camera_roll</mat-icon>
-              <span>Banner Management </span>
-            </a>
-          </div>
+
           <div
             style="width: 100%"
             class="flex flex-col text-center items-center gap-3 w-full display-none-navbtn mt-10"

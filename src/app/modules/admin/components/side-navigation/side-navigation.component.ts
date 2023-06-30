@@ -13,6 +13,50 @@ export class SideNavigationComponent implements OnInit {
   MENUICON = 'menu';
   CLEARICON = 'clear';
   currentUrl: string;
+
+  routerLinks: any[] = [
+    {
+      link: '/AdminPanel/user',
+      pageName: 'Users',
+      icon: 'person',
+    },
+    {
+      link: '/AdminPanel/CMSPage',
+      pageName: 'CMS Pages',
+      icon: 'library_books',
+    },
+    {
+      link: '/AdminPanel/Mission',
+      pageName: 'Mission',
+      icon: 'account_balance',
+    },
+    {
+      link: '/AdminPanel/MissionTheme',
+      pageName: 'Mission Theme',
+      icon: 'dashboard',
+    },
+    {
+      link: '/AdminPanel/MissionSkills',
+      pageName: 'Mission Skills',
+      icon: 'stars',
+    },
+    {
+      link: '/AdminPanel/MissionApplication',
+      pageName: 'Mission Application',
+      icon: 'insert_drive_file',
+    },
+    {
+      link: '/AdminPanel/Story',
+      pageName: 'Story',
+      icon: 'assistant',
+    },
+    {
+      link: '/AdminPanel/BannerManagement',
+      pageName: 'Banner Management',
+      icon: 'camera_roll',
+    },
+  ];
+
   constructor(
     private loginService: LoginServiceService,
     private router: Router
