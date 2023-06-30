@@ -20,6 +20,8 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatCardModule } from '@angular/material/card';
+
 @NgModule({
   declarations: [MobileNumberDirective],
   exports: [
@@ -44,6 +46,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatCardModule
   ],
 })
 export class SharedMaterialModule {}

@@ -1,0 +1,204 @@
+.cardAction button {
+  color: #f88634;
+  border-color: #f88634;
+}
+
+.cardAction button:hover {
+  background-color: #f88634 !important;
+}
+
+.cardTitle {
+  font-size: 1.3vw;
+  color: #414141;
+  line-height: 1.31;
+  display: flex;
+}
+
+.cardTitleAction {
+  display: flex;
+  margin-top: -12px;
+}
+
+.cardTitleSubAction {
+  border-radius: 25px;
+  text-align: center;
+  width: 10vw;
+  background-color: white;
+  color: #757575;
+  z-index: 5;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cardText {
+  font-size: 1vw;
+  color: #757575;
+  line-height: 1.6;
+  display: flex;
+}
+
+.cardAction {
+  display: flex;
+  margin-bottom: -30px;
+}
+
+.subAction {
+  background-color: white;
+  z-index: 5;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cardSmallText {
+  font-size: 0.8vw;
+}
+
+@media (max-width: 576px) {
+  .cardDeadlineSeats {
+    font-size: 3vw;
+  }
+
+  .cardSmallText {
+    font-size: 2vw;
+  }
+}
+.grid {
+  justify-items: center;
+}
+
+.cardWidth {
+  width: 85%;
+}
+
+@media (max-width: 767px) {
+  .cardWidth {
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cardTitle {
+    font-size: 3.5vw;
+    color: #414141;
+    line-height: 1.31;
+  }
+
+  .cardText {
+    font-size: 2vw;
+    color: #757575;
+    line-height: 1.6;
+  }
+}
+
+.home-card-img {
+  border-top-left-radius: var(--bs-card-inner-border-radius);
+  border-top-right-radius: var(--bs-card-inner-border-radius);
+  height: 190px;
+  object-fit: cover;
+  width: -webkit-fill-available;
+}
+
+.pagination a:hover:not(.active) {
+  color: white;
+  background-color: #f88634;
+}
+.pagination a {
+  color: #757575;
+  margin: 0 8px;
+}
+
+.privacy {
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+.privacy a {
+  text-decoration: none;
+  color: #414141;
+}
+
+.privacy a:hover {
+  color: blue;
+}
+.userProfile {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 7px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  padding: 4px 10px;
+}
+
+.cardImage {
+  position: relative;
+}
+.card-img-top {
+  display: block;
+}
+
+.cardImage:hover .overlay {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.text2 {
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: black;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  opacity: 0.5;
+}
+
+.ImageName {
+  display: flex;
+  align-items: center;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+.userName {
+  margin-left: 8px;
+}
+
+.button2 {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-body {
+  margin-left: 12px;
+}
+.button2 {
+  border: 2px solid currentColor;
+  border-radius: 20px;
+  padding: 6px 24px;
+}
+
+.button2:hover {
+  color: black;
+  background-color: #ffc107;
+}

@@ -1,3 +1,5 @@
+<app-header></app-header>
+
 <body>
   <form class="share-story-form" [formGroup]="shareStoryForm">
     <p class="title">Share your Story</p>
@@ -25,7 +27,6 @@
             type="text"
             class="storyTitle"
             id="exampleInputEmail1"
-            aria-describedby="emailHelp"
             placeholder=" Enter Story Title"
             formControlName="storyTitle"
           />
@@ -57,8 +58,8 @@
           </mat-datepicker-toggle>
 
           <mat-datepicker #releasedAtPicker startView="year"> </mat-datepicker>
-          <mat-error></mat-error>
         </div>
+        <mat-error></mat-error>
       </div>
     </div>
 
@@ -121,3 +122,4 @@
     </div>
   </form>
 </body>
+<app-footer></app-footer>
