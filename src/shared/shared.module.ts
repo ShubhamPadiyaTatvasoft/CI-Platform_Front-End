@@ -20,6 +20,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CommonModule } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MissionStoryCardComponent } from './components/mission-story-card/mission-story-card.component';
+import { MissionStoryRecommendationDialogComponent } from './components/mission-story-recommendation-dialog/mission-story-recommendation-dialog.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { MissionStoryCardComponent } from './components/mission-story-card/missi
     IconsComponent,
     TimeAndGoalDetailComponent,
     ProfileImageComponent,
+    MissionStoryRecommendationDialogComponent,
   ],
 
   declarations: [
@@ -49,6 +51,7 @@ import { MissionStoryCardComponent } from './components/mission-story-card/missi
     IconsComponent,
     TimeAndGoalDetailComponent,
     ProfileImageComponent,
+    MissionStoryRecommendationDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -62,7 +65,7 @@ import { MissionStoryCardComponent } from './components/mission-story-card/missi
     MatInputModule,
     MatGridListModule,
     MatProgressBarModule,
-    MatTooltipModule
+    MatTooltipModule,
   ],
 })
 export class SharedModule { }

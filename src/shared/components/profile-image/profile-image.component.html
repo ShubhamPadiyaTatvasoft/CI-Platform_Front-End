@@ -1,1 +1,2 @@
-<img src={{img}} mat-card-sm-image class="profileImageClass" alt="Image Not Loaded">
+<img [src]="img!= null ? img : emptyImage"
+     mat-card-sm-image class="profileImageClass" alt="Image Not Loaded">

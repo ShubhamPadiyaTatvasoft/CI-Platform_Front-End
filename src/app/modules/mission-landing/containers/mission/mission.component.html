@@ -6,7 +6,7 @@
       <div *ngFor="let missionData of missionDataObj;" class="col-span-12 mb-3"
         [ngClass]="isGridView ? 'md:col-span-6 lg:col-span-4':''">
         <app-mission-story-card [isGridViewCheck]="isGridView" [isMissionCardCheck]="isMissionCard"
-          [cardDataObj]="missionData"></app-mission-story-card>
+          [cardDataObj]="missionData" (favMissionId)="favMissionUpdate($event)" (recommendationMissionDialLog)="recommendedMission($event)"></app-mission-story-card>
       </div>
     </div>
   </div>

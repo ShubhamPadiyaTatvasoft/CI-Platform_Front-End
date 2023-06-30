@@ -1,8 +1,8 @@
 <mat-card [ngClass]="isGridView ? 'gridMaterialCard' : 'listMaterialCard'"
   [style.flex-direction]="isGridView ? 'column' : 'row'">
-  <div class="image-Container">
+  <div class="image-Container" [style]="!isGridView ? {'width':'40%'}:''">
     <img [src]="isMissionCard ? cardDataObj.missionImagePath:story.imgUrl" class="mainImage"
-      [ngClass]="!isMissionCard ? 'storyImage':''" alt="Image is there">
+      [ngClass]="!isMissionCard ? 'storyImage':''"  [style]="isGridView ? {'height':'260px'}:{'height':'420px','width':'100%'}" alt="Image is there">
 
     <div *ngIf="!isMissionCard" class="viewDetailButton">
       <app-cards-button class="storyDetailButton" [storyButton]="true" [buttonType]="'View Details'"></app-cards-button>
@@ -12,11 +12,11 @@
       <div class="locationBlock">
         <app-icons [iconName]="'location_on'" [iconValue]="cardDataObj.cityName" class="locationDiv"></app-icons>
       </div>
-      <div class="favPositionSet" (click)="favMissionChange()">
+      <div class="favPositionSet" (click)="favMissionChange(cardDataObj.mission.missionId)">
         <app-icons [iconName]="'favorite'" [iconValue]="''" class="favIcon"
           [style]="cardDataObj.isfavMission ? {'color': 'red'}:''"></app-icons>
       </div>
-      <div class="recommendedBlock">
+      <div class="recommendedBlock" (click)="recommendedDialog(cardDataObj.mission.missionId)">
         <app-icons [iconName]="'person_add_alt'" [iconValue]="''" class="recommendedStyle"></app-icons>
       </div>
     </div>
@@ -27,7 +27,7 @@
     </div>
   </div>
 
-  <mat-card-content class="cardContent">
+  <mat-card-content class="cardContent" [style]="!isGridView ? {'width':'60%'}:''">
     <mat-card-title class="titleClass">
       {{ isMissionCard ? cardDataObj.mission.title : story.title }}
     </mat-card-title>

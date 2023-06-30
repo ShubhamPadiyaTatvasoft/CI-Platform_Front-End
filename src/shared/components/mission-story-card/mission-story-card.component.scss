@@ -8,7 +8,7 @@
 }
 
 .listMaterialCard{
-  width: fit-content;
+  width: 100%;
   height: 100%;
   box-shadow: none;
   border:1px solid lightgrey !important;
@@ -79,7 +79,7 @@
 
 .themeBlock{
   position: absolute;
-  bottom: -18px;
+  bottom: -19px;
   right: 0;
   left: 0;
   margin-left: auto;
@@ -102,7 +102,7 @@
   @apply flex ;
   @apply flex-col ;
   @apply justify-between ;
-  @apply my-auto;
+  @apply my-auto ;
 }
 
 .organizationAndRating{
@@ -160,7 +160,6 @@
 
 .mainImage{
   width: 650px;
-  height: 100%;
 }
 
 .storyProfilePic{

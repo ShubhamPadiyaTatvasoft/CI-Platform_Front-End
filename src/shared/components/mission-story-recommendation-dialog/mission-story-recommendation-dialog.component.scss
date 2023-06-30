@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.mainContent{
+  @apply bg-cyan-100 ;
+}
+
+.titleStyle{
+  @apply py-3 ;
+  @apply pl-3 ;
+  @apply text-3xl ;
+  @apply border-b ;
+  @apply bg-slate-300 ;
+}
+
+.userRowClass{
+  @apply flex;
+  @apply flex-row ;
+  @apply justify-between ;
+  @apply py-2 ;
+  @apply border-b ;
+  @apply border-slate-300 ;
+}
+
+.imageAndNameStyle{
+  @apply flex;
+  @apply flex-row ;
+  @apply gap-3 ;
+}
+
+.userNameClass{
+  @apply flex ;
+  @apply items-center ;
+  @apply text-lg ;
+  @apply text-green-600	;
+}
+
+.inviteBtn{
+  @apply flex ;
+  @apply items-center ;
+}
+
+.inviteButtonStyle{
+  @apply p-2 ;
+  @apply text-lg ;
+  color: green;
+  border: 1px solid green;
+  border-radius : 8px;
+  gap: 10px;
+}
+
+.inviteButtonStyle:hover{
+  color: white;
+  background-color: green;
+}
+
+.footerButtons{
+  @apply py-3 ;
+  @apply bg-slate-300 ;
+  @apply w-full ;
+  justify-content: end !important;
+}
+
+.closeButton{
+  @apply mr-4 ;
+  width: fit-content;
+  @apply p-2 ;
+  @apply text-lg ;
+  @apply text-black	;
+  border: 1px solid  black;
+  border-radius : 8px;
+  gap: 10px;
+}
