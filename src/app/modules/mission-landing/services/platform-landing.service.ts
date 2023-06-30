@@ -6,17 +6,19 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class PlatformLandingService {
+  apiUrl = environment.baseURL + "LandingPage";
+
   constructor(private http:HttpClient) {}
 
   landingPageDataGetAndPost(LandingPageData : object){
-    return this.http.post<any>(environment.baseURL + "LandingPage/MissionCardsData",LandingPageData);
+    return this.http.post<any>(`${this.apiUrl}/MissionCardsData`,LandingPageData);
   }
 
   favMissionUpdated(missionId:any , userId : any){
-    return this.http.post<any>(environment.baseURL + `LandingPage/FavMissionUpdate?MissionId=${missionId}&UserId=${userId}`,{});
+    return this.http.post<any>(`${this.apiUrl}/FavMissionUpdate?MissionId=${missionId}&UserId=${userId}`,{});
   }
 
   recommendedMissionUserList(missionId:any ,userId:any){
-    return this.http.post<any>(environment.baseURL + `LandingPage/RecommendedUserGet?MissionId=${missionId}&UserId=${userId}`,{});
+    return this.http.post<any>(`${this.apiUrl}/RecommendedUserGet?MissionId=${missionId}&UserId=${userId}`,{});
   }
 }
