@@ -20,6 +20,7 @@ export class UserProfileComponent implements OnInit {
     userName: string;
     surname: string;
     userEmail: string;
+    avatar: string | undefined;
     userDetails: UserDetails;
     userForm: FormGroup;
     countries: any[];
@@ -31,7 +32,6 @@ export class UserProfileComponent implements OnInit {
     addedSkillsString: string = '';
     addedSkillIds: number[];
     errorMessage = ErrorMessages;
-    file: File;
     imageSrc: string | null | ArrayBuffer;
 
     constructor(
@@ -51,6 +51,7 @@ export class UserProfileComponent implements OnInit {
         this.createUserForm();
         this.getUserDetails(this.userId);
     }
+
     createUserForm() {
         this.userForm = this.formBuilder.group({
             name: ['', [Validators.required]],
@@ -62,11 +63,9 @@ export class UserProfileComponent implements OnInit {
             profileText: ['', [Validators.required]],
             whyVolunteer: ['', [Validators.required]],
             linkedIn: ['', []],
-            country: ['', [Validators.required]],
-            city: ['', [Validators.required]],
+            countryId: ['', [Validators.required]],
+            cityId: ['', [Validators.required]],
             availability: ['', []],
-            skills: ['', []],
-            //image: ['', []]
         });
     }
 
@@ -81,26 +80,28 @@ export class UserProfileComponent implements OnInit {
         }
         const reader = new FileReader();
         reader.readAsDataURL(file[0]);
-        reader.onload = (_event) => { this.imageSrc = reader.result }
-        this.file = <File>event.target.files[0];
+        reader.onload = (_event) => {
+            this.imageSrc = reader.result
+            this.avatar = _event?.target?.result?.toString();
+        }
     }
 
     setUserForm() {
-        this.userForm = this.formBuilder.group({
-            name: [this.userDetails.name, [Validators.required]],
-            surname: [this.userDetails.surname, [Validators.required]],
-            employeeId: [this.userDetails.employeeId, []],
-            manager: [this.userDetails.manager, []],
-            title: [this.userDetails.title, []],
-            department: [this.userDetails.department, []],
-            profileText: [this.userDetails.profileText, [Validators.required]],
-            whyVolunteer: [this.userDetails.whyVolunteer, [Validators.required]],
-            linkedIn: [this.userDetails.linkedIn, []],
-            country: [this.userDetails.countryId, [Validators.required]],
-            city: [this.userDetails.cityId, [Validators.required]],
-            availability: [this.userDetails.availability, []],
-            skills: ['', []],
+        this.userForm.setValue({
+            name: this.userDetails.name,
+            surname: this.userDetails.surname,
+            employeeId: this.userDetails.employeeId,
+            manager: this.userDetails.manager,
+            title: this.userDetails.title,
+            department: this.userDetails.department,
+            profileText: this.userDetails.profileText,
+            whyVolunteer: this.userDetails.whyVolunteer,
+            linkedIn: this.userDetails.linkedIn,
+            countryId: this.userDetails.countryId,
+            cityId: this.userDetails.cityId,
+            availability: this.userDetails.availability,
         });
+
     }
 
     openSkillDialog() {
@@ -110,7 +111,7 @@ export class UserProfileComponent implements OnInit {
                 this.remainingSkills = result.data.skills;
                 this.userSkills = result.data.addedSkills;
                 this.addedSkillIds = this.userSkills.map(skill => { return skill['skillId'] });
-                this.userForm.get("skills")?.setValue(this.addedSkillIds.toString());
+                this.addedSkillsString = this.addedSkillIds.toString();
             }
         });
     }
@@ -121,7 +122,7 @@ export class UserProfileComponent implements OnInit {
                 this.cities = res.data;
             }
         });
-        this.userForm.get("city")?.setValue('');
+        this.userForm.get("cityId")?.setValue('');
     }
 
     loadCountry() {
@@ -173,13 +174,15 @@ export class UserProfileComponent implements OnInit {
                     this.imageSrc = "/assets/Images/user-img-large.png"
                 }
                 else {
-                    this.imageSrc = "/assets/Images/Avatar/" + res.data.avatar.substring(92);
+                    this.imageSrc = res.data.avatar;
                 }
                 this.userEmail = res.data.email;
                 this.userName = res.data.firstName;
                 this.surname = res.data.lastName;
                 this.userSkills = res.data.userSkills.map((users: any) => { return <Skills>{ skillId: users.skillId, skillName: users.skill.skillName } });
-                this.remainingSkills = this.allSkills.filter(skill => {
+                this.addedSkillIds = this.userSkills.map(skill => skill["skillId"]);
+                this.addedSkillsString = this.addedSkillIds.toString();
+                this.remainingSkills = this.allSkills?.filter(skill => {
                     return !this.userSkills.some((res) => { return res.skillId == skill.skillId });
                 })
                 this.countryChanged(this.userDetails.countryId)
@@ -190,27 +193,26 @@ export class UserProfileComponent implements OnInit {
 
     saveUserDetails() {
         if (this.userForm.valid) {
-            const form = new FormData();
-            if (!(typeof (this.file) == "undefined")) {
-                form.append('image', this.file, this.file.name);
+            this.userDetails = {
+                availability: this.userForm.get("availability")?.value,
+                name: this.userForm.get("name")?.value,
+                surname: this.userForm.get("surname")?.value,
+                manager: this.userForm.get("manager")?.value,
+                title: this.userForm.get("title")?.value,
+                department: this.userForm.get("department")?.value,
+                profileText: this.userForm.get("profileText")?.value,
+                whyVolunteer: this.userForm.get("whyVolunteer")?.value,
+                linkedIn: this.userForm.get("linkedIn")?.value,
+                skills: this.addedSkillsString,
+                cityId: this.userForm.get("cityId")?.value,
+                countryId: this.userForm.get("countryId")?.value,
+                employeeId: this.userForm.get("employeeId")?.value,
+                userId: this.userId,
             }
-            this.userDetails.name = this.userForm.get("name")?.value;
-            this.userDetails.surname = this.userForm.get("surname")?.value;
-            form.append('name', this.userForm.get("name")?.value);
-            form.append('surname', this.userForm.get("surname")?.value);
-            form.append('manager', this.userForm.get("manager")?.value);
-            form.append('title', this.userForm.get("title")?.value);
-            form.append('department', this.userForm.get("department")?.value);
-            form.append('profileText', this.userForm.get("profileText")?.value);
-            form.append('whyVolunteer', this.userForm.get("whyVolunteer")?.value);
-            form.append('linkedIn', this.userForm.get("linkedIn")?.value);
-            form.append('skills', this.userForm.get("skills")?.value);
-            form.append('cityId', this.userForm.get("city")?.value.toString());
-            form.append('countryId', this.userForm.get("country")?.value.toString());
-            form.append('employeeId', this.userForm.get("employeeId")?.value.toString());
-            form.append('userId', this.userId.toString());
-            form.append('availability', this.userForm.get("availability")?.value);
-            this.userDetailsService.updateUserProfile(form).subscribe({
+            if (!(typeof (this.avatar) == "undefined")) {
+                this.userDetails.avatar = this.avatar;
+            }
+            this.userDetailsService.updateUserProfile(this.userDetails).subscribe({
                 next: (res) => {
                     if (res.result) {
                         this.userName = this.userDetails.name;
@@ -223,6 +225,7 @@ export class UserProfileComponent implements OnInit {
                 }
 
             })
+
         }
 
     }
