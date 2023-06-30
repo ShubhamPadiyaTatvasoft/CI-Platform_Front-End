@@ -61,4 +61,25 @@ export class AdminService {
       userId
     );
   }
+
+  addEditMission(data: any) {
+    return this.http.post<any>(
+      `${environment.baseURL}Admin/AddUpdateMission`,
+      data
+    );
+  }
+
+  getMissionData(missionId: any) {
+    return this.http.post<any>(
+      `${environment.baseURL}Admin/GetMissionDataFromId`,
+      missionId
+    );
+  }
+
+  deleteMission(missionId: any) {
+    return this.http.post<any>(
+      `${environment.baseURL}Admin/DeleteMission`,
+      missionId
+    );
+  }
 }

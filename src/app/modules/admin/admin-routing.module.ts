@@ -6,6 +6,12 @@ import { LoginAuthGuard } from 'src/app/guards/login-auth.guard';
 import { UserAddEditComponent } from './containers/user-add-edit/user-add-edit.component';
 import { MissionAddEditComponent } from './containers/mission-add-edit/mission-add-edit.component';
 import { CMSPagesComponent } from './containers/cms-pages/cms-pages.component';
+import { MissionApplicationComponent } from './containers/mission-application/mission-application.component';
+import { StoriesModule } from '../stories/stories.module';
+import { StoryComponent } from './containers/story/story.component';
+import { SkiilsComponent } from './containers/skiils/skiils.component';
+import { BannerManagementComponent } from './containers/banner-management/banner-management.component';
+import { ThemesComponent } from './containers/themes/themes.component';
 // import { UserCRUDComponent } from './containers/user-crud/user-crud.component';
 
 const routes: Routes = [
@@ -22,6 +28,26 @@ const routes: Routes = [
   {
     path: 'CMSPage',
     component: CMSPagesComponent,
+  },
+  {
+    path: 'MissionApplication',
+    component: MissionApplicationComponent,
+  },
+  {
+    path: 'MissionTheme',
+    component: ThemesComponent,
+  },
+  {
+    path: 'Story',
+    component: StoryComponent,
+  },
+  {
+    path: 'MissionSkills',
+    component: SkiilsComponent,
+  },
+  {
+    path: 'BannerManagement',
+    component: BannerManagementComponent,
   },
   {
     path: 'userForm/:action/:id',

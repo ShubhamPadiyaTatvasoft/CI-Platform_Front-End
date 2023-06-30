@@ -43,7 +43,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatStepperModule,
     MatDialogModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ],
 })
 export class SharedMaterialModule {}

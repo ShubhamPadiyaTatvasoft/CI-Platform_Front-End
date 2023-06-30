@@ -154,13 +154,72 @@ export const ErrorMessages = {
   ApiErrorMessage: {
     ApiFailed: 'Please check detail properly or try after sometime',
   },
-  
+
   ShareStory: {
     storyTitle: {
       required: 'Story Title is required',
     },
     date: {
       required: 'Date is required',
+    },
+  },
+  basicDetailsForMission: {
+    missionTitle: {
+      required: 'Mission title is required',
+    },
+    missionShortDescription: {
+      required: 'Mission shortDescription is required',
+    },
+    missionDescription: {
+      required: 'Mission Description is required',
+    },
+    organizationName: {
+      required: 'OrganizationName is required',
+    },
+    organizationDetails: {
+      required: 'OrganizationDetails is required',
+    },
+    country: {
+      required: 'Country is required',
+    },
+    city: {
+      required: 'City is required',
+    },
+  },
+
+  configurationDetailsForMission: {
+    startDate: {
+      required: 'Start date is required',
+    },
+    endDate: {
+      required: 'End date is required',
+    },
+    deadlineDate: {
+      required: 'Deadline date is required',
+    },
+    availability: {
+      required: 'Availability is required',
+    },
+    missionTheme: {
+      required: 'MissionTheme is required',
+    },
+    missionSkills: {
+      required: 'MissionSkills is required',
+    },
+    missionType: {
+      required: 'MissionType is required',
+    },
+    totalSeats: {
+      required: 'TotalSeats is required',
+    },
+    goalText: {
+      required: 'GoalText is required',
+    },
+    goalValue: {
+      required: 'GoalValue is required',
+    },
+    status: {
+      required: 'MissionStatus is required',
     },
   },
 };

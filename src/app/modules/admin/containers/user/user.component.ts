@@ -41,6 +41,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserData('');
+    console.log(this.loginService.getToken());
   }
 
   //event called when user press logout
@@ -70,8 +71,8 @@ export class UserComponent implements OnInit {
         }
       },
       error: (err) => {
-        this.notifyService.showError('please login again!');
-        this.loginService.signOut();
+        this.notifyService.showError(ErrorMessages.ApiErrorMessage.ApiFailed);
+        this.showNoDataFound = 'No data found';
       },
     });
   }
@@ -94,7 +95,7 @@ export class UserComponent implements OnInit {
 
   //api call for deleting the data of user
   deleteUser(userIdForDelete: any) {
-    this.adminService.DeleteUser(Number(userIdForDelete)).subscribe({
+    this.adminService.DeleteUser(+userIdForDelete).subscribe({
       next: (res) => {
         this.notifyService.showWarning(res.message);
         this.getUserData('');
