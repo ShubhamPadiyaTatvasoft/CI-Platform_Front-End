@@ -78,6 +78,7 @@
                   >
                 </button>
                 <button
+                  *ngIf="element.deletedAt == null"
                   (click)="
                     getMissionDataForEditOrDelete($event.target, 'delete')
                   "

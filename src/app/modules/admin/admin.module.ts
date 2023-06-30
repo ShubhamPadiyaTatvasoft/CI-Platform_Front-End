@@ -20,6 +20,7 @@ import { BannerManagementComponent } from './containers/banner-management/banner
 import { BannerManagementAddEditComponent } from './containers/banner-management-add-edit/banner-management-add-edit.component';
 import { CMSPagesComponent } from './containers/cms-pages/cms-pages.component';
 import { CMSPagesAddEditComponent } from './containers/cms-pages-add-edit/cms-pages-add-edit.component';
+import { PreLoaderComponent } from './components/pre-loader/pre-loader.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { CMSPagesAddEditComponent } from './containers/cms-pages-add-edit/cms-pa
     BannerManagementAddEditComponent,
     CMSPagesComponent,
     CMSPagesAddEditComponent,
+    PreLoaderComponent,
   ],
   imports: [
     CommonModule,

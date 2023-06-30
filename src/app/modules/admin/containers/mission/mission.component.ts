@@ -6,6 +6,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmBoxService } from '../../services/confirm-box.service';
+import { NotificationService } from 'src/shared/services/notification.service';
+import { ErrorMessages } from 'src/app/common/errorMsg.static';
 
 @Component({
   selector: 'app-mission',
@@ -29,13 +31,15 @@ export class MissionComponent implements OnInit {
     private adminService: AdminService,
     private loginService: LoginServiceService,
     private router: Router,
-    private dialogService: ConfirmBoxService
+    private dialogService: ConfirmBoxService,
+    private notifyService: NotificationService
   ) {}
 
   ngOnInit(): void {
     this.getMissionData('');
   }
 
+  //event called when user start searching
   keyupSearch(search: any) {
     clearTimeout(this.timer);
     this.timer = setTimeout(() => {
@@ -43,6 +47,7 @@ export class MissionComponent implements OnInit {
     }, 1000);
   }
 
+  //api call for getting the data of all missions and set data into mat-table
   getMissionData(search: any) {
     this.adminService.getAllMission(search).subscribe({
       next: (res) => {
@@ -56,13 +61,13 @@ export class MissionComponent implements OnInit {
         }
       },
       error: (err) => {
-        this.loginService.signOut();
+        localStorage.clear();
+        this.showNoDataFound = 'No data found please login again!!';
       },
     });
   }
 
-  showNoDataFound1(abc: any) {}
-
+  //function for opening confirmation box for edit or delete mission
   getMissionDataForEditOrDelete(event: any, action: string) {
     if (action == 'edit') {
       this.router.navigate(['AdminPanel/missionForm', action, event.id]);
@@ -72,8 +77,22 @@ export class MissionComponent implements OnInit {
         .afterClosed()
         .subscribe((res) => {
           if (res == true) {
+            this.deleteMission(+event.id);
           }
         });
     }
+  }
+
+  //api call for deleting the data of mission
+  deleteMission(missionId: number) {
+    this.adminService.deleteMission(+missionId).subscribe({
+      next: (res) => {
+        this.notifyService.showInfo(res.message);
+        this.getMissionData('');
+      },
+      error: () => {
+        this.notifyService.showInfo(ErrorMessages.ApiErrorMessage.ApiFailed);
+      },
+    });
   }
 }

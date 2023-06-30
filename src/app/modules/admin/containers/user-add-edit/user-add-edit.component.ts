@@ -48,7 +48,9 @@ export class UserAddEditComponent implements OnInit {
     this.route.params.subscribe((params) => {
       if (params['id'] != null) {
         this.userId = +params['id'];
-        this.getUserData(+params['id']);
+        setTimeout(() => {
+          this.getUserData(+params['id']);
+        }, 1000);
       } else {
         this.action = 'add';
       }
@@ -102,7 +104,6 @@ export class UserAddEditComponent implements OnInit {
       },
       error: (err) => {
         this.notifyService.showError(ErrorMessages.ApiErrorMessage.ApiFailed);
-        this.router.navigate(['']);
       },
     });
   }

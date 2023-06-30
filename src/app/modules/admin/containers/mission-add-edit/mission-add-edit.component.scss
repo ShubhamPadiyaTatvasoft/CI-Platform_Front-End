@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .mission-main {
+    @apply flex;
+    width: 100vw;
+  }
+
+  .mission-left {
+    @apply md:w-1/6 sm:w-full;
+  }
+
+  .mission-right {
+    @apply md:w-5/6 sm:w-full;
+  }
+
+  .top-nav {
+    @apply w-full;
+    height: max-content;
+  }
+}
+
+@media (max-width: 767px) {
+  .mission-main {
+    @apply flex flex-col;
+  }
+}
+
+.flex-direction {
+  display: flex;
+  flex-direction: row;
+}
+
+.input-width-flex {
+  width: 50%;
+}
+
+@media (max-width: 1024px) {
+  .flex-direction {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .input-width-flex {
+    width: 100%;
+  }
+}
+
+.container {
+  padding: 50px 10%;
+}
+
+.box {
+  position: relative;
+  background: #ffffff;
+  width: 100%;
+}
+
+.box-header {
+  color: #444;
+  display: block;
+  padding: 10px;
+  position: relative;
+  border-bottom: 1px solid #f4f4f4;
+  margin-bottom: 10px;
+}
+
+.box-tools {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+
+.dropzone-wrapper {
+  border: 2px dashed #91b0b3;
+  color: #92b0b3;
+  position: relative;
+  height: 150px;
+}
+
+.dropzone-desc {
+  position: absolute;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  top: 50px;
+  font-size: 16px;
+}
+
+.dropzone,
+.dropzone:focus {
+  position: absolute;
+  outline: none !important;
+  width: 100%;
+  height: 150px;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.dropzone-wrapper:hover,
+.dropzone-wrapper.dragover {
+  background: #ecf0f5;
+}
+
+.preview-zone {
+  text-align: center;
+}
+
+.preview-zone .box {
+  box-shadow: none;
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+.width-full {
+  width: 100vw;
+  height: 30vh;
+}
+
+.height-90 {
+  height: 90vh;
+}
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+.column {
+  -ms-flex: 25%;
+  flex: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  flex-wrap: wrap;
+  overflow: scroll;
+  gap: 5px;
+  padding: 0 4px;
+}
+
+.column-height {
+  height: 25vh;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+.mat-step-header .mat-step-icon-selected {
+  background-color: orangered;
+}
+
+::-webkit-scrollbar {
+  width: 18px;
+  scroll-behavior: smooth;
+  /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(255, 255, 255);
+  /* color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+  height: 12px;
+  @apply bg-orange-700;
+  /* color of the scroll thumb */
+  border-radius: 20px;
+  /* roundness of the scroll thumb */
+  border: 3px solid rgb(255, 255, 255);
+  /* creates padding around scroll thumb */
+}
+
+/* * Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}
