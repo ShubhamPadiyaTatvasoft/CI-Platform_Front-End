@@ -41,7 +41,6 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserData('');
-    console.log(this.loginService.getToken());
   }
 
   //event called when user press logout
