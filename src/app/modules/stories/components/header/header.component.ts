@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-header2',
+  selector: 'app-story-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
 
-export class HeaderComponent2 {
+export class StoryHeaderComponent {
 
 }
