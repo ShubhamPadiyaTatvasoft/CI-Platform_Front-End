@@ -32,8 +32,17 @@ export class AdminService {
     const payload = {
       search: search,
     };
+
+    return this.http.get<any>(
+      `${environment.baseURL}Admin/GetAllCMSPage?search=${search}`
+    );
+  }
+  getAllMissionApplication(search: any) {
+    const payload = {
+      search: search,
+    };
     return this.http.post<any>(
-      `${environment.baseURL}Admin/GetAllCMSPage`,
+      `${environment.baseURL}Admin/GetAllMissionApplication`,
       payload
     );
   }
@@ -100,12 +109,24 @@ export class AdminService {
     );
   }
   getCmsData(cmsId: any) {
-    return this.http.post<any>(
-      `${environment.baseURL}Admin/GetCmsDataFromId`,
-      cmsId
+    return this.http.get<any>(
+      `${environment.baseURL}Admin/GetCmsDataFromId/${cmsId}`
     );
   }
   deleteCms(cmsId: number) {
     return this.http.post<any>(`${environment.baseURL}Admin/DeleteCms`, cmsId);
+  }
+  approveRejectMissionApplication(
+    applicationId: number,
+    approvalStatus: string
+  ) {
+    const payload = {
+      missionApplicationId: +applicationId,
+      approvalStatus: approvalStatus,
+    };
+    return this.http.post<any>(
+      `${environment.baseURL}Admin/ApproveRejectMissionApplication`,
+      payload
+    );
   }
 }
