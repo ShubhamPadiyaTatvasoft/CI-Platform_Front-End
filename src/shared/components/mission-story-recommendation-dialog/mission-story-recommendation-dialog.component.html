@@ -1,0 +1,19 @@
+<h1 class="titleStyle">Recommended to a Co-Worker</h1>
+
+<mat-dialog-content class="mainContent">
+    <div *ngFor="let userData of userDetail.userList" class="userRowClass">
+      <div class="imageAndNameStyle">
+        <div class="hidden sm:block">
+          <app-profile-image [img]='userData.avatar'></app-profile-image>
+        </div>
+        <span class="userNameClass">{{userData.firstName}} {{userData.lastName}}</span>
+      </div>
+      <div class="inviteBtn">
+        <button type="button" class="mat-raised-button mat-primary inviteButtonStyle" (click)="invite(userData.userId,userData.email,userDetail.missionId)" [disabled]="isDisabled" [style]="isDisabled ? {opacity:0.3}:''">Invite</button>
+      </div>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="footerButtons">
+    <button class="mat-raised-button mat-primary closeButton" (click)="close()">Close</button>
+</mat-dialog-actions>

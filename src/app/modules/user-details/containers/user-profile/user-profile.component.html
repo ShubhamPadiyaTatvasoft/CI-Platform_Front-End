@@ -130,7 +130,7 @@
           <mat-form-field appearance="outline" class="w-full">
             <mat-label>Country</mat-label>
             <mat-select
-              formControlName="country"
+              formControlName="countryId"
               (selectionChange)="countryChanged($event.value)"
             >
               <mat-option
@@ -151,7 +151,7 @@
         <div>
           <mat-form-field appearance="outline" class="w-full">
             <mat-label>City</mat-label>
-            <mat-select formControlName="city">
+            <mat-select formControlName="cityId">
               <mat-option [value]="city.cityId" *ngFor="let city of cities">{{
                 city.name
               }}</mat-option>
@@ -159,7 +159,7 @@
             <mat-error>{{
               formValidationService.formValidations(
                 userForm,
-                "city",
+                "cityId",
                 errorMessage.UserProfile
               )
             }}</mat-error>
@@ -203,7 +203,6 @@
       <div class="save-button-div">
         <button class="save-btn" (click)="saveUserDetails()">Save</button>
       </div>
-      <input hidden type="text" formControlName="skills" />
       <input
         #imageInput
         type="file"
