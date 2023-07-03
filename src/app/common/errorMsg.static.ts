@@ -222,4 +222,19 @@ export const ErrorMessages = {
       required: 'MissionStatus is required',
     },
   },
+
+  cmsDetails: {
+    cmsTitle: {
+      required: 'Title is required',
+    },
+    cmdDescription: {
+      required: 'Description is required',
+    },
+    cmsSlug: {
+      required: 'Slug is required',
+    },
+    status: {
+      required: 'Status is required',
+    },
+  },
 };
