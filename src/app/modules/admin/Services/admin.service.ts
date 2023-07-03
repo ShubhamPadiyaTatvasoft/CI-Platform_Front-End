@@ -28,6 +28,16 @@ export class AdminService {
     );
   }
 
+  getAllCMS(search: any) {
+    const payload = {
+      search: search,
+    };
+    return this.http.post<any>(
+      `${environment.baseURL}Admin/GetAllCMSPage`,
+      payload
+    );
+  }
+
   GetAllCountryTheme() {
     return this.http.get<any>(
       `${environment.baseURL}Admin/GetListOfCityCountryThemeSkills`
@@ -81,5 +91,21 @@ export class AdminService {
       `${environment.baseURL}Admin/DeleteMission`,
       missionId
     );
+  }
+
+  addEditCms(cmsData: any) {
+    return this.http.post<any>(
+      `${environment.baseURL}Admin/AddEditCms`,
+      cmsData
+    );
+  }
+  getCmsData(cmsId: any) {
+    return this.http.post<any>(
+      `${environment.baseURL}Admin/GetCmsDataFromId`,
+      cmsId
+    );
+  }
+  deleteCms(cmsId: number) {
+    return this.http.post<any>(`${environment.baseURL}Admin/DeleteCms`, cmsId);
   }
 }

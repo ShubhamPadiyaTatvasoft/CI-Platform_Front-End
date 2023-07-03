@@ -1,1 +1,104 @@
-<p>cms-pages works!</p>
+<div class="cms-main">
+  <div class="cms-left">
+    <app-side-navigation></app-side-navigation>
+  </div>
+  <div class="cms-right">
+    <div>
+      <app-top-navigation></app-top-navigation>
+    </div>
+    <div class="h-5/6 p-5 scroll-bar" style="width: 100%; overflow-y: scroll">
+      <div class="font-bold mb-3 ms-1 text-2xl">CMS Pages</div>
+
+      <div class="mb-3 ms-1 flex-add-search">
+        <div class="flex-search">
+          <mat-label>Search: &nbsp;</mat-label>
+          <input
+            matInput
+            #search
+            name="search"
+            type="text"
+            id="searchbar"
+            class="search-bar"
+            placeholder="search"
+            (keyup)="keyupSearch(search)"
+          />
+        </div>
+
+        <button
+          mat-raised-button
+          class="rounded-3xl orange-border p-3"
+          style="width: max-content"
+          [routerLink]="['/AdminPanel/cmsForm', 'add']"
+        >
+          <span class="font-medium flex items-center"
+            ><span>ADD</span> <mat-icon>add</mat-icon>
+          </span>
+        </button>
+      </div>
+      <div>
+        <table mat-table matSort [dataSource]="dataSource">
+          <ng-container matColumnDef="Title">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>Title</th>
+            <td mat-cell *matCellDef="let element" class="font-semibold">
+              {{ element.title }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element">
+              <span
+                class="text-green-600 font-medium"
+                *ngIf="element.status == 'Active'"
+                >Active</span
+              >
+              <span
+                class="text-red-600 font-medium"
+                *ngIf="
+                  element.status == 'InActive' && element.deletedAt == null
+                "
+                >InActive</span
+              >
+              <span
+                class="text-black font-medium"
+                *ngIf="
+                  element.status == 'InActive' && element.deletedAt != null
+                "
+                >Deleted</span
+              >
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Action">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element">
+              <div class="flex">
+                <button
+                  (click)="getCmsDataForEditOrDelete($event.target, 'edit')"
+                >
+                  <mat-icon class="text-orange-600" id="{{ element.cmsPageId }}"
+                    >edit</mat-icon
+                  >
+                </button>
+                <button
+                  *ngIf="element.deletedAt == null"
+                  (click)="getCmsDataForEditOrDelete($event.target, 'delete')"
+                >
+                  <mat-icon id="{{ element.cmsPageId }}"
+                    >delete_forever</mat-icon
+                  >
+                </button>
+              </div>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumn"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumn"></tr>
+        </table>
+      </div>
+      <div class="flex justify-center mt-5 font-bold text-2xl">
+        {{ showNoDataFound }}
+      </div>
+    </div>
+    <mat-paginator [pageSizeOptions]="[10, 5, 8, 2]" showFirstLastButtons>
+    </mat-paginator>
+  </div>
+</div>

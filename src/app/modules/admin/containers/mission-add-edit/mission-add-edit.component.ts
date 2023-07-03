@@ -161,6 +161,7 @@ export class MissionAddEditComponent {
         }
       },
       error: () => {
+        this.preLoader = 'hidden';
         this.notifyService.showError(ErrorMessages.ApiErrorMessage.ApiFailed);
       },
     });
