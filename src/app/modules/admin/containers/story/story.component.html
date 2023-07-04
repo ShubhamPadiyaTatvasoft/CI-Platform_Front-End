@@ -1,1 +1,98 @@
-<p>story works!</p>
+<div class="story-main">
+  <div class="story-left">
+    <app-side-navigation></app-side-navigation>
+  </div>
+  <div class="story-right">
+    <div>
+      <app-top-navigation></app-top-navigation>
+    </div>
+    <div class="h-5/6 p-5 scroll-bar" style="width: 100%; overflow-y: scroll">
+      <div class="font-bold mb-3 ms-1 text-2xl">Stories</div>
+      <div class="mb-3 ms-1 flex-add-search">
+        <div class="flex-search">
+          <mat-label>Search: &nbsp;</mat-label>
+          <input
+            matInput
+            #search
+            name="search"
+            type="text"
+            id="searchbar"
+            class="search-bar"
+            placeholder="search"
+            (keyup)="keyupSearch(search)"
+          />
+        </div>
+      </div>
+      <div>
+        <table mat-table matSort [dataSource]="dataSource">
+          <ng-container matColumnDef="StoryTitle">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>
+              Story Title
+            </th>
+            <div></div>
+            <td mat-cell *matCellDef="let element" class="font-semibold">
+              {{ element.storyTitle }}
+            </td></ng-container
+          >
+
+          <ng-container matColumnDef="FullName">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>Full Name</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.userName }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="MissionTitle">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>
+              Mission Title
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.missionTitle }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Action">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element">
+              <div class="flex gap-2">
+                <button
+                  mat-raised-button
+                  class="rounded-3xl orange-border p-2"
+                  style="width: max-content"
+                >
+                  View Detail
+                </button>
+                <button
+                  (click)="storyApproveRejectDelete($event.target, 'approved')"
+                >
+                  <mat-icon class="text-green-500" id="{{ element.storyId }}"
+                    >check circle outline icon</mat-icon
+                  >
+                </button>
+                <button
+                  (click)="storyApproveRejectDelete($event.target, 'rejected')"
+                >
+                  <mat-icon class="text-red-600" id="{{ element.storyId }}"
+                    >cancel icon</mat-icon
+                  >
+                </button>
+                <button
+                  (click)="storyApproveRejectDelete($event.target, 'deleted')"
+                >
+                  <mat-icon class="text-black" id="{{ element.storyId }}"
+                    >delete_forever</mat-icon
+                  >
+                </button>
+              </div>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumn"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumn"></tr>
+        </table>
+        <div class="flex justify-center mt-5 font-bold text-2xl">
+          {{ showNoDataFound }}
+        </div>
+      </div>
+    </div>
+    <mat-paginator [pageSizeOptions]="[5, 8, 2, 10]" showFirstLastButtons>
+    </mat-paginator>
+  </div>
+</div>

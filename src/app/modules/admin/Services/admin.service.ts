@@ -29,21 +29,18 @@ export class AdminService {
   }
 
   getAllCMS(search: any) {
-    const payload = {
-      search: search,
-    };
-
     return this.http.get<any>(
       `${environment.baseURL}Admin/GetAllCMSPage?search=${search}`
     );
   }
   getAllMissionApplication(search: any) {
-    const payload = {
-      search: search,
-    };
-    return this.http.post<any>(
-      `${environment.baseURL}Admin/GetAllMissionApplication`,
-      payload
+    return this.http.get<any>(
+      `${environment.baseURL}Admin/GetAllMissionApplication?search=${search}`
+    );
+  }
+  getAllStories(search: any) {
+    return this.http.get<any>(
+      `${environment.baseURL}Admin/GetAllStories?search=${search}`
     );
   }
 
@@ -126,6 +123,17 @@ export class AdminService {
     };
     return this.http.post<any>(
       `${environment.baseURL}Admin/ApproveRejectMissionApplication`,
+      payload
+    );
+  }
+
+  approveRejectDeleteStory(storyId: number, status: string) {
+    const payload = {
+      storyId: +storyId,
+      storyStatus: status,
+    };
+    return this.http.post<any>(
+      `${environment.baseURL}Admin/ApproveRejectDeleteStory`,
       payload
     );
   }

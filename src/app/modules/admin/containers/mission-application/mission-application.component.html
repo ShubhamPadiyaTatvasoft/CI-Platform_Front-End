@@ -1,1 +1,106 @@
-<p>mission-application works!</p>
+<div class="mission-main">
+  <div class="mission-left">
+    <app-side-navigation></app-side-navigation>
+  </div>
+  <div class="mission-right">
+    <div>
+      <app-top-navigation></app-top-navigation>
+    </div>
+    <div class="h-5/6 p-5 scroll-bar" style="width: 100%; overflow-y: scroll">
+      <div class="font-bold mb-3 ms-1 text-2xl">Mission Applications</div>
+      <div class="mb-3 ms-1 flex-add-search">
+        <div class="flex-search">
+          <mat-label>Search: &nbsp;</mat-label>
+          <input
+            matInput
+            #search
+            name="search"
+            type="text"
+            id="searchbar"
+            class="search-bar"
+            placeholder="search"
+            (keyup)="keyupSearch(search)"
+          />
+        </div>
+      </div>
+      <div>
+        <table mat-table matSort [dataSource]="dataSource">
+          <ng-container matColumnDef="MissionTitle">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>
+              Mission Title
+            </th>
+            <div></div>
+            <td mat-cell *matCellDef="let element" class="font-semibold">
+              {{ element.missionTitle }}
+            </td></ng-container
+          >
+
+          <ng-container matColumnDef="MissionId">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>
+              Mission Id
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.missionId }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="UserId">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>User Id</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.userId }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="UserName">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>User Name</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.userName }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="MissionApplicationId">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>
+              Mission ApplicationId
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.missionApplicationId }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element">
+              <div class="flex">
+                <button
+                  (click)="
+                    missionApplicationApproveReject($event.target, 'approved')
+                  "
+                >
+                  <mat-icon
+                    class="text-green-500"
+                    id="{{ element.missionApplicationId }}"
+                    >check circle outline icon</mat-icon
+                  >
+                </button>
+                <button
+                  (click)="
+                    missionApplicationApproveReject($event.target, 'rejected')
+                  "
+                >
+                  <mat-icon
+                    class="text-red-600"
+                    id="{{ element.missionApplicationId }}"
+                    >cancel icon</mat-icon
+                  >
+                </button>
+              </div>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumn"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumn"></tr>
+        </table>
+        <div class="flex justify-center mt-5 font-bold text-2xl">
+          {{ showNoDataFound }}
+        </div>
+      </div>
+    </div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 15, 20]" showFirstLastButtons>
+    </mat-paginator>
+  </div>
+</div>
