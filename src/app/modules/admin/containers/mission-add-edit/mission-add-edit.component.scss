@@ -152,6 +152,7 @@
   vertical-align: middle;
   width: 100%;
 }
+
 .mat-step-header .mat-step-icon-selected {
   background-color: orangered;
 }
@@ -175,6 +176,10 @@
   /* roundness of the scroll thumb */
   border: 3px solid rgb(255, 255, 255);
   /* creates padding around scroll thumb */
+}
+
+.orange-border {
+  border: 2px solid rgb(234 88 12);
 }
 
 /* * Responsive layout - makes a two column-layout instead of four columns */

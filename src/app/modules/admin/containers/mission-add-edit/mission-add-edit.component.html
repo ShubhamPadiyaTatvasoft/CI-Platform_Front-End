@@ -12,7 +12,19 @@
       class="height-90 p-5 scroll-bar"
       style="width: 100%; overflow-y: scroll"
     >
-      <div class="font-bold mb-3 ms-1 text-2xl">Mission</div>
+      <div class="mb-3 ms-1 flex justify-between">
+        <span class="font-bold text-2xl">Mission</span>
+        <button
+          mat-raised-button
+          class="rounded-3xl orange-border p-3"
+          style="width: max-content"
+          [routerLink]="['/AdminPanel/Mission']"
+        >
+          <span class="font-medium flex items-center"
+            ><span>Back</span> <mat-icon>arrow_back</mat-icon>
+          </span>
+        </button>
+      </div>
       <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
         <mat-step [stepControl]="basicDetailsForMission">
           <form
@@ -458,7 +470,12 @@
               <button mat-raised-button color="warn" matStepperPrevious>
                 Back
               </button>
-              <button mat-raised-button color="warn" matStepperNext>
+              <button
+                mat-raised-button
+                color="warn"
+                matStepperNext
+                [disabled]="configurationDetailsForMission.invalid"
+              >
                 Next
               </button>
             </div>
@@ -578,7 +595,10 @@
               <button
                 mat-raised-button
                 color="primary"
-                [disabled]="basicDetailsForMission.invalid"
+                [disabled]="
+                  basicDetailsForMission.invalid ||
+                  configurationDetailsForMission.invalid
+                "
                 (click)="addUpdateMission()"
               >
                 Submit
