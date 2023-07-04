@@ -26,7 +26,7 @@ export class StoryComponent implements OnInit {
     'MissionTitle',
     'Action',
   ];
-  stories: any[] = [];
+
   showNoDataFound: string;
   alertMsg: string;
 
@@ -54,36 +54,10 @@ export class StoryComponent implements OnInit {
   getStoryData(search: string) {
     this.adminService.getAllStories(search).subscribe({
       next: (res) => {
-        this.stories = [];
-        for (let i = 0; i < res.data['missions'].length; i++) {
-          for (let j = 0; j < res.data['stories'].length; j++) {
-            for (let k = 0; k < res.data['users'].length; k++) {
-              if (
-                res.data['users'][k].userId == res.data['stories'][j].userId
-              ) {
-                if (
-                  res.data['stories'][j].missionId ==
-                  res.data['missions'][i].missionId
-                ) {
-                  let story = {
-                    StoryTitle: res.data['stories'][j].title,
-                    missionTitle: res.data['missions'][i].title,
-                    storyId: res.data['stories'][j].storyId,
-                    fullName:
-                      res.data['users'][k].firstName +
-                      ' ' +
-                      res.data['users'][k].lastName,
-                  };
-                  this.stories.push(story);
-                }
-              }
-            }
-          }
-        }
-        this.dataSource = new MatTableDataSource(this.stories);
+        this.dataSource = new MatTableDataSource(res.data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-        if (this.stories.length == 0) {
+        if (res.data.length == 0) {
           this.showNoDataFound = 'No data found';
         } else {
           this.showNoDataFound = '';

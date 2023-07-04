@@ -28,8 +28,7 @@ export class MissionApplicationComponent implements OnInit {
     'MissionApplicationId',
     'action',
   ];
-  missionApplications: any[] = [];
-  mission: any[] = [];
+
   showNoDataFound: string;
   alertMsg: string;
 
@@ -57,40 +56,10 @@ export class MissionApplicationComponent implements OnInit {
   getMissionApplicationData(search: string) {
     this.adminService.getAllMissionApplication(search).subscribe({
       next: (res) => {
-        this.missionApplications = [];
-        for (let i = 0; i < res.data['missions'].length; i++) {
-          for (let j = 0; j < res.data['applications'].length; j++) {
-            for (let k = 0; k < res.data['users'].length; k++) {
-              if (
-                res.data['users'][k].userId ==
-                res.data['applications'][j].userId
-              ) {
-                if (
-                  res.data['applications'][j].missionId ==
-                  res.data['missions'][i].missionId
-                ) {
-                  let missionApplication = {
-                    missionId: res.data['missions'][i].missionId,
-                    missionTitle: res.data['missions'][i].title,
-                    missionApplicationId:
-                      res.data['applications'][j].missionApplicationId,
-                    userName:
-                      res.data['users'][k].firstName +
-                      ' ' +
-                      res.data['users'][k].lastName,
-                    userId: res.data['users'][k].userId,
-                    appliedDate: res.data['applications'][j].appliedAt,
-                  };
-                  this.missionApplications.push(missionApplication);
-                }
-              }
-            }
-          }
-        }
-        this.dataSource = new MatTableDataSource(this.missionApplications);
+        this.dataSource = new MatTableDataSource(res.data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-        if (this.missionApplications.length == 0) {
+        if (res.data.length == 0) {
           this.showNoDataFound = 'No data found';
         } else {
           this.showNoDataFound = '';
