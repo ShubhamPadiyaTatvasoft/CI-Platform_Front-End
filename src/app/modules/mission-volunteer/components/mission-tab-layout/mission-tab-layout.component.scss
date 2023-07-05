@@ -1,0 +1,66 @@
+.docs {
+    display: flex;
+    border: 1px solid #E8E8E8;
+    background: #FFFFFF;
+    border-radius: 23px;
+    padding: 10px 15px;
+    width: fit-content;
+    margin: 10px;
+    
+}
+.Tabmaindiv{
+    min-height: 450px;
+}
+.example-full-width {
+    width: 100%;
+    
+   
+  }
+
+  .comments {
+    background-color: white;
+    
+    border-color: gray;
+    border-width: 7px;
+    
+}
+.comments1 {
+    background-color: white;
+    border-bottom: 7px solid gray;
+    border-width: 100%;
+   
+    
+}
+  .applybtn {
+    color: #F88634;
+    background-color: white;
+    border: 2px solid #F88634;
+    border-radius: 30px;
+    align-items: center;
+    width: 220px;
+    
+    height: 40px;
+}
+.applybtn:hover {
+    background-color: #F88634;
+    color: white;
+}
+
+  
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+    .docdiv {
+      @apply grid grid-cols-4 ;
+    }
+    
+    @media screen and (max-width:1024px){
+        .docdiv{
+            @apply grid grid-cols-2;
+        }
+        
+    }
+}

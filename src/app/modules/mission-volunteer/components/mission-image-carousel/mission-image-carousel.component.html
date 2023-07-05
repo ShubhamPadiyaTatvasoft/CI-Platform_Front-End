@@ -1,1 +1,34 @@
-<p>mission-image-carousel works!</p>
+<section>
+    <div class="container">
+        <div class="carousel">
+            
+            <ng-container *ngFor="let i of mediapath; index as m;">
+                <input *ngIf='m+1==1' checked  type="radio" name="slides" id="slide-{{m+1}}">
+                <input *ngIf='m+1!=1'   type="radio" name="slides" id="slide-{{m+1}}">
+
+            </ng-container>
+            
+            <!-- <input type="radio" name="slides" id="slide-2">
+            <input type="radio" name="slides" id="slide-3">
+            <input type="radio" name="slides" id="slide-4">
+            <input type="radio" name="slides" id="slide-5">
+            <input type="radio" name="slides" id="slide-6"> -->
+            <ul class="carousel__slides">
+                <li class="carousel__slide" *ngFor="let i of mediapath">
+
+                    <div>
+                        <img src="{{i}}" alt="">
+                    </div>
+
+
+                </li>
+            </ul>
+            <ul class="carousel__thumbnails">
+                <li *ngFor="let i of mediapath; index as m;">
+                    <label for="slide-{{m+1}}"><img src="{{i}}" alt=""></label>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</section>

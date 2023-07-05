@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   { path: 'UserDetails/:userId', loadChildren: () => import('./modules/user-details/user-details.module').then(m => m.UserDetailsModule) },
   {
-    path: 'MissionVolunteer',
+    path: 'MissionVolunteer/:missionId',
     loadChildren: () =>
       import('./modules/mission-volunteer/mission-volunteer.module').then(
         (m) => m.MissionVolunteerModule

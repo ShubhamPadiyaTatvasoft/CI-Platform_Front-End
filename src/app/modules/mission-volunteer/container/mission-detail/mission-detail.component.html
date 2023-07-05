@@ -1,1 +1,42 @@
-<p>mission-detail works!</p>
+<div class="container mx-auto ">
+  <div class="grid xl:grid-cols-12 ">
+    
+    <div class="grid col-span-6">
+      <app-mission-image-carousel [MissionData]="volunteerMissionCardModel"
+      [userId]="userId"></app-mission-image-carousel>
+    </div>
+    <div class="grid col-span-6 lg:pl-20 mt-4 font-sans missioninfo">
+      <app-mission-information
+      [MissionData]="volunteerMissionCardModel"
+      [userId]="userId"
+      ></app-mission-information>
+    </div>
+
+  </div>
+  <div class="grid xl:grid-cols-12">
+    <div class="grid col-span-8 mt-8 min-h-max">
+      <app-mission-tab-layout
+      [MissionData]="volunteerMissionCardModel"
+      [userId]="userId"></app-mission-tab-layout>
+    </div>
+    <div class="grid col-span-4 lg:pl-20   missioninfo">
+      <div class="grid grid-rows-2">
+        <div class="grid row-span-1 ">
+          <app-mission-skill-rating
+          [MissionData]="volunteerMissionCardModel"
+      [userId]="userId"></app-mission-skill-rating>
+        </div>
+        <div class="grid row-span-1 mt-6">  
+          <app-mission-recent-volunteer [MissionData]="volunteerMissionCardModel"
+          [userId]="userId"></app-mission-recent-volunteer>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <hr class="mt-6">
+  <div class="text-center mt-6">
+    <app-mission-related-mission></app-mission-related-mission>
+  </div>
+
+</div>
