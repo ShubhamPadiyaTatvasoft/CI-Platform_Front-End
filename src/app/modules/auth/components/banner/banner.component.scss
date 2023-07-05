@@ -3,38 +3,48 @@
 @tailwind utilities;
 
 
-@layer components{
+@layer components {}
 
-
-
-
-}
-.corouse-image{
+.corouse-image {
     width: 65vw;
     height: 100vh;
 }
-.position-absolute-prevbtn{
+
+.position-absolute-prevbtn {
     position: absolute;
     top: 50%;
     left: 30px;
     color: black !important;
     background-color: rgb(190, 184, 182);
 }
-.position-absolute-nextbtn{
+
+.position-absolute-nextbtn {
     position: absolute;
     top: 50%;
     right: 50px;
     color: black !important;
     background-color: rgb(190, 184, 182);
 }
-.position-relative{
+
+.position-absolute-text {
+    display: flex;
+    justify-content: center;
+    position: absolute !important;
+    bottom: 10%;
+    text-align: center;
+    width: 97.5%;
+    background-color: rgba(119, 121, 119, 0.5);
+
+}
+
+.position-relative {
     position: relative;
 }
 
 @media only screen and (max-width: 1279px) {
-    .corouse-image{
+    .corouse-image {
         width: 100vw;
         height: auto;
     }
-    
+
 }
