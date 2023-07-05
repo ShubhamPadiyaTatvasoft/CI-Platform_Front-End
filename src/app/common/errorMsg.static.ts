@@ -245,4 +245,12 @@ export const ErrorMessages = {
       required: 'SortOrder is required',
     },
   },
+  themeDetails: {
+    themeTitle: {
+      required: 'Theme title is required',
+    },
+    status: {
+      required: 'Status is required',
+    },
+  },
 };
