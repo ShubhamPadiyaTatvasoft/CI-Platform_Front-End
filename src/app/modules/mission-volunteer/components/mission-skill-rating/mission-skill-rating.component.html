@@ -1,1 +1,42 @@
-<p>mission-skill-rating works!</p>
+
+<mat-card class="border-gray-500 w-full mt-24">
+    <mat-card-header>
+      <mat-card-title class="Infititle text-2xl ">Information</mat-card-title>
+    </mat-card-header>
+    <hr/>
+   
+    <mat-card-content>
+      <div class="grid grid-cols-8 py-2">
+        <div class="col-span-2 mt-2 text-start" >
+         <p>Skill</p>
+        </div>
+        <div class="col-span-6 mt-2">
+         <p> {{MissionData.skillName}}</p>
+        </div>
+
+      </div>
+    </mat-card-content><hr>
+    <mat-card-content>
+        <div class="grid grid-cols-8 py-2">
+          <div class="col-span-2 mt-2">
+           <p>Days</p>
+          </div>
+          <div class="col-span-6 mt-2">
+           <p>{{MissionData.mAvailability}}</p>
+          </div>
+        </div>
+    </mat-card-content><hr>
+    <mat-card-content>
+        <div class="grid grid-cols-8 py-2">
+          <div class="col-span-2 mt-2">
+           <p>rating</p>
+          </div>
+          <div class="col-span-6 mt-2 flex">
+            <span class=" "*ngFor='let in of counter(MissionData.avgRating) ;let i = index'><img src="../../../../../assets/Images/selected-star.png" /></span>
+            <span class="h-6 w-7" *ngFor='let in of counter(5-MissionData.avgRating) ;let i = index'><img src="../../../../../assets/Images/star-empty.png" /></span>
+            
+          </div>
+        </div>
+    </mat-card-content><hr>
+  </mat-card>
+  

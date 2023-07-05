@@ -1,1 +1,111 @@
-<p>mission-tab-layout works!</p>
+<mat-tab-group class="Tabmaindiv">
+    <mat-tab label="Mission">
+
+        <h1 class="text-3xl mb-4 mt-4">Introduction</h1>
+        <p>{{MissionData.shortDescription}}
+        </p>
+        <h1 class="text-3xl mb-4 mt-4">Challenge</h1>
+        <p>
+            {{MissionData.description}}
+            <br />
+            <br />
+        </p>
+        <h1 class="text-3xl mb-4 mt-4">Documents</h1>
+        <div class="docdiv flex"   >
+
+            <button  class="docs" *ngFor="let p of docpath ; let i = index;" >
+                <a  class="" href="{{p}}" download>{{docname[i]}}.{{doctype[i]}}</a>
+            </button>
+           
+        </div>
+
+    </mat-tab>
+    <mat-tab label="Organization" style="">
+        <h1 class="text-3xl mb-4 mt-4">Introduction</h1>
+        <p> {{MissionData.organizationDetail}}
+        </p>
+        <h1 class="text-3xl mb-4 mt-4">Challenge</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+            enim ad minim veniam, quis nostrud exercitation ullamco laboris
+            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+            in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+            sunt in culpa qui officia deserunt mollit anim id est laborum.
+            \
+        </p>
+    </mat-tab>
+    <mat-tab label="Comments">
+        <form [formGroup]="CommentForm">
+            <div *ngIf="MissionData.approvalStatus == 'approve' " >
+                <mat-form-field appearance="outline" class="example-full-width mt-3">
+                    <mat-label >Enter Your Comments...</mat-label>
+                    <textarea #commentInput matInput formControlName="commentsInput" required="true"></textarea>
+                </mat-form-field>
+                <button class="applybtn mb-4" type="submit" (click)="submitCommnent(commentInput.value)">
+                    Post Comment
+                </button>
+            </div>
+            <div *ngIf="MissionData.approvalStatus != 'approve' ">
+                <mat-form-field appearance="outline" class="example-full-width mt-3">
+                    <mat-label>Enter Your Comments...</mat-label>
+                    <textarea matInput disabled="true"></textarea>
+                </mat-form-field>
+                <button class="applybtn mb-4">
+                    Post Comment
+                </button>
+            </div>
+        </form>
+       
+
+        <div class="">
+            <div class="comments " id="parentcomment">
+                <div class=" comments1 card grid grid-cols-12 p-2" *ngFor="let c of comment;">
+                    <div class="col-span-1" >
+                        <img class="rounded-full"  alt="" src="{{c.avatar}}"
+                            style="width: 50px; height: 50px" />
+                    </div>
+
+                    <div class="col-span-11 ">
+                        <h6 class="card-title  font-bold">{{c.firstname}}</h6>
+                        <p type="Date" class="card-text font-sans text-sm mt-1">
+                            {{c.createdAtcomment | date}}
+                        </p>
+                        <p class="font-sans mt-1">{{c.commentText}}</p>
+                    </div>
+                </div>
+                
+               <!--  <div class=" comments1 card grid grid-cols-12 p-2">
+                    <div class="col-span-1">
+                        <img class="rounded-full" src="../../../../../assets/Images/volunteer1.png" alt=""
+                            style="width: 50px; height: 50px" />
+                    </div>
+
+                    <div class="col-span-11 ">
+                        <h6 class="card-title  font-bold">Charul Patel</h6>
+                        <p type="Date" class="card-text font-sans text-sm mt-2">
+                            23/02/2023
+                        </p>
+                        <p class="font-sans">vfbcngfnv gfsndfgsnfsbngvfsv gsn s</p>
+                    </div>
+                </div>
+                <div class=" comments1 card grid grid-cols-12 p-2">
+                    <div class="col-span-1">
+                        <img class="rounded-full" src="../../../../../assets/Images/volunteer1.png" alt=""
+                            style="width: 50px; height: 50px" />
+                    </div>
+
+                    <div class="col-span-11 ">
+                        <h6 class="card-title  font-bold">Charul Patel</h6>
+                        <p type="Date" class="card-text font-sans text-sm mt-2">
+                            23/02/2023
+                        </p>
+                        <p class="font-sans">vfbcngfnv gfsndfgsnfsbngvfsv gsn s</p>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        
+    </mat-tab>
+</mat-tab-group>

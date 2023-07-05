@@ -1,0 +1,114 @@
+.goal{
+    border: 2px solid rgba(0, 0, 0, 0.35);
+  
+}
+
+.text-center1 {
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    color: black;
+    margin: 8px 0px;
+}
+
+    .text-center1:before,
+    .text-center1:after {
+        content: "";
+        flex-grow: 1;
+        background: rgba(0, 0, 0, 0.35);
+        ;
+        height: 2px;
+        font-size: 0px;
+        line-height: 0px;
+        margin: 0px 8px;
+    }
+.Seatleft{
+    width: 29px;
+height: 29px;
+background: transparent 0% 0% no-repeat padding-box;
+opacity: 1;
+}    
+.seatprogress{
+    border-bottom: 2px solid rgba(0, 0, 0, 0.35) ;
+    
+}
+.twoButtons {
+    border: 2px solid #757575;
+    border-radius: 25px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 320px;
+    height: 40px
+    
+}
+.mat-mdc-dialog-container .mdc-dialog__surface {
+    width: auto;
+    height: auto    ;
+    min-width: 500px !important;
+  }
+.box1{
+    border: 2px solid rgba(0, 0, 0, 0.35);
+    height: 130px;
+    margin: 1%;
+    width: 153px;
+}
+ .applybtn {
+        color: #F88634;
+        background-color: white;
+        border: 2px solid #F88634;
+        border-radius: 30px;
+        align-items: center;
+        width: 220px;
+        align-items: center;
+        height: 50px;
+    }
+    .applybtn:hover {
+        background-color: #F88634;
+        color: white;
+    }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+    .cardd {
+      @apply grid grid-cols-4 gap-5 flex;
+    }
+    .addfav{
+        @apply grid grid-cols-2 mt-6 mb-2;
+    }
+    .goaldiv{
+        @apply grid grid-cols-2 ;
+    }
+}
+@media screen and (max-width:1535px) and (min-width:1279px) {
+    .cardd{
+        @apply grid grid-cols-2;
+    }
+    .addfav{
+        @apply grid grid-cols-1 mt-6 mb-2;
+    }
+    .recoomanded{
+        @apply mt-2;
+    }
+}
+@media screen and (max-width:765px){
+
+    .addfav{
+        @apply grid grid-cols-1 mt-6 mb-2 ;
+    }
+    .recoomanded{
+        @apply mt-2 justify-center flex;
+    }
+    .addfavdiv{
+        @apply justify-center flex;
+    }
+    .cardd{
+        @apply grid grid-cols-2;
+    }
+    .goaldiv{
+        @apply grid grid-cols-1 ;
+    }
+    
+}
