@@ -1,1 +1,127 @@
-<p>mission-information works!</p>
+<h2 class="text-4xl mt-10">{{MissionData['title']}}</h2>
+<p class="py-3">{{MissionData.shortDescription}}</p>
+<div class="text-center1" *ngIf="MissionData.missionType == 'GOAL'">
+    <span class=" rounded-3xl px-4 p-1 goal">{{MissionData.goalObjectiveText}}</span>
+
+</div>
+<div class="text-center1" *ngIf="MissionData.missionType == 'TIME'">
+    <span class=" rounded-3xl px-4 p-1 goal">{{MissionData.startDate | date}} from {{MissionData.endDate |date}}</span>
+
+</div>
+<div class="goaldiv">
+    <div class=" flex justify-center align-middle mb-2">
+
+        <p><img class="Seatleft content-center mt-1" src="../assets/Images/Seats-left.png" /></p><br>
+        <p class="mx-2">{{MissionData.leftSeats}} <br> seats left</p>
+    </div>
+    <div class="flex justify-center align-middle mb-4" *ngIf="MissionData.missionType == 'GOAL' ">
+        <div>
+            <img class="Seatleft content-center mt-2" src="../assets/Images/achieved.png" />
+        </div>
+        <div class="flex flex-col mx-4">
+            <div class="w-32 h-6 bg-gray-200 rounded-full dark:bg-gray-700">
+                <div class="h-6 bg-blue-600 rounded-full dark:bg-blue-500" style="width: 45%"></div>
+            </div>
+            <div>
+                <p>800 achieved</p>
+            </div>
+        </div>
+    </div>
+    <div class="flex justify-center align-middle mb-4" *ngIf="MissionData.missionType == 'TIME' ">
+        <div>
+            <img class="Seatleft content-center mt-2" src="../assets/Images/deadline.png" />
+        </div>
+        <div class="flex flex-col mx-4">
+            <div>Deadine</div>
+            <div>
+                <p>{{MissionData.deadline | date}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="seatprogress">
+<div class="addfav">
+    <div class="addfavdiv">
+        <button (click)="AddToFavourite() " *ngIf="MissionData.isFavMission == true"
+            class="twoButtons  justify-center align-middle flex w-80 h-10 ">
+
+           
+            <img class="h-6 w-6 mr-1" src="../assets/Images/heart red.png" />
+            
+           
+
+            Add to Favourite
+        </button>
+
+        <button (click)="AddToFavourite() " *ngIf="MissionData.isFavMission == false"
+            class="twoButtons  justify-center align-middle flex w-80 h-10 ">
+
+           
+            <img class="h-6 w-6 mr-1" src="../assets/Images/heart1.png" />
+
+
+
+            remove to Favourite
+        </button>
+
+    </div>
+    <div class="mb-2 recoomanded">
+        <button (click)="openDialog()" type="button" class="twoButtons justify-center align-middle flex w-80 h-10">
+           
+            <img class="h-6 w-6 mr-1" src="../assets/Images/Already-volunteered.png" />
+            Recommend to a Co-Worker
+        </button>
+    </div>
+
+</div>
+<form [formGroup]="form">
+    <div class="text-center1">
+        <ngx-star-rating formControlName="rating" [id]="'rating'" (click)="starrating(form.value['rating'])"
+            *ngIf="MissionData.approvalStatus =='approved' "><mat-icon>star</mat-icon></ngx-star-rating>
+        <ngx-star-rating *ngIf="MissionData.approvalStatus !='approved' " [disabled]="true"></ngx-star-rating>
+    </div>
+
+</form>
+<section class="flex justify-center">
+    <div class="cardd">
+        <div class="box1">
+            <img class="p-3" src="../assets/Images/pin1.png" />
+            <div class="mx-3">
+                <p class="mb-0  font-sans font-bold">City</p>
+                <p class="mb-0 font-sans">{{MissionData.cityName}}</p>
+            </div>
+        </div>
+        <div class="box1">
+            <img class="p-3" src="../assets/Images/pin1.png" />
+            <div class="mx-3">
+                <p class="mb-0  font-sans font-bold">Theme</p>
+                <p class="mb-0 font-sans">{{MissionData.themeName}}</p>
+            </div>
+        </div>
+        <div class="box1">
+            <img class="p-3 " src="../assets/Images/pin1.png" />
+            <div class="mx-3">
+                <p class="mb-0 font-sans font-bold">Date</p>
+                <p class="mb-0 font-sans">Ongoing Opportunity</p>
+            </div>
+        </div>
+        <div class="box1">
+            <img class="p-3" src="../assets/Images/pin1.png" />
+            <div class="mx-3">
+                <p class="mb-0  font-sans font-bold">Organization</p>
+                <p class="mb-0 font-sans">{{MissionData.organizationName}}</p>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="text-center mt-2">
+    <button *ngIf="MissionData.approvalStatus == 'approve' " class="applybtn text-center" disabled>
+        Applied
+    </button>
+    <button *ngIf="MissionData.approvalStatus == 'pending' " class="applybtn text-center" disabled>
+        Pending
+    </button>
+    <button *ngIf="MissionData.approvalStatus == null " (click)="Applymission()" class="applybtn text-center">
+        Apply Now
+    </button>
+</div>
