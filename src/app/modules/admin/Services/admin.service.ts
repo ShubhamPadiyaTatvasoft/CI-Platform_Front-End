@@ -43,6 +43,16 @@ export class AdminService {
       `${environment.baseURL}Admin/GetAllStories?search=${search}`
     );
   }
+  getAllBannerData(search: any) {
+    return this.http.get<any>(
+      `${environment.baseURL}Admin/GetAllBanners?search=${search}`
+    );
+  }
+  getAllThemes(search: any) {
+    return this.http.get<any>(
+      `${environment.baseURL}Admin/GetAllThemes?search=${search}`
+    );
+  }
 
   GetAllCountryTheme() {
     return this.http.get<any>(
@@ -135,6 +145,27 @@ export class AdminService {
     return this.http.post<any>(
       `${environment.baseURL}Admin/ApproveRejectDeleteStory`,
       payload
+    );
+  }
+  AddUpdateBanner(bannerData: any) {
+    return this.http.post<any>(
+      `${environment.baseURL}Admin/AddUpdateBanner`,
+      bannerData
+    );
+  }
+  GetBannerData(bannerId: number) {
+    return this.http.get<any>(
+      `${environment.baseURL}Admin/GetBannerDataFromId/${bannerId}`
+    );
+  }
+  deleteBanner(bannerId: number) {
+    return this.http.delete<any>(
+      `${environment.baseURL}Admin/DeleteBanner/${bannerId}`
+    );
+  }
+  GetThemeData(themeId: number) {
+    return this.http.get<any>(
+      `${environment.baseURL}Admin/GetThemeData/${themeId}`
     );
   }
 }

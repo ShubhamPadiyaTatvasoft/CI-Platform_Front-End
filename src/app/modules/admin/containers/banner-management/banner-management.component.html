@@ -1,1 +1,94 @@
-<p>banner-management works!</p>
+<app-pre-loader [class]="preLoader"></app-pre-loader>
+
+<div class="banner-main">
+  <div class="banner-left">
+    <app-side-navigation></app-side-navigation>
+  </div>
+  <div class="banner-right">
+    <div>
+      <app-top-navigation></app-top-navigation>
+    </div>
+    <div class="h-5/6 p-5 scroll-bar" style="width: 100%; overflow-y: scroll">
+      <div class="font-bold mb-3 ms-1 text-2xl">Banner Management</div>
+      <div class="mb-3 ms-1 flex-add-search">
+        <div class="flex-search">
+          <mat-label>Search: &nbsp;</mat-label>
+          <input
+            matInput
+            #search
+            name="search"
+            type="text"
+            id="searchbar"
+            class="search-bar"
+            placeholder="search"
+            (keyup)="keyupSearch(search)"
+          />
+        </div>
+
+        <button
+          mat-raised-button
+          class="rounded-3xl orange-border p-3"
+          style="width: max-content"
+          [routerLink]="['/AdminPanel/bannerForm', 'add']"
+        >
+          <span class="font-medium flex items-center"
+            ><span>ADD</span> <mat-icon>add</mat-icon>
+          </span>
+        </button>
+      </div>
+      <div>
+        <table mat-table matSort [dataSource]="dataSource">
+          <ng-container matColumnDef="bannerText">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>
+              Banner Text
+            </th>
+            <td mat-cell *matCellDef="let element" class="font-semibold">
+              {{ element.text }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="sortOrder">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>
+              Sort Order
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.sortOrder }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element">
+              <div class="flex">
+                <button
+                  (click)="getBannerDataForEditOrDelete($event.target, 'edit')"
+                >
+                  <mat-icon class="text-orange-600" id="{{ element.bannerId }}"
+                    >edit</mat-icon
+                  >
+                </button>
+                <button
+                  *ngIf="element.deletedAt == null"
+                  (click)="
+                    getBannerDataForEditOrDelete($event.target, 'delete')
+                  "
+                >
+                  <mat-icon id="{{ element.bannerId }}"
+                    >delete_forever</mat-icon
+                  >
+                </button>
+              </div>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumn"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumn"></tr>
+        </table>
+        <div class="flex justify-center mt-5 font-bold text-2xl">
+          {{ showNoDataFound }}
+        </div>
+      </div>
+    </div>
+    <mat-paginator [pageSizeOptions]="[10, 5, 8, 2]" showFirstLastButtons>
+    </mat-paginator>
+  </div>
+</div>

@@ -13,6 +13,9 @@ import { SkiilsComponent } from './containers/skiils/skiils.component';
 import { BannerManagementComponent } from './containers/banner-management/banner-management.component';
 import { ThemesComponent } from './containers/themes/themes.component';
 import { CMSPagesAddEditComponent } from './containers/cms-pages-add-edit/cms-pages-add-edit.component';
+import { BannerComponent } from '../auth/components/banner/banner.component';
+import { BannerManagementAddEditComponent } from './containers/banner-management-add-edit/banner-management-add-edit.component';
+import { ThemesAddEditComponent } from './containers/themes-add-edit/themes-add-edit.component';
 // import { UserCRUDComponent } from './containers/user-crud/user-crud.component';
 
 const routes: Routes = [
@@ -49,6 +52,26 @@ const routes: Routes = [
   {
     path: 'BannerManagement',
     component: BannerManagementComponent,
+  },
+  {
+    path: 'bannerForm/:action',
+    component: BannerManagementAddEditComponent,
+    canActivate: [LoginAuthGuard],
+  },
+  {
+    path: 'bannerForm/:action/:id',
+    component: BannerManagementAddEditComponent,
+    canActivate: [LoginAuthGuard],
+  },
+  {
+    path: 'themeForm/:action/:id',
+    component: ThemesAddEditComponent,
+    canActivate: [LoginAuthGuard],
+  },
+  {
+    path: 'themeForm/:action',
+    component: ThemesAddEditComponent,
+    canActivate: [LoginAuthGuard],
   },
   {
     path: 'userForm/:action/:id',

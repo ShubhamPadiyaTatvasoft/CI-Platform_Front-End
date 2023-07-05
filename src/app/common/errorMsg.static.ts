@@ -237,4 +237,12 @@ export const ErrorMessages = {
       required: 'Status is required',
     },
   },
+  bannerDetails: {
+    bannerText: {
+      required: 'BannerText is required',
+    },
+    sortOrder: {
+      required: 'SortOrder is required',
+    },
+  },
 };

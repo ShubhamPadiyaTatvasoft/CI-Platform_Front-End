@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .banner-main {
+    @apply flex;
+    width: 100vw;
+  }
+
+  .banner-left {
+    @apply md:w-1/6 sm:w-full;
+  }
+
+  .banner-right {
+    @apply md:w-5/6 sm:w-full;
+  }
+
+  .top-nav {
+    @apply w-full;
+    height: max-content;
+  }
+
+  .scroll-bar::-webkit-scrollbar {
+    width: 12px;
+    /* width of the entire scrollbar */
+  }
+
+  .scroll-bar::-webkit-scrollbar-track {
+    background: rgb(255, 255, 255);
+    /* color of the tracking area */
+  }
+
+  .scroll-bar::-webkit-scrollbar-thumb {
+    height: 12px;
+    @apply bg-orange-700;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    border: 3px solid rgb(255, 255, 255);
+    /* creates padding around scroll thumb */
+  }
+
+  .flex-search {
+    @apply flex items-center;
+  }
+
+  .flex-add-search {
+    @apply flex justify-between;
+  }
+}
+
+@media (max-width: 767px) {
+  .cms-main {
+    @apply flex flex-col;
+  }
+}
+
+.mat-mdc-header-cell {
+  background: gray !important;
+  border: 2px solid black !important;
+}
+
+td {
+  border: 2px solid black !important;
+}
+
+.search-bar {
+  border: 2px solid black;
+  border-radius: 3px;
+}
+
+.orange-border {
+  border: 2px solid rgb(234 88 12);
+}
+
+th {
+  font-size: 20px;
+}
+
+@media (max-width: 303px) {
+  .flex-search {
+    flex-direction: column;
+    margin-bottom: 20px;
+    align-items: start;
+  }
+}
+
+@media (max-width: 395px) {
+  .flex-add-search {
+    @apply flex flex-col;
+  }
+}
