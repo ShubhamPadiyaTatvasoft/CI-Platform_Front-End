@@ -29,6 +29,7 @@ export class ThemesComponent implements OnInit {
     private dialogService: ConfirmBoxService,
     private notifyService: NotificationService
   ) {}
+
   ngOnInit(): void {
     this.getThemeData('');
   }
@@ -41,6 +42,7 @@ export class ThemesComponent implements OnInit {
     }, 1000);
   }
 
+  // function for get all themes data
   getThemeData(search: string) {
     this.adminService.getAllThemes(search).subscribe({
       next: (res) => {
@@ -60,6 +62,7 @@ export class ThemesComponent implements OnInit {
     });
   }
 
+  // function for edit delete theme
   getThemeDataForEditDelete(event: any, action: string) {
     if (action == 'edit') {
       this.router.navigate(['AdminPanel/themeForm', action, event.id]);
@@ -74,6 +77,8 @@ export class ThemesComponent implements OnInit {
         });
     }
   }
+
+  //function for delete theme
   deleteTheme(themeId: number) {
     this.adminService.deleteTheme(themeId).subscribe({
       next: (res) => {

@@ -40,6 +40,7 @@ export class ThemesAddEditComponent implements OnInit {
     });
     this.createForm();
   }
+
   //create form for theme add edit
   createForm() {
     this.themeDetails = this.formBuilder.group({
@@ -47,6 +48,8 @@ export class ThemesAddEditComponent implements OnInit {
       status: ['Active', Validators.required],
     });
   }
+
+  //api call for get theme data from id
   getThemeData(themeId: number) {
     this.preLoader = 'inline-block absolute';
     this.adminService.GetThemeData(themeId).subscribe({
@@ -64,6 +67,7 @@ export class ThemesAddEditComponent implements OnInit {
     });
   }
 
+  //api call for add update theme
   addUpdateTheme() {
     const payload = {
       themeId: this.themeId,

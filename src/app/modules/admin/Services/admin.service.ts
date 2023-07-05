@@ -115,14 +115,17 @@ export class AdminService {
       cmsData
     );
   }
+
   getCmsData(cmsId: any) {
     return this.http.get<any>(
       `${environment.baseURL}Admin/GetCmsDataFromId/${cmsId}`
     );
   }
+
   deleteCms(cmsId: number) {
     return this.http.post<any>(`${environment.baseURL}Admin/DeleteCms`, cmsId);
   }
+
   approveRejectMissionApplication(
     applicationId: number,
     approvalStatus: string
@@ -147,33 +150,39 @@ export class AdminService {
       payload
     );
   }
+
   AddUpdateBanner(bannerData: any) {
     return this.http.post<any>(
       `${environment.baseURL}Admin/AddUpdateBanner`,
       bannerData
     );
   }
+
   GetBannerData(bannerId: number) {
     return this.http.get<any>(
       `${environment.baseURL}Admin/GetBannerDataFromId/${bannerId}`
     );
   }
+
   deleteBanner(bannerId: number) {
     return this.http.delete<any>(
       `${environment.baseURL}Admin/DeleteBanner/${bannerId}`
     );
   }
+
   GetThemeData(themeId: number) {
     return this.http.get<any>(
       `${environment.baseURL}Admin/GetThemeData/${themeId}`
     );
   }
+
   AddUpdateTheme(themeData: any) {
     return this.http.post<any>(
       `${environment.baseURL}Admin/AddUpdateTheme`,
       themeData
     );
   }
+
   deleteTheme(themeId: number) {
     return this.http.delete<any>(
       `${environment.baseURL}Admin/DeleteTheme/${themeId}`
