@@ -27,10 +27,10 @@ export class MissionRecentVolunteerComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
-    this.getrecentVolunteer1();
+    this.getrecentVolunteer();
   }
 
-  getrecentVolunteer1() {
+  getrecentVolunteer() {
     this.volunteerMissionService
       .getRecentVolunteer(this.missionId, this.userId)
       .subscribe({

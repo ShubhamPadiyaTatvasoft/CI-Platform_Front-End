@@ -56,7 +56,6 @@ export class MissionInformationComponent implements OnInit, OnChanges {
   }
 
   starrating(rating: number) {
-   
     this.volunteerMissionService
       .postrating(this.missionId, this.userId, rating)
       .subscribe({
