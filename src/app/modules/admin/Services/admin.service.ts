@@ -168,4 +168,15 @@ export class AdminService {
       `${environment.baseURL}Admin/GetThemeData/${themeId}`
     );
   }
+  AddUpdateTheme(themeData: any) {
+    return this.http.post<any>(
+      `${environment.baseURL}Admin/AddUpdateTheme`,
+      themeData
+    );
+  }
+  deleteTheme(themeId: number) {
+    return this.http.delete<any>(
+      `${environment.baseURL}Admin/DeleteTheme/${themeId}`
+    );
+  }
 }
