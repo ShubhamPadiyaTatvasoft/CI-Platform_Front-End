@@ -253,4 +253,12 @@ export const ErrorMessages = {
       required: 'Status is required',
     },
   },
+  skillDetails: {
+    skillName: {
+      required: 'Theme title is required',
+    },
+    status: {
+      required: 'Status is required',
+    },
+  },
 };

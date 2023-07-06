@@ -33,21 +33,31 @@ export class AdminService {
       `${environment.baseURL}Admin/GetAllCMSPage?search=${search}`
     );
   }
+
   getAllMissionApplication(search: any) {
     return this.http.get<any>(
       `${environment.baseURL}Admin/GetAllMissionApplication?search=${search}`
     );
   }
+
   getAllStories(search: any) {
     return this.http.get<any>(
       `${environment.baseURL}Admin/GetAllStories?search=${search}`
     );
   }
+
   getAllBannerData(search: any) {
     return this.http.get<any>(
       `${environment.baseURL}Admin/GetAllBanners?search=${search}`
     );
   }
+
+  getAllSkills(search: any) {
+    return this.http.get<any>(
+      `${environment.baseURL}Admin/GetAllSkills?search=${search}`
+    );
+  }
+
   getAllThemes(search: any) {
     return this.http.get<any>(
       `${environment.baseURL}Admin/GetAllThemes?search=${search}`
@@ -186,6 +196,25 @@ export class AdminService {
   deleteTheme(themeId: number) {
     return this.http.delete<any>(
       `${environment.baseURL}Admin/DeleteTheme/${themeId}`
+    );
+  }
+
+  GetSkillData(skillId: number) {
+    return this.http.get<any>(
+      `${environment.baseURL}Admin/GetSkillData/${skillId}`
+    );
+  }
+
+  AddUpdateSkill(skillData: any) {
+    return this.http.post<any>(
+      `${environment.baseURL}Admin/AddUpdateSkill`,
+      skillData
+    );
+  }
+
+  deleteSkill(skillId: number) {
+    return this.http.delete<any>(
+      `${environment.baseURL}Admin/DeleteSkill/${skillId}`
     );
   }
 }
