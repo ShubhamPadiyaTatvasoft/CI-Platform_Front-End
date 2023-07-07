@@ -162,7 +162,11 @@ export const ErrorMessages = {
     date: {
       required: 'Date is required',
     },
+    myStory: {
+      required: 'My story field is required',
+    },
   },
+
   basicDetailsForMission: {
     missionTitle: {
       required: 'Mission title is required',

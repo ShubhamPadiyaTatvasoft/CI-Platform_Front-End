@@ -1,50 +1,15 @@
-<div class="container mx-auto">
+<div class="container mx-auto mt-5">
   <div class="row mb-3">
-    <div class="grid grid-cols-3">
-      <mat-card class="cardWidth shadow h-100 mt-5">
-        <div class="cardImage">
-          <img
-            src="/assets/Images/Grow-Trees-On-the-path-to-environment-sustainability.png"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="overlay">
-            <div class="text2">
-              <button
-                routerLink="share-story"
-                mat-raised-button
-                class="rounded-pill button2"
-              >
-                <span class="text-wrap">View Details</span>
-                <mat-icon class="ms-2">arrow_right</mat-icon>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="card-body">
-          <div class="cardTitleAction">
-            <span class="cardTitleSubAction"> Customer Experience</span>
-          </div>
-
-          <h5 class="card-title cardTitle">
-            10 User and Customer Engagement Strategies for 2019
-          </h5>
-          <p class="card-text cardText">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore...
-          </p>
-
-          <div class="ImageName">
-            <img
-              src="/assets/Images/volunteer1.png"
-              alt=""
-              class="userProfile"
-            />
-            <span class="userName">Andrew Johnson</span>
-          </div>
-        </div>
-      </mat-card>
+    <div class="grid grid-cols-12 gap-4">
+      <div
+        class="col-span-12 mb-3"
+        [ngClass]="isGridView ? 'md:col-span-6 lg:col-span-4' : ''"
+      >
+        <app-mission-story-card
+          [isGridViewCheck]="isGridView"
+          [isMissionCardCheck]="isMissionCard"
+        ></app-mission-story-card>
+      </div>
     </div>
   </div>
 </div>

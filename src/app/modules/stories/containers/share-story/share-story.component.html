@@ -59,16 +59,28 @@
 
           <mat-datepicker #releasedAtPicker startView="year"> </mat-datepicker>
         </div>
-        <mat-error></mat-error>
+        <mat-error>{{
+          formValidationService.formValidations(
+            shareStoryForm,
+            "date",
+            errorMessage.ShareStory
+          )
+        }}</mat-error>
       </div>
     </div>
 
     <div>
       <mat-label class="storyLable">My Story</mat-label>
 
-      <ckeditor [editor]="Editor" (ready)="onEditorReady($event)"> </ckeditor>
+      <ckeditor [editor]="Editor" (ready)="onEditorReady($event)"  formControlName="myStory"> </ckeditor>
 
-      <mat-error></mat-error>
+      <mat-error>{{
+        formValidationService.formValidations(
+          shareStoryForm,
+          "myStory",
+          errorMessage.ShareStory
+        )
+      }}</mat-error>
     </div>
 
     <div class="videoUrl">

@@ -21,6 +21,7 @@ import { CommonModule } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MissionStoryCardComponent } from './components/mission-story-card/mission-story-card.component';
 import { MissionStoryRecommendationDialogComponent } from './components/mission-story-recommendation-dialog/mission-story-recommendation-dialog.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -66,6 +67,7 @@ import { MissionStoryRecommendationDialogComponent } from './components/mission-
     MatGridListModule,
     MatProgressBarModule,
     MatTooltipModule,
+    RouterModule
   ],
 })
 export class SharedModule { }
