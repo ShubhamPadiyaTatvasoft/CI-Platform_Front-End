@@ -1,4 +1,4 @@
-import { Component ,OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { ErrorMessages } from 'src/app/common/errorMsg.static';
@@ -7,9 +7,9 @@ import { FormValidationService } from 'src/shared/services/form-validation.servi
 @Component({
   selector: 'app-share-story',
   templateUrl: './share-story.component.html',
-  styleUrls: ['./share-story.component.scss']
+  styleUrls: ['./share-story.component.scss'],
 })
-export class ShareStoryComponent implements OnInit{
+export class ShareStoryComponent implements OnInit {
   shareStoryForm: FormGroup;
   errorMessage = ErrorMessages;
   editorContent: string;
@@ -26,8 +26,9 @@ export class ShareStoryComponent implements OnInit{
   //function for create a form while initializing login page
   createForm() {
     this.shareStoryForm = this.formBuilder.group({
-      storyTitle:['', Validators.required],
+      storyTitle: ['', Validators.required],
       date: ['', Validators.required],
+      myStory: ['', Validators.required],
     });
   }
 

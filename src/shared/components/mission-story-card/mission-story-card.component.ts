@@ -1,7 +1,6 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { TimeLineModel } from 'src/app/interfaces/time-line-model';
 
-
 @Component({
   selector: 'app-mission-story-card',
   templateUrl: './mission-story-card.component.html',
@@ -23,7 +22,7 @@ export class MissionStoryCardComponent implements OnInit{
     imgUrl: '../assets/Images/Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png',
     title: "10 User and Customer Engagement Strategies for 2023",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    profilePic: '../assets/volunteer1.png',
+    profilePic: './assets/Images/volunteer1.png',
     userName: "Aman Gandhi",
     theme : "Education",
   }

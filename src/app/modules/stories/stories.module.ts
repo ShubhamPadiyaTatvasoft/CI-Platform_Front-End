@@ -14,6 +14,9 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedMaterialModule } from 'src/shared/modules/material.module';
 import { SharedModule } from 'src/shared/shared.module';
+import { StoryImageCarouselComponent } from './components/story-image-carousel/story-image-carousel.component';
+import { WhyVolunteerComponent } from './components/why-volunteer/why-volunteer.component';
+import { StoryDescriptionComponent } from './components/story-description/story-description.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { SharedModule } from 'src/shared/shared.module';
     StoryCardsComponent,
     ShareStoryComponent,
     StoryDetailComponent,
+    StoryImageCarouselComponent,
+    WhyVolunteerComponent,
+    StoryDescriptionComponent,
   ],
   imports: [
     CommonModule,
