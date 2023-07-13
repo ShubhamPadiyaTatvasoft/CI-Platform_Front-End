@@ -2,12 +2,14 @@
   <div class="row mb-3">
     <div class="grid grid-cols-12 gap-4">
       <div
+        *ngFor="let storyData of storyDataObj"
         class="col-span-12 mb-3"
         [ngClass]="isGridView ? 'md:col-span-6 lg:col-span-4' : ''"
       >
         <app-mission-story-card
           [isGridViewCheck]="isGridView"
           [isMissionCardCheck]="isMissionCard"
+          [cardDataObj]="storyData"
         ></app-mission-story-card>
       </div>
     </div>

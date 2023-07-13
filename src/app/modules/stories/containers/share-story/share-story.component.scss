@@ -1,9 +1,9 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 84vh;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
 
 .share-story-form {
   justify-content: center;
@@ -350,5 +350,8 @@ p {
   font-size: 1.2rem;
   margin-top: 2vh;
 }
-
-  
+.uploaded-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
