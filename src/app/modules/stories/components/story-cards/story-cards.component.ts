@@ -17,7 +17,6 @@ export class StoryCardsComponent implements OnInit {
 
     this.storyService.getStoryCardData().subscribe((res: any) => {
       this.storyDataObj = res.data;
-      console.log(res);
     },
       (e: any) => {
         console.log(e);

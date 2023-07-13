@@ -10,13 +10,13 @@ import { VolunteerMissionService } from 'src/app/modules/mission-volunteer/servi
 })
 export class WhyVolunteerComponent implements OnInit {
   missionId: number;
+  @Input() MissionData: VolunteerMissionCardModel;
+  @Output() missionIds = new EventEmitter<number>();
 
   constructor(
     public dialog: MatDialog,
     private volunteerMissionService: VolunteerMissionService
   ) {}
-  @Input() MissionData: VolunteerMissionCardModel;
-  @Output() missionIds = new EventEmitter<number>();
 
   ngOnInit(): void {}
 
