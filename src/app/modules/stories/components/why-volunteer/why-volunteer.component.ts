@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { VolunteerMissionCardModel } from 'src/app/interfaces/volunteer-mission';
 import { VolunteerMissionService } from 'src/app/modules/mission-volunteer/services/volunteer-mission.service';
 
@@ -9,20 +10,11 @@ import { VolunteerMissionService } from 'src/app/modules/mission-volunteer/servi
   styleUrls: ['./why-volunteer.component.scss'],
 })
 export class WhyVolunteerComponent implements OnInit {
-  missionId: number;
-  @Input() MissionData: VolunteerMissionCardModel;
-  @Output() missionIds = new EventEmitter<number>();
-
+  
   constructor(
-    public dialog: MatDialog,
-    private volunteerMissionService: VolunteerMissionService
   ) {}
 
-  ngOnInit(): void {}
-
-  openDialog() {
-    this.volunteerMissionService.openConfirmDialogue(
-      this.MissionData.missionId
-    );
+  ngOnInit(): void {
+   
   }
 }

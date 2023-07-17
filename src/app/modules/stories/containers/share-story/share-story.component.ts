@@ -45,6 +45,7 @@ export class ShareStoryComponent implements OnInit {
 
   createForm() {
     this.shareStoryForm = this.formBuilder.group({
+      selectedMissionId: ['', Validators.required],
       storyTitle: ['', Validators.required],
       date: ['', Validators.required],
       myStory: ['', Validators.required],
@@ -84,14 +85,14 @@ export class ShareStoryComponent implements OnInit {
   }
 
   saveStory() {
-    if (this.shareStoryForm.valid && this.selectedMissionId) {
+    if (this.shareStoryForm.valid && this.shareStoryForm.value.selectedMissionId) {
       const formData = new FormData();
       const storyTitle = this.shareStoryForm.get('storyTitle')?.value;
       const myStory = this.shareStoryForm.get('myStory')?.value;
 
       formData.append('Title', storyTitle);
       formData.append('Description', myStory);
-      formData.append('MissionId', this.selectedMissionId);
+      formData.append('MissionId', this.shareStoryForm.value.selectedMissionId);
       formData.append('UserId', this.userId.toString());
 
       this.uploadedImages.forEach((image: File) =>

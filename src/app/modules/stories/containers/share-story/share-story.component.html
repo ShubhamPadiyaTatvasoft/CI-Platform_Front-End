@@ -12,8 +12,8 @@
             matNativeControl
             class="userAppliedMission"
             id="storyMissions"
-            [(ngModel)]="selectedMissionId"
-            [ngModelOptions]="{ standalone: true }"
+            formControlName="selectedMissionId"
+            name="selectMission"
           >
             <option value="" disabled selected>Select your Mission</option>
             <option
@@ -37,6 +37,7 @@
             id="exampleInputEmail1"
             placeholder=" Enter Story Title"
             formControlName="storyTitle"
+            name="storyTitle"
           />
           <br />
 
@@ -56,6 +57,7 @@
           <input
             matInput
             formControlName="date"
+            name="date"
             [matDatepicker]="releasedAtPicker"
             placeholder=" Select date"
             id="date"
@@ -84,6 +86,7 @@
         [editor]="Editor"
         (ready)="onEditorReady($event)"
         formControlName="myStory"
+        name="myStory"
       >
       </ckeditor>
 
@@ -127,7 +130,6 @@
           </label>
         </div>
         <div class="upload__img-wrap">
-        
           <ng-container *ngFor="let file of uploadedImages; let i = index">
             <img
               [src]="getImgSrc(file)"
