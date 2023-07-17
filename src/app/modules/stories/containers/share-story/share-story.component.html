@@ -12,8 +12,16 @@
             matNativeControl
             class="userAppliedMission"
             id="storyMissions"
+            formControlName="selectedMissionId"
+            name="selectMission"
           >
-            <option selected>Select your Mission</option>
+            <option value="" disabled selected>Select your Mission</option>
+            <option
+              *ngFor="let mission of missions"
+              [value]="mission.mission.missionId"
+            >
+              {{ mission.mission.title }}
+            </option>
           </select>
           <mat-error></mat-error>
         </div>
@@ -29,6 +37,7 @@
             id="exampleInputEmail1"
             placeholder=" Enter Story Title"
             formControlName="storyTitle"
+            name="storyTitle"
           />
           <br />
 
@@ -48,6 +57,7 @@
           <input
             matInput
             formControlName="date"
+            name="date"
             [matDatepicker]="releasedAtPicker"
             placeholder=" Select date"
             id="date"
@@ -72,7 +82,13 @@
     <div>
       <mat-label class="storyLable">My Story</mat-label>
 
-      <ckeditor [editor]="Editor" (ready)="onEditorReady($event)"  formControlName="myStory"> </ckeditor>
+      <ckeditor
+        [editor]="Editor"
+        (ready)="onEditorReady($event)"
+        formControlName="myStory"
+        name="myStory"
+      >
+      </ckeditor>
 
       <mat-error>{{
         formValidationService.formValidations(
@@ -107,27 +123,54 @@
             <p>Drag & Drop your Pictures & Photos</p>
             <input
               type="file"
-              multiple=""
-              data-max_length="19"
+              multiple
               class="upload__inputfile"
+              (change)="handleImageUpload($event)"
             />
           </label>
         </div>
-        <div class="upload__img-wrap"></div>
+        <div class="upload__img-wrap">
+          <ng-container *ngFor="let file of uploadedImages; let i = index">
+            <img
+              [src]="getImgSrc(file)"
+              [alt]="file.name"
+              class="uploaded-image resized-image"
+            />
+            <button
+              mat-icon-button
+              color="primary"
+              aria-label="Remove"
+              (click)="removeImage(file)"
+            >
+              <mat-icon>close</mat-icon>
+            </button>
+          </ng-container>
+        </div>
+        <button
+          mat-button
+          color="warn"
+          *ngIf="uploadedImages.length > 0"
+          (click)="clearAllImages()"
+        >
+          Clear All
+        </button>
       </div>
     </div>
 
     <input type="hidden" id="storyId" />
+    <input type="hidden" id="userId" />
     <div class="buttons">
       <div>
         <button type="reset" class="btn2">Cancel</button>
       </div>
       <div>
-        <a id="preview" href=""
-          ><button id="previewBtn" class="btn1">Preview</button></a
+        <button
+          type="button"
+          id="submitBtn"
+          value="1"
+          class="btn1"
+          (click)="saveStory()"
         >
-        <button id="saveBtn" value="0" class="btn1">Save</button>
-        <button type="button" id="submitBtn" value="1" class="btn1">
           Submit
         </button>
       </div>
